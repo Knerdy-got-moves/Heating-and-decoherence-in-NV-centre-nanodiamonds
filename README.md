@@ -158,11 +158,14 @@ See the `Reference papers (not a bib file)/` directory for detailed bibliography
 
 ## License
 
-[Specify license here]
+This project is provided for educational and research purposes. Please cite appropriately if you use any results or code from this repository.
 
 ## Contact
 
-[Add contact information]
+**Student**: Rishi Paresh Joshi
+**Email**: rishiparesh.joshi@niser.ac.in
+**Institution**: National Institute of Science Education and Research (NISER), Bhubaneswar
+
 
 ## Acknowledgments
 
