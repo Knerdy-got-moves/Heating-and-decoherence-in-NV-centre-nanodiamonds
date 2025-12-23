@@ -1,0 +1,819 @@
+\chapter{\(C_V\) of a spherical NV-centre nanodiamond with no dangling bonds using the Debye model}
+
+In the previous we derived the heating equation for a nanodiamond in the Rayleigh scattering regime. In this chapter, we derive the \(C_V\) of the nanodiamond. 
+
+\section{Challenges for a Nanosphere-Shaped Nanodiamond}
+
+
+A nanodiamond modeled as a nanosphere (a spherical nanoparticle with a diameter typically 1–100 nm) deviates fundamentally from the infinite, periodic cubic lattice assumption. The nanosphere has a finite size, curved surface, and free (or passivated) boundaries rather than periodic ones. This introduces several issues, as the derivations rely on periodicity and plane-wave expansions, which break down in confined, non-periodic geometries.
+
+
+\section{Derivation of the Electronic Hamiltonian for a Spherical Nanodiamond in the Raman Scattering Model}
+
+
+
+In the framework of Raman scattering for a spherical nanodiamond illuminated by light, the total Hamiltonian consists of noninteracting parts (\( H_0 \)) for electrons, photons, and phonons, plus interaction terms (\( H' \)) for electron-photon (\( H_{\text{ER}} \)) and electron-phonon (\( H_{\text{EL}} \)) couplings. The electronic part, which is the focus of this derivation, refers to the electronic contribution to \( H_0 \), denoted as \( H_{\text{electrons}} \). This term describes the energy of electrons in the nanodiamond's crystal lattice, accounting for the finite, spherical geometry.
+
+The chapter from "Feynman diagram techniques in condensed matter physics" (Sections 11.12 and implied electronic structure) provides the foundation for bulk crystals\cite{jishi2013feynman}, where electrons are treated via Bloch's theorem in a periodic potential, leading to band structures. However, for a spherical nanodiamond (a finite cluster of carbon atoms, typically with radius \( R \sim 1-10 \) nm and \( 10^2 \) to \( 10^5 \) atoms), periodicity is broken, introducing quantum confinement and surface effects. Drawing from previous knowledge (tight-binding adaptations and the paper on diamond band structure), we use a tight-binding (TB) model for \( H_{\text{electrons}} \), as it naturally extends to finite clusters.
+
+
+\subsection{Single-Electron Hamiltonian in a Periodic Crystal}\leavevmode
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Figures//Chapter2figures/Nanodiamond lattice.png}
+    \caption{Nanodiamond FCC interpenetrating lattice with two basis atoms}
+    \label{Nanodiamond FCC}
+\end{figure}
+\subsubsection{Real-space tight-binding ansatz}
+
+We label each unit cell by $\mathbf{R}$ and the two sublattice sites within it by $m=0,1$. On each site we have four orbitals $\ell\in\{s,p_x,p_y,p_z\}$. The general second-quantized TB Hamiltonian is
+\[
+H \;=\;
+\sum_{\mathbf{R},m,\ell}\;\varepsilon_\ell\;c^\dagger_{\mathbf{R},m,\ell}\,c_{\mathbf{R},m,\ell}
+\;+\;\sum_{\mathbf{R},m,\ell}\;\sum_{\mathbf{R}',n,\ell'}\;t^{\ell\ell'}_{mn}(\mathbf{R}'\!-\!\mathbf{R})\;
+c^\dagger_{\mathbf{R},m,\ell}\,c_{\mathbf{R}',n,\ell'}.
+\]
+Here
+\begin{itemize}
+    \item $\varepsilon_s=E_s$, $\varepsilon_{p}=E_p$ are on-site energies (we’ll absorb any 2nd-NN shifts into a $\mathbf{k}$-dependent on-site term later),
+    \item $t^{\ell\ell'}_{mn}(\mathbf{d})$ is the matrix element between orbital $\ell$ on site $(\mathbf{R},m)$ and orbital $\ell'$ on site $(\mathbf{R}+\mathbf{d},n)$.
+\end{itemize}
+
+\hrulefill
+
+\subsubsection{Restrict to the leading interactions}
+
+\begin{enumerate}
+    \item \textbf{Nearest neighbors ($\mathbf{d}$ joining sublattice 0$\leftrightarrow$1):}
+    By symmetry in diamond, the only nonzero two-center integrals are
+    \[
+    t^{ss}_{01}(\tfrac{a}{2},\tfrac{a}{2},\tfrac{a}{2}) = V_{ss},\quad
+    t^{sp_x}_{01}(\tfrac{a}{2},\tfrac{a}{2},\tfrac{a}{2}) = \tfrac{a}{|\mathbf{d}|}V_{sp},
+    \]
+    and similarly for all $p$--$p$ with
+    \[
+    t^{p_\mu p_\mu}_{01}=V_{xx},\quad
+    t^{p_\mu p_\nu}_{01}=V_{xy}\;(\mu\neq\nu),
+    \]
+    according to the Slater–Koster tables.
+
+    \item \textbf{Second-nearest neighbors (NNN) between identical sublattices ($\,0\to0$ or $1\to1$)}
+    The dominant carbon C–C NNN is a $p_x$--$p_x$ overlap along $\mathbf{d}=(0,\tfrac{a}{2},\tfrac{a}{2})$, giving
+    \[
+    t^{p_x p_x}_{00}(0,\tfrac{a}{2},\tfrac{a}{2})
+    = U_{xx},\quad
+    \text{and cyclic permutations for }p_y,p_z.
+    \]
+\end{enumerate}
+All other hopping integrals are negligible at this level.
+
+\hrulefill
+
+\subsubsection{Fourier transform to \texorpdfstring{$\mathbf{k}$}{k}-space}
+
+Define
+\[
+c_{\mathbf{k},m,\ell}
+=\frac{1}{\sqrt{N}}\sum_{\mathbf{R}}
+e^{-i\mathbf{k}\cdot\mathbf{R}}\,
+c_{\mathbf{R},m,\ell},
+\quad
+c^\dagger_{\mathbf{k},m,\ell}
+=\frac{1}{\sqrt{N}}\sum_{\mathbf{R}}
+e^{+i\mathbf{k}\cdot\mathbf{R}}\,
+c^\dagger_{\mathbf{R},m,\ell}.
+\]
+Then
+\[
+H
+=\sum_{\mathbf{k},m,\ell}\varepsilon_\ell\,c^\dagger_{\mathbf{k},m,\ell}c_{\mathbf{k},m,\ell}
+\;+\;\sum_{\mathbf{k}}\sum_{m\neq n}\sum_{\ell,\ell'}
+c^\dagger_{\mathbf{k},m,\ell}\,T^{\ell\ell'}_{mn}(\mathbf{k})\,c_{\mathbf{k},n,\ell'},
+\]
+where the \emph{hopping form-factors} are
+\[
+T^{\ell\ell'}_{mn}(\mathbf{k})
+=\sum_{\mathbf{d}=\text{NN or NNN}}
+e^{i\mathbf{k}\cdot\mathbf{d}}\;t^{\ell\ell'}_{mn}(\mathbf{d}).
+\]
+
+\hrulefill
+
+\subsubsection{Recovering the \texorpdfstring{$g_i(\mathbf{k})$}{gi(k)} factors}
+
+For NN displacements
+$\mathbf{d}=\pm\bigl(\tfrac{a}{2},\tfrac{a}{2},\tfrac{a}{2}\bigr)$,
+one finds that all NN sums collapse into the four complex functions
+\[
+\begin{aligned}
+g_0(\mathbf{k})&=\sum_{\eta_i=\pm1}\;\frac{1}{4}\,
+e^{\,i\frac{a}{2}(\eta_1k_1+\eta_2k_2+\eta_3k_3)}
+\;\eta_1\eta_2\eta_3
+= \cos\!\tfrac{\pi k_1}{2}\cos\!\tfrac{\pi k_2}{2}\cos\!\tfrac{\pi k_3}{2}
+-i\sin\!\tfrac{\pi k_1}{2}\sin\!\tfrac{\pi k_2}{2}\sin\!\tfrac{\pi k_3}{2},\\
+g_1(\mathbf{k})&=\cos\!\tfrac{\pi k_1}{2}\sin\!\tfrac{\pi k_2}{2}\sin\!\tfrac{\pi k_3}{2}
++i\sin\!\tfrac{\pi k_1}{2}\cos\!\tfrac{\pi k_2}{2}\cos\!\tfrac{\pi k_3}{2},
+\end{aligned}
+\]
+and likewise for $g_2,g_3$ by cyclic permutation of $(1,2,3)\to(x,y,z)$. Hence
+\[
+T^{ss}_{01}(\mathbf{k})=V_{ss}\,g_0(\mathbf{k}),\quad
+T^{sp_x}_{01}(\mathbf{k})=V_{sp}\,g_1(\mathbf{k}),\quad
+T^{p_x p_x}_{01}(\mathbf{k})=V_{xx}\,g_0(\mathbf{k}),\;
+T^{p_x p_y}_{01}(\mathbf{k})=V_{xy}\,g_3(\mathbf{k}),\;\dots
+\]
+
+\hrulefill
+
+\subsubsection{Including the 2nd-NN \texorpdfstring{$p$--$p$}{p-p} on-site shift}
+
+The NNN displacement $\mathbf{d}=(0,\tfrac{a}{2},\tfrac{a}{2})$ contributes a purely diagonal term in sublattice 0 (and likewise in 1). Its Fourier sum is
+\[
+\Delta_{p_x}(\mathbf{k})
+=\sum_{\eta_2,\eta_3=\pm1}\tfrac12\,e^{\,i\frac{a}{2}(\eta_2k_2+\eta_3k_3)}
+\,U_{xx}
+ =U_{xx}\,\cos\!\tfrac{\pi k_2}{2}\cos\!\tfrac{\pi k_3}{2}.
+\]
+Similarly for $p_y,p_z$ by cyclic permutation. Thus the on-site energies become
+\[
+\varepsilon_{p_{x},m}(\mathbf{k})=E_p+\Delta_{p_x}(\mathbf{k}),\quad
+\varepsilon_{s,m}=E_s.
+\]
+
+\hrulefill
+
+\subsubsection{Hamiltonian in second quantization}
+
+Putting everything together:
+\[
+\boxed{%
+H = \sum_{\mathbf{k}}
+\Biggl[
+\sum_{m=0,1}\Bigl(E_s\,c^\dagger_{s_m}c_{s_m}
++\sum_{\mu=x,y,z}(E_p+\Delta_{p_\mu}(\mathbf{k}))\,c^\dagger_{p_{\mu}m}c_{p_{\mu}m}\Bigr)
+\;+\;\sum_{\substack{m\neq n\\ \ell,\ell'}}T^{\ell\ell'}_{mn}(\mathbf{k})\,
+c^\dagger_{m,\ell}\,c_{n,\ell'}
+\Biggr]\,.}
+\]
+Here the only nonzero inter-sublattice blocks $T(\mathbf{k})$ are exactly those proportional to
+\[
+V_{ss}g_0,\quad V_{sp}g_i,\quad V_{xx}g_0,\quad V_{xy}g_i,
+\]
+and the 2nd-NN shift $\Delta_{p_\mu}(\mathbf{k})$ sits on the diagonal $p_\mu$ entries.
+
+\vspace{1em}
+That completes the rigorous derivation from real-space Slater–Koster hopping integrals to the momentum-space, second-quantized tight-binding Hamiltonian we asked for.
+\subsubsection{Chadi--Cohen parameters for carbon (bulk diamond)}
+
+Because the valence bands of C were fit using \emph{only} nearest-neighbor interactions, $U_{xx}=0$ here. The on-site energy difference $(E_p-E_s)$ simply sets the zero of energy, so we quote directly the fitted two-center integrals (in eV):
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lr}
+\toprule
+Parameter   & \multicolumn{1}{c}{Value (eV)} \\
+\midrule
+$E_p - E_s$ & $8.41$       \\
+$V_{ss}$    & $-6.78$      \\
+$V_{xx}$    & $1.62$       \\
+$V_{xy}$    & $6.82$       \\
+$V_{sp}$    & $5.31$       \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These enter as
+\[
+E_s\equiv0,\quad E_p=8.41~\mathrm{eV},\quad
+(V_{ss},V_{xx},V_{xy},V_{sp})=(-6.78,\,1.62,\,6.82,\,5.31)\,\mathrm{eV}.
+\]
+
+\vspace{1em} % Add some vertical space
+
+Putting it all together, the second-quantised Hamiltonian is
+\begin{equation}
+\begin{aligned}
+H = \sum_{\mathbf{k}}\Bigl\{&\;E_s\sum_{m=0,1}c^\dagger_{s_m}c_{s_m}
++\sum_{m=0,1}\sum_{\mu=x,y,z}(E_p+\Delta_{p_\mu}(\mathbf{k}))\,c^\dagger_{p_{\mu}m}c_{p_{\mu}m}\\
+&\quad+V_{ss}\,g_0\,c^\dagger_{s_0}c_{s_1}
++V_{sp}\sum_{\mu}\bigl(g_{\mu}\,c^\dagger_{s_0}c_{p_{\mu}1}+g_{\mu}^*\,c^\dagger_{p_{\mu}0}c_{s_1}\bigr)\\
+&\quad+V_{xx}\sum_{\mu}g_0\,c^\dagger_{p_{\mu}0}c_{p_{\mu}1}
++V_{xy}\!\sum_{\mu\neq\nu}g_{\lambda}\,c^\dagger_{p_{\mu}0}c_{p_{\nu}1}
+\;+\;\mathrm{h.c.}\Bigr\},
+\end{aligned}
+\end{equation}
+with
+\[
+(V_{ss},V_{sp},V_{xx},V_{xy})=(-6.78,\,5.31,\,1.62,\,6.82)\,\mathrm{eV},\quad
+E_p-E_s=8.41\,\mathrm{eV},\quad U_{xx}=0.
+\]
+This fully specifies the bulk-diamond tight-binding Hamiltonian in second quantisation.
+\subsubsection{Eight band Hamiltonian basis}
+
+The standard eight-band tight-binding Hamiltonian for bulk diamond (and hence for the interior of a nanodiamond), written in the basis
+\[
+\Psi^\dagger(\mathbf{k})=\bigl(s_0,\;p_{x0},\;p_{y0},\;p_{z0},\;s_1,\;p_{x1},\;p_{y1},\;p_{z1}\bigr)\,,
+\]
+where ``0'' and ``1'' label the two atoms in the primitive cell. We include both nearest-neighbour (NN) and the single most important second-nearest-neighbour (2NN) $p$--$p$ interaction $U_{xx}$.
+
+\hrulefill
+
+\textbf{Bloch sums and structure factors}
+\[
+g_0(\mathbf{k})=\cos\frac{\pi k_1}{2}\cos\frac{\pi k_2}{2}\cos\frac{\pi k_3}{2}
+ - i\sin\frac{\pi k_1}{2}\sin\frac{\pi k_2}{2}\sin\frac{\pi k_3}{2},
+\]
+\[
+g_1(\mathbf{k})=\cos\frac{\pi k_1}{2}\sin\frac{\pi k_2}{2}\sin\frac{\pi k_3}{2}
+ + i\sin\frac{\pi k_1}{2}\cos\frac{\pi k_2}{2}\cos\frac{\pi k_3}{2},
+\]
+and cyclic permutations for $g_2,g_3$. Here $\mathbf{k}=(2\pi/a)(k_1,k_2,k_3)$.
+
+The 2NN $p$--$p$ coupling enters as a diagonal correction on each $p$ orbital, e.g.
+\[
+\Delta_{p_x}(\mathbf{k})
+=U_{xx}\,\cos\frac{\pi k_2}{2}\,\cos\frac{\pi k_3}{2},
+\]
+and likewise permuted for $p_y,p_z$.
+
+\hrulefill
+
+
+\textbf{Hamiltonian matrix}
+\[
+H(\mathbf{k})=\begin{pmatrix}
+H_{00} & H_{01}\\[6pt]
+H_{10} & H_{11}
+\end{pmatrix},
+\]
+with each block $4\times4$. In detail:
+\[
+H_{00}=\mathrm{diag}\bigl(E_s,\;E_p+\Delta_{p_x},\;E_p+\Delta_{p_y},\;E_p+\Delta_{p_z}\bigr),
+\]
+\[
+H_{11}=H_{00},
+\]
+\[
+H_{01}=\begin{pmatrix}
+V_{ss}\,g_0 & V_{sp}\,g_1 & V_{sp}\,g_2 & V_{sp}\,g_3\\[4pt]
+V_{sp}\,g_1^* & V_{xx}\,g_0 & V_{xy}\,g_3 & V_{xy}\,g_2\\[4pt]
+V_{sp}\,g_2^* & V_{xy}\,g_3 & V_{xx}\,g_0 & V_{xy}\,g_1\\[4pt]
+V_{sp}\,g_3^* & V_{xy}\,g_2 & V_{xy}\,g_1 & V_{xx}\,g_0
+\end{pmatrix},
+\]
+and $H_{10}=H_{01}^\dagger$.
+
+Putting it all together,
+\[
+H(\mathbf{k})=\begin{pmatrix}
+E_s                           & 0                          & 0                          & 0                          & V_{ss}\,g_0               & V_{sp}\,g_1               & V_{sp}\,g_2               & V_{sp}\,g_3               \\[6pt]
+0                             & E_p+\Delta_{p_x}           & 0                          & 0                          & V_{sp}\,g_1^*             & V_{xx}\,g_0               & V_{xy}\,g_3               & V_{xy}\,g_2               \\[6pt]
+0                             & 0                          & E_p+\Delta_{p_y}           & 0                          & V_{sp}\,g_2^*             & V_{xy}\,g_3               & V_{xx}\,g_0               & V_{xy}\,g_1               \\[6pt]
+0                             & 0                          & 0                          & E_p+\Delta_{p_z}           & V_{sp}\,g_3^*             & V_{xy}\,g_2               & V_{xy}\,g_1               & V_{xx}\,g_0               \\[6pt]
+V_{ss}\,g_0^*                  & V_{sp}\,g_1                 & V_{sp}\,g_2                 & V_{sp}\,g_3                 & E_s                       & 0                          & 0                          & 0                          \\[6pt]
+V_{sp}\,g_1^*                 & V_{xx}\,g_0                 & V_{xy}\,g_3                 & V_{xy}\,g_2                 & 0                         & E_p+\Delta_{p_x}          & 0                          & 0                          \\[6pt]
+V_{sp}\,g_2^*                 & V_{xy}\,g_3                 & V_{xx}\,g_0                 & V_{xy}\,g_1                 & 0                         & 0                          & E_p+\Delta_{p_y}          & 0                          \\[6pt]
+V_{sp}\,g_3^*                 & V_{xy}\,g_2                 & V_{xy}\,g_1                 & V_{xx}\,g_0                 & 0                         & 0                          & 0                          & E_p+\Delta_{p_z}
+\end{pmatrix}.
+\]
+
+\hrulefill
+
+\subsubsection{Remarks on the tight binding model}
+\begin{itemize}
+    \item $E_s$, $E_p$ are the on-site energies of the $s$ and $p$ orbitals.
+    \item $V_{ss},V_{sp},V_{xx},V_{xy}$ are the nearest-neighbour two-centre integrals (in the Slater–Koster notation $ss\sigma,\,sp\sigma,\,pp\sigma,\,pp\pi$).
+    \item The 2NN term $U_{xx}$ splits the otherwise degenerate states at the Brillouin-zone edges $X$ and $W$, and is essential to reproduce the small dispersion (\(\approx1 eV\)) seen in more complete pseudopotential calculations.
+\end{itemize}
+This Hamiltonian captures all the bulk valence-band features of diamond (and hence of a sufficiently large nanodiamond core), including the characteristic peaks in the density of states arising from the high–symmetry points.
+Next is a summary of the simulation results.
+
+\hrulefill
+
+\subsubsection{Diamond Band Structure and Effective Masses simulation}
+
+The band structure of diamond was calculated using an 8x8 tight-binding model with Chadi-Cohen parameters, adjusted to ensure a positive band gap. The high-symmetry path considered was $\Gamma \to X \to W \to K \to \Gamma \to L$. In dimensionless coordinates ($k_1, k_2, k_3$), the high-symmetry points (the valence band minimum is VBM and the the conduction band minimum is CBM) are:
+\begin{itemize}
+    \item $\Gamma$: $(0, 0, 0)$, the Brillouin zone center (VBM).
+\item X: $(1, 0, 0)$, where the CBM lies nearby along the $\Delta$line ($\mathbf{k} = (k_1, 0, 0)$, $k_1 \approx 0.76$).
+\item W: $(1, 0.5, 0)$, a corner of the Brillouin zone.
+\item K: $(0.75, 0.75, 0)$, near the zone boundary.
+\item L: $(0.5, 0.5, 0.5)$, at the zone face.
+\end{itemize}
+
+
+The k-path $\Gamma$ → X → W → K → $\Gamma$ → L is commonly used for FCC lattices, as it covers the $\Delta$($\Gamma$ to X), $\Sigma$ (K to $\Gamma$), and $\Lambda$ ($\Gamma$ to L) directions, capturing the indirect gap and major band features. In dimensionless coordinates, the path is:
+\begin{enumerate}
+    \item $\Gamma$ to X: $(0,0,0) \to (1,0,0)$, along $(k_1, 0, 0)$, $k_1 \in [0,1]$.
+    \item X to W: $(1,0,0) \to (1,0.5,0)$, along $(1, k_2, 0)$, $k_2 \in [0,0.5]$.
+    \item W to K: $(1,0.5,0) \to (0.75,0.75,0)$, along a line parameterized as $(1-t, 0.5+0.25t, 0)$, $t \in [0,1]$.
+    \item K to $\Gamma$: $(0.75,0.75,0) \to (0,0,0)$, along $(0.75-0.75t, 0.75-0.75t, 0)$, $t \in [0,1]$.
+\end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter2figures/Diamond tight binding bandstructure.png}
+    \caption{8 Band TB bandstructure}
+    \label{TB Bandstructure fig}
+\end{figure}
+\hrulefill
+\subsection{Going from a  \(8\times8\) Hamiltonian to a \(2\times2\) Hamiltonian}
+\subsubsection{Symmetric points that contribute to the optical raman scattering transition amplitude}
+
+Diamond's indirect gap is $\sim$5.47~eV (from $\Gamma_{25'v}$ to $\Delta_{1c}$ near X at $\mathbf{k} = (\frac{2\pi}{a})(0.76,0,0)$), but optical transitions are enhanced at direct or nearly direct gaps.
+
+
+\textbf{X point}
+
+X point ($\mathbf{k} = (\frac{2\pi}{a})(1,0,0)$): Associated with the $E_2$ critical point at $\sim$12.2~eV (e.g., $X_{4v} \rightarrow X_{1c}$), an M1-type saddle point (high JDOS due to flat bands in two directions). This contributes $\sim$50--60\% to the UV reflectivity peak and thus to the Raman polarizability derivative.
+
+\textbf{L point}
+
+L point ($\mathbf{k} = (\frac{2\pi}{a})(0.5,0.5,0.5)$): Linked to the $E_1$ ($\sim$7--8~eV along $\Lambda$) and nearly degenerate $E_2$ ($\sim$12.2~eV, $L_{3'v} \rightarrow L_{3c}$) critical points, also M1 type. Together with X, it accounts for $\sim$70--80\% of the optical response in group IV semiconductors like diamond.
+
+These points provide the largest terms in the $\mathbf{k}$-sum for $\mathcal{M}$, the first-order Raman scattering amplitude (matrix element) for the zone-centre phonon at $\Gamma$ is given by third-order perturbation theory:
+$$\mathcal{M} = \sum_{m,n} \frac{\langle f | H_{\text{ER}} | m \rangle \langle m | H_{\text{EL}} | n \rangle \langle n | H_{\text{ER}} | g \rangle}{(E_m - E_g - \hbar \omega_i + i \Gamma_m)(E_n - E_g - \hbar \omega_i + \hbar \omega_p + i \Gamma_n)},$$
+because the denominators are minimised near $E_c - E_v \approx \hbar \omega_i$ (resonant) or the matrix elements/Joint density of states (JDOS) peak (non-resonant). For visible lasers ($\hbar \omega_i \sim 2-3$~eV $\ll$ gap), it's non-resonant, but the susceptibility $\chi(\omega) \propto \int dE \, \frac{J(E)}{E^2 - (\hbar \omega)^2}$ and its phonon derivative $\frac{d\chi}{dQ}$ (via band shifts) are still dominated by $E_1$/$E_2$ singularities at L and X. Calculations ignoring these points underestimate the Raman intensity by factors of 10--100. \href{http://hal.sciencebdt.semi.ac.cn}{(Source)}
+\begin{table}[htbp]
+  \centering
+  \caption{Calculated properties at the L point, k = (0.500, 0.500, 0.500).}
+  \label{tab:l_point_properties}
+  \begin{tabular}{llr}
+    \toprule
+    \textbf{Category} & \textbf{Parameter} & \textbf{Value} \\
+    \midrule
+    \multirow{8}{*}{\textbf{Band Energies}}
+      & Band 1 (VB1, s-like) &  -4.474 eV \\
+      & Band 2 (VB2, p-like) &  -2.207 eV \\
+      & Band 3 (VB3, p-like) &   4.905 eV \\
+      & Band 4 (VB4, p-like) &   4.905 eV \\
+      & Band 5 (CB1, s-like) &   7.150 eV \\
+      & Band 6 (CB2, p-like) &  11.915 eV \\
+      & Band 7 (CB3, p-like) &  11.915 eV \\
+      & Band 8 (CB4, p-like) &  16.351 eV \\
+    \midrule
+    \multirow{3}{*}{\textbf{Band Gap Analysis}}
+      & VBM (Band 4) &   4.905 eV \\
+      & CBM (Band 5) &   7.150 eV \\
+      & Band Gap     &   2.245 eV \\
+    \midrule
+    \multirow{8}{*}{\textbf{Effective Masses}}
+      & VBM (Band 4), $m^*_{xx}$ &   0.007 $m_e$ \\
+      & VBM (Band 4), $m^*_{yy}$ &   0.007 $m_e$ \\
+      & VBM (Band 4), $m^*_{zz}$ &   0.007 $m_e$ \\
+      & VBM (Band 4), Average    &   0.007 $m_e$ \\
+      \cmidrule(l){2-3}
+      & CBM (Band 5), $m^*_{xx}$ &  -2.374 $m_e$ \\
+      & CBM (Band 5), $m^*_{yy}$ &  -2.374 $m_e$ \\
+      & CBM (Band 5), $m^*_{zz}$ &  -2.374 $m_e$ \\
+      & CBM (Band 5), Average    &  -2.374 $m_e$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Calculated properties at the X point, k = (1.000, 0.000, 0.000).}
+  \label{tab:x_point_properties}
+  \begin{tabular}{llr}
+    \toprule
+    \textbf{Category} & \textbf{Parameter} & \textbf{Value} \\
+    \midrule
+    \multirow{8}{*}{\textbf{Band Energies}}
+      & Band 1 (VB1, s-like) &  -2.568 eV \\
+      & Band 2 (VB2, p-like) &  -2.568 eV \\
+      & Band 3 (VB3, p-like) &   1.590 eV \\
+      & Band 4 (VB4, p-like) &   1.590 eV \\
+      & Band 5 (CB1, s-like) &  10.978 eV \\
+      & Band 6 (CB2, p-like) &  10.978 eV \\
+      & Band 7 (CB3, p-like) &  15.230 eV \\
+      & Band 8 (CB4, p-like) &  15.230 eV \\
+    \midrule
+    \multirow{3}{*}{\textbf{Band Gap Analysis}}
+      & VBM (Band 4) &   1.590 eV \\
+      & CBM (Band 5) &  10.978 eV \\
+      & Band Gap     &   9.388 eV \\
+    \midrule
+    \multirow{11}{*}{\textbf{Effective Masses}}
+      & VBM (Band 4), $m^*_{xx}$ &   1.489 $m_e$ \\
+      & VBM (Band 4), $m^*_{yy}$ &   0.486 $m_e$ \\
+      & VBM (Band 4), $m^*_{zz}$ &   0.486 $m_e$ \\
+      & VBM (Band 4), Average    &   0.821 $m_e$ \\
+      \cmidrule(l){2-3}
+      & CBM (Band 5), $m^*_{xx}$ &  -0.256 $m_e$ \\
+      & CBM (Band 5), $m^*_{yy}$ &  -0.494 $m_e$ \\
+      & CBM (Band 5), $m^*_{zz}$ &  -0.494 $m_e$ \\
+      & CBM (Band 5), Average    &  -0.414 $m_e$ \\
+      \cmidrule(l){2-3}
+      & \textit{Additional Bands (avg)} & \\
+      & \quad Band 3 & -2793445101.235 $m_e$ \\
+      & \quad Band 6 & -4436648102.651 $m_e$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\hrulefill
+
+\addRPJ{The values for the effective mass at the L point seem too small (I got from TB approximation), so instead I am using the quoted/ extrapolated values from a paper finding the effective masses}
+\subsubsection{Notes on signs and ``negative masses''}
+Keeping the physical signs (conduction positive curvature; valence negative curvature). Suppose our TB second derivative at X/L returned a negative conduction mass. In that case, we treat that as ``X/L is not a minimum'' but still use $|m_{c}|$ as the curvature scale for the parabolic approximation we need to evaluate direct optical and Raman matrix elements. (This is exactly why we bounded $m_{c}$ using the GW $\Delta$ values.)
+
+\hrulefill
+
+\subsubsection{Values from "Effective masses and electronic structure of diamond including electron correlation effects in first principles calculations using the GW-approximation"\href{https://doi.org/10.1063/1.3630932}{(Source)}}
+The GW paper reports (i) electron masses at the conduction minimum on the $\Delta$ line and (ii) hole masses at $\Gamma$ along high-symmetry directions—not masses at X or L. So we have to map directions: use $\Gamma$-hole masses along $[111]$ as a proxy for valence curvature near L, and along $[100]$ as a proxy near X; for electrons, the only quoted masses are $m_l$ and $m_t$ at the $\Delta$ valley (we’ll use them only as reasonable bounds where we don’t trust our TB curvatures). The paper explicitly states the CBM location and what masses are tabulated, and gives the numerical values we’ll quote below.
+
+\textbf{Values to quote and use }
+\begin{itemize}
+    \item \textbf{Hole masses at $\Gamma$:}
+    \begin{itemize}
+        \item along $[111]$: $m_{hh}(111)\approx 0.65\,m_0$ (GW), $m_{lh}(111)\approx 0.66\,m_0$.
+        \item along $[100]$: $m_{hh}(100)\approx 0.36\,m_0$, $m_{lh}(100)\approx 0.26\,m_0$.
+    \end{itemize}
+    \item \textbf{Electron masses ($\Delta$ valley):} $m_l\approx 1.1\,m_0$, $m_t\approx 0.22\,m_0$. Using these as sensible bounds until an X/L conduction curvature from our TB fit looks reliable.
+\end{itemize}
+\hrulefill
+\subsubsection{$2 \times 2$ effective Hamiltonians at L and X (diagonal, band-edge anchored)}
+    
+    Let $\mathbf{q}=\mathbf{k}-\mathbf{k}_0$ with $\mathbf{k}_0=\mathbf{k}_L$ or $\mathbf{k}_X$. Keep our band-edge energies $E_v^{L/X},E_c^{L/X}$ exactly as in our tables.
+    
+    \begin{itemize}
+        \item \textbf{Near L} (use $[111]$ masses for the valence curvature):
+        
+        Choose $m_{v,L}=0.65\,m_0$ (proxy for the p-like valence band there). 
+        \[
+        H_{\text{eff}}^{L}(\mathbf{q})=
+        \begin{pmatrix}
+        E_c^{L}+\dfrac{\hbar^2 q^2}{2\,m_{c,L}} & 0 \\[8pt]
+        0 & E_v^{L}-\dfrac{\hbar^2 q^2}{2\,m_{v,L}}
+        \end{pmatrix}.
+        \]
+        
+        \item \textbf{Near X} (use $[100]$ masses for the valence curvature):
+        
+        Set $m_{v,X}=0.36\,m_0$ (heavy-hole proxy; $0.26\,m_0$ if we want a lighter curvature). 
+        \[
+        H_{\text{eff}}^{X}(\mathbf{q})=
+        \begin{pmatrix}
+        E_c^{X}+\dfrac{\hbar^2 q^2}{2\,m_{c,X}} & 0 \\[8pt]
+        0 & E_v^{X}-\dfrac{\hbar^2 q^2}{2\,m_{v,X}}
+        \end{pmatrix}.
+        \]
+    \end{itemize}
+
+
+\hrulefill
+\subsection{Adding the nanoparticle spatial constraint to the Hamiltonian}
+\subsubsection{Spherical confinement (infinite barrier)}
+We write the crystal state as
+\[
+\Psi_{b,\mathbf{k}_0}(\mathbf{R})=F_{b}(\mathbf{R})\,u_{b,\mathbf{k}_0}(\mathbf{R}),
+\]
+where $b\in\{c,v\}$ is the band at the valley point $\mathbf{k}_0=X$ or $L$. Only the smooth envelope $F_b$ “feels” the dot boundary. The periodic Bloch part $u_{b,\mathbf{k}_0}$ stays bulk-like.
+
+Near the band edge, our 2$\times$2 model is diagonal, so each envelope obeys the scalar effective-mass equation inside the sphere of radius $R$:
+\[
+\Big[-\frac{\hbar^2}{2}\nabla\cdot(\mathbf{M}_b^{-1}\nabla)+E_b^0\Big]F_b(\mathbf{R})=E\,F_b(\mathbf{R}),\qquad r<R,
+\]
+with $F_b(r=R)=0$ (infinite barrier). If we use scalar proxies $m_b^*$ at X/L, then $\mathbf{M}_b^{-1} \to (1/m_b^*)\mathbf{I}$.
+
+\hrulefill
+
+\subsubsection{Eigenfunctions and energies (isotropic mass)}
+
+If $m_b^*$ is taken as isotropic, we separate variables in spherical coordinates. The envelopes are
+\[
+F_{nlm}(\mathbf{R})=\mathcal{N}_{nl}\,j_l\left(\frac{\zeta_{l,n}}{R}r\right)Y_{lm}(\theta,\phi),
+\]
+where $j_l$ is the spherical Bessel function and $\zeta_{l,n}$ is its $n$-th positive zero: $j_l(\zeta_{l,n})=0$ (e.g., $\zeta_{0,1}=\pi$, $\zeta_{1,1}\approx4.493$, $\zeta_{2,1}\approx5.764$). The energies are
+\[
+E_c(n,l)=E_c^0+\frac{\hbar^2}{2m_c^*}\Big(\frac{\zeta_{l,n}}{R}\Big)^2, \qquad
+E_v(n,l)=E_v^0-\frac{\hbar^2}{2m_v^*}\Big(\frac{\zeta_{l,n}}{R}\Big)^2.
+\]
+Degeneracy for a fixed $l$ is $2l+1$ (from the $m=-l,\dots,l$ values).
+
+Useful normalisation:
+\[
+\int_{0}^{R} r^2 dr\; j_l^2\left(\frac{\zeta_{l,n}}{R}r\right)=\frac{R^3}{2}\,j_{l+1}^2(\zeta_{l,n}),
+\]
+so the normalization constant is $\mathcal{N}_{nl}=\sqrt{2}/\big(R^{3/2}|j_{l+1}(\zeta_{l,n})|\big)$.
+
+    For each band $b\in\{c,v\}$, we use the envelope equation with the scalar proxy mass we chose above. In a nanosphere of radius $R$, the confined levels are
+    \[
+    E_{c}^{L/X}(n,l)=E_c^{L/X}+\frac{\hbar^2}{2 m_{c,{L/X}}}\Big(\frac{\zeta_{l,n}}{R}\Big)^2, \qquad
+    E_{v}^{L/X}(n,l)=E_v^{L/X}-\frac{\hbar^2}{2 m_{v,{L/X}}}\Big(\frac{\zeta_{l,n}}{R}\Big)^2,
+    \]
+    with $j_l(\zeta_{l,n})=0$ and $\zeta_{0,1}=\pi$, $\zeta_{1,1}\approx 4.493$, etc.
+    
+    In case of anisotropy, let $m^{-1}$ be a tensor and replacing $q^2$ by $\mathbf{q}^\top \mathbf{M}^{-1}\mathbf{q}$; confinement then mixes $l,m$ slightly, but the scalar treatment above is the standard first pass.
+
+\hrulefill
+
+\subsubsection{Diagonal second-quantised form (confined mode basis)}
+    
+    Label valley point $\nu\in\{X,L\}$ and confined modes by $(n,l,m)$. Creation operators $a^\dagger_{c,\nu,nlm}$. The Hamiltonian is
+    \[
+    H=\sum_{\nu\in\{X,L\}}\sum_{n,l,m}
+    \Big[
+    E_{c}^{\nu}(n,l)\,a^\dagger_{c,\nu,nlm}a_{c,\nu,nlm}
+    +E_{v}^{\nu}(n,l)\,a^\dagger_{v,\nu,nlm}a_{v,\nu,nlm}
+    \Big],
+    \]
+    with $E_{b}^{\nu}(n,l)$ as above. 
+
+\hrulefill
+
+\subsection{Surface effects on the bulk Hamiltonian- the total electronic Hamiltonian}
+
+\subsubsection*{The simplest surface term (linear in S/V)}
+
+A widely used leading correction from the surface is the \textbf{image self-energy} due to dielectric mismatch (diamond $\varepsilon_{\text{in}}$ vs. environment $\varepsilon_{\text{out}}$). To first order, treat it as a uniform band-edge shift that scales as $1/R$, i.e., \textbf{linear in $S/V$}:
+\[
+\Delta^{\text{(im)}}_{b} \ = \ -\,\frac{e^{2}}{8\pi\varepsilon_0}\,
+\frac{\varepsilon_{\text{in}}-\varepsilon_{\text{out}}}{\varepsilon_{\text{in}}+\varepsilon_{\text{out}}}\,
+\frac{1}{R}
+\;=\; -\,\frac{e^{2}}{24\pi\varepsilon_0}\,
+\frac{\varepsilon_{\text{in}}-\varepsilon_{\text{out}}}{\varepsilon_{\text{in}}+\varepsilon_{\text{out}}}\,
+\frac{S}{V}\,.
+\]
+This is the \textbf{minimal} surface correction: one parameter set by known dielectrics, no extra fitting. (If we also want a surface dipole/band-bending, just add another linear $S/V$ term $+\,q_b \Phi_s \,S/V$; see note at the end.)
+
+\hrulefill
+
+\subsubsection{Total real-space Hamiltonian (block-diagonal two-band form)}
+\[
+H_{\text{tot}}^{(\nu)} \;=\;
+\begin{pmatrix}
+E_{c,\nu}^0+\Delta^{\text{(im)}}_{c} -\dfrac{\hbar^2}{2}\nabla\cdot \mathbf{M}^{-1}_{c,\nu}\nabla & 0\\[8pt]
+0 & E_{v,\nu}^0+\Delta^{\text{(im)}}_{v} +\dfrac{\hbar^2}{2}\nabla\cdot \mathbf{M}^{-1}_{v,\nu}\nabla
+\end{pmatrix},
+\qquad \Delta^{\text{(im)}}_{b}\propto \frac{S}{V}.
+\]
+
+In the \textbf{confined mode basis} $(n,l,m)$ (the one we actually use for finite dots), this is diagonal:
+\begin{equation}\label{H0Electron}
+    H_{\text{E0}}=\sum_{\nu\in\{X,L\}}\sum_{n l m}\Big[
+\underbrace{E_{c,\nu}^{\text{conf}}(n,l)}_{\text{bulk+confinement}}+\underbrace{\Delta^{\text{(im)}}_{c}}_{\propto S/V}
+\Big]\,a^\dagger_{c,\nu,nlm}a_{c,\nu,nlm}
++\sum_{\nu,n l m}\Big[
+E_{v,\nu}^{\text{conf}}(n,l)+\Delta^{\text{(im)}}_{v}
+\Big]\,a^\dagger_{v,\nu,nlm}a_{v,\nu,nlm}.
+\end{equation}
+
+Here $E_{c,\nu}^{\text{conf}}(n,l)=E_{c,\nu}^0+\dfrac{\hbar^2}{2}\big\langle \mathbf{M}^{-1}_{c,\nu}\big\rangle_{l,m}\!\left(\dfrac{\zeta_{l,n}}{R}\right)^2$ (and similarly for $v$), and the surface correction is \textbf{the same for every confined level} at this order because it’s a uniform band-edge shift. If we prefer, fold $\Delta^{\text{(im)}}_{b}$ into \textbf{effective} band edges $E_{b,\nu}^{0,\text{eff}}=E_{b,\nu}^0+\Delta^{\text{(im)}}_{b}$.
+
+
+\hrulefill
+
+
+\subsubsection{Numbers we plug (diamond in air as an example)}
+\begin{itemize}
+    \item $\varepsilon_{\text{in}} \approx 5.7$ (optical), $\varepsilon_{\text{out}}\approx 1 \rightarrow$ factor $\beta=(\varepsilon_{\text{in}}-\varepsilon_{\text{out}})/(\varepsilon_{\text{in}}+\varepsilon_{\text{out}})\approx 0.70$.
+    \item Then $\Delta^{\text{(im)}}_{b}\approx -\dfrac{e^2}{24\pi\varepsilon_0}\,\beta\,\dfrac{S}{V}$.
+    For a sphere $S/V=3/R$, so $\Delta^{\text{(im)}}_{b}\approx -\dfrac{e^2}{8\pi\varepsilon_0 R}\beta$ (the standard $1/R$ self-energy scale).
+\end{itemize}
+\hrulefill
+
+\section{Derivation of the phonon Hamiltonian}
+
+
+\subsection{Setting up the crystal and displacements}
+\begin{itemize}
+    \item \textbf{Bravais lattice:} label unit cells by vectors $\mathbf{R}_\ell$.
+    
+    \item \textbf{Basis inside each cell:} for diamond there are $r=2$ carbons, at equilibrium positions $\mathbf{R}_\ell + \mathbf{d}_\tau$ with $\tau=1,2$. (Diamond = fcc Bravais + two-atom basis, often taken at $\mathbf{d}_1=\mathbf{0}$, $\mathbf{d}_2=(a/4,a/4,a/4)$ in the cubic cell.)
+    
+    \item \textbf{Displacements:} each nucleus has a small 3-component displacement
+    \[
+    \mathbf{u}_{\ell\tau}(t)=\big(u_{\ell\tau x}, u_{\ell\tau y}, u_{\ell\tau z}\big),
+    \]
+    so the instantaneous nuclear position is $\mathbf{R}_\ell+\mathbf{d}_\tau+\mathbf{u}_{\ell\tau}(t)$.
+    
+    \item \textbf{Mass:} $M_\tau$ (for diamond, both are $^{12}\mathrm{C}$, so $M_1=M_2$).
+    
+    \item \textbf{Born--Oppenheimer viewpoint:} the electrons adjust instantly to the nuclear positions, giving a potential energy surface $U(\{\mathbf{u}\})$ for the nuclei alone.
+\end{itemize}
+
+At equilibrium, all forces vanish:
+\[
+\left.\frac{\partial U}{\partial u_{\ell\tau i}}\right|_{\{\mathbf{u}=0\}}=0 \quad (i=x,y,z).
+\]
+This is the key fact we'll use in the Taylor expansion.
+
+\hrulefill
+
+\subsection{Classical Hamiltonian and the harmonic approximation}
+
+\subsubsection{Kinetic energy (sum over all nuclei):}
+\[
+T=\frac{1}{2}\sum_{\ell,\tau} M_\tau\,\dot{\mathbf{u}}_{\ell\tau}\cdot \dot{\mathbf{u}}_{\ell\tau}
+=\frac{1}{2}\sum_{\ell,\tau}\sum_{i} M_\tau\,\dot u_{\ell\tau i}^2.
+\]
+Define canonical momenta $\mathbf{p}_{\ell\tau}=M_\tau \dot{\mathbf{u}}_{\ell\tau}$.
+
+\hrulefill
+
+
+\subsubsection{Potential energy: expand $U$ to second order about equilibrium (harmonic approximation):}
+\[
+U(\{\mathbf{u}\})\approx U_0
++\sum_{\ell\tau i}\left.\frac{\partial U}{\partial u_{\ell\tau i}}\right|_0 u_{\ell\tau i}
++\frac{1}{2}\sum_{\ell\tau i}\sum_{\ell'\tau' j}
+\left.\frac{\partial^2 U}{\partial u_{\ell\tau i}\,\partial u_{\ell'\tau' j}}\right|_0
+u_{\ell\tau i}\,u_{\ell'\tau' j}.
+\]
+The linear term vanishes by equilibrium, so
+\[
+V \equiv U-U_0
+=\frac{1}{2}\sum_{\ell\tau i}\sum_{\ell'\tau' j}
+\Phi_{\ell\tau i,\;\ell'\tau' j}\;u_{\ell\tau i}\,u_{\ell'\tau' j},
+\]
+with the force-constant tensor
+\[
+\Phi_{\ell\tau i,\;\ell'\tau' j}
+=\left.\frac{\partial^2 U}{\partial u_{\ell\tau i}\,\partial u_{\ell'\tau' j}}\right|_0 .
+\]
+It is convenient to view $\mathbf{\Phi}(\ell\tau,\ell'\tau')$ as a $3\times 3$ block matrix acting on vectors:
+\[
+V=\frac{1}{2}\sum_{\ell\tau}\sum_{\ell'\tau'}
+\mathbf{u}_{\ell\tau}^{\mathsf T}\,\mathbf{\Phi}(\ell\tau,\ell'\tau')\,\mathbf{u}_{\ell'\tau'}.
+\]
+Putting $T$ and $V$ together gives the real-space classical Hamiltonian:
+\[
+H=\frac{1}{2}\sum_{\ell,\tau}\frac{\mathbf{p}_{\ell\tau}\cdot \mathbf{p}_{\ell\tau}}{M_\tau}
++\frac{1}{2}\sum_{\ell\tau}\sum_{\ell'\tau'}
+\mathbf{u}_{\ell\tau}^{\mathsf T}\,\mathbf{\Phi}(\ell\tau,\ell'\tau')\,\mathbf{u}_{\ell'\tau'}.
+\]
+
+\hrulefill
+
+\subsubsection{Useful properties of the force constants}
+\begin{enumerate}
+    \item \textbf{Symmetry} (from equality of mixed partials and Newton's third law):
+    \[
+    \Phi_{\ell\tau i,\;\ell'\tau' j}=\Phi_{\ell'\tau' j,\;\ell\tau i}.
+    \]
+    Equivalently, $\mathbf{\Phi}(\ell\tau,\ell'\tau') = \mathbf{\Phi}(\ell'\tau',\ell\tau)^{\mathsf T}$.
+
+    \item \textbf{Acoustic sum rule} (translational invariance: shifting all nuclei by the same constant vector does not change $U$):
+    \[
+    \sum_{\ell'\tau'} \mathbf{\Phi}(\ell\tau,\ell'\tau')=\mathbf{0}_{3\times 3}
+    \quad \text{for every fixed }(\ell,\tau).
+    \]
+    This guarantees three zero-frequency acoustic modes at $\mathbf{k}=0$ later.
+    
+    \item \textbf{Short- vs long-range parts:} in ionic crystals $\Phi$ has a long-range dipole tail giving LO--TO splitting; diamond is covalent and centrosymmetric, so $\Phi$ is effectively short-ranged (no macroscopic electric field piece).
+\end{enumerate}
+
+\hrulefill
+
+\subsubsection{Equations of motion (will be our bridge to normal modes)}
+Hamilton's equations give
+\[
+M_\tau \ddot{\mathbf{u}}_{\ell\tau}(t) = -\sum_{\ell'\tau'} \mathbf{\Phi}(\ell\tau,\ell'\tau')\,\mathbf{u}_{\ell'\tau'}(t).
+\]
+Introduce mass-weighted displacements $\mathbf{x}_{\ell\tau}=M_\tau^{1/2}\mathbf{u}_{\ell\tau}$. Then
+\[
+\ddot{\mathbf{x}}_{\ell\tau}(t) = -\sum_{\ell'\tau'} \mathbf{d}(\ell\tau,\ell'\tau')\,\mathbf{x}_{\ell'\tau'}(t),
+\quad
+\mathbf{D}(\ell\tau,\ell'\tau')=M_\tau^{-1/2}\,\mathbf{\Phi}(\ell\tau,\ell'\tau')\,M_{\tau'}^{-1/2},
+\]
+which will diagonalise cleanly in $k$-space.
+
+\hrulefill
+
+\subsubsection{Diamond-specific note}
+Because $r=2$, once we go to $k$-space we will see $3r=6$ branches: 3 acoustic + 3 optical. For bulk diamond they split into longitudinal and two transverse branches by symmetry.
+
+\hrulefill
+
+\subsection{The Bloch/Fourier setup and dynamical matrix}
+
+\subsubsection{Fourier/Bloch form for displacements and momenta} 
+    Let $N$ be the number of unit cells and $\mathbf{k}$ run over the first Brillouin zone on the discrete mesh set by PBC. Use
+    \[
+    \mathbf{u}_{\ell\tau}(t)=\frac{1}{\sqrt{N}}\sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{R}_\ell}\,\mathbf{u}_\tau(\mathbf{k},t),\qquad
+    \mathbf{p}_{\ell\tau}(t)=\frac{1}{\sqrt{N}}\sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{R}_\ell}\,\mathbf{p}_\tau(\mathbf{k},t).
+    \]
+    Mass-weighted variables simplify the algebra:
+    \[
+    \mathbf{x}_{\ell\tau}=\sqrt{M_\tau}\,\mathbf{u}_{\ell\tau},\qquad
+    \mathbf{x}_{\ell\tau}(t)=\frac{1}{\sqrt{N}}\sum_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{R}_\ell}\,\mathbf{x}_\tau(\mathbf{k},t),
+    \]
+    so the real-space equations of motion
+    \[
+    M_\tau \ddot{\mathbf{u}}_{\ell\tau}(t)=-\sum_{\ell'\tau'}\boldsymbol{\Phi}(\ell\tau,\ell'\tau')\,\mathbf{u}_{\ell'\tau'}(t)
+    \]
+    become, in mass-weighted form,
+    \[
+    \ddot{\mathbf{x}}_{\ell\tau}(t)= -\sum_{\ell'\tau'} \mathbf{D}(\ell\tau,\ell'\tau')\,\mathbf{x}_{\ell'\tau'}(t),
+    \quad
+    \mathbf{D}(\ell\tau,\ell'\tau')=M_\tau^{-1/2}\,\boldsymbol{\Phi}(\ell\tau,\ell'\tau')\,M_{\tau'}^{-1/2}.
+    \]
+
+\hrulefill
+
+\subsubsection{Translational invariance and the k-space dynamical matrix} 
+    By lattice translational symmetry, the force constants depend only on the cell separation:
+    \[
+    \boldsymbol{\Phi}(\ell\tau,\ell'\tau')\equiv \boldsymbol{\Phi}_{\tau\tau'}(\mathbf{R}_{\ell'}-\mathbf{R}_\ell)\equiv \boldsymbol{\Phi}_{\tau\tau'}(\mathbf{R}).
+    \]
+    Plug the Bloch form into the EOM and use the orthogonality of the plane waves. we get an independent eigenproblem at each $\mathbf{k}$:
+    \[
+    \ddot{\mathbf{x}}_{\tau}(\mathbf{k},t)= -\sum_{\tau'} \mathbf{D}_{\tau\tau'}(\mathbf{k})\,\mathbf{x}_{\tau'}(\mathbf{k},t),
+    \]
+    with the $3r \times 3r$ dynamical matrix defined by the lattice Fourier transform of the force constants:
+    \[
+    \boxed{\;
+    \mathbf{D}_{\tau\tau'}(\mathbf{k})=\frac{1}{\sqrt{M_\tau M_{\tau'}}}\sum_{\mathbf{R}}
+    \boldsymbol{\Phi}_{\tau\tau'}(\mathbf{R})\,e^{i\mathbf{k}\cdot\mathbf{R}}
+    \;}
+    \]
+    (Properties: $\mathbf{D}(\mathbf{k})$ is Hermitian and positive semidefinite; $\mathbf{D}(-\mathbf{k})=\mathbf{D}(\mathbf{k})^{\mathsf{T}}$. The acoustic sum rule $\sum_{\mathbf{R},\tau'}\boldsymbol{\Phi}_{\tau\tau'}(\mathbf{R})=\mathbf{0}$ implies three zero eigenvalues at $\mathbf{k}=0$.)
+
+\hrulefill
+
+\subsubsection{Normal modes (polarisations and dispersions)}
+    Look for harmonic solutions $\mathbf{x}_\tau(\mathbf{k},t)=\sum_{s}Q_{\mathbf{k}s}(t)\,\mathbf{e}_{\tau}^{(s)}(\mathbf{k})$ with
+    \[
+    \ddot Q_{\mathbf{k}s}(t)+\omega_s^2(\mathbf{k})\,Q_{\mathbf{k}s}(t)=0,
+    \]
+    and polarization vectors $\mathbf{e}_{\tau}^{(s)}(\mathbf{k})$ satisfying the eigenvalue problem
+    \[
+    \boxed{\;\sum_{\tau'} \mathbf{D}_{\tau\tau'}(\mathbf{k})\,\mathbf{e}_{\tau'}^{(s)}(\mathbf{k})
+    =\omega_s^2(\mathbf{k})\,\mathbf{e}_{\tau}^{(s)}(\mathbf{k})\;}
+    \]
+    for branches $s=1,\dots,3r$ (for diamond, $r=2 \rightarrow 6$ branches: 3 acoustic + 3 optical).
+    
+    Choose mass-weighted normalisation:
+    \[
+    \sum_{\tau}\mathbf{e}_{\tau}^{(s)}(\mathbf{k})^{\!*}\cdot \mathbf{e}_{\tau}^{(s')}(\mathbf{k})=\delta_{ss'},
+    \qquad
+    \sum_{s}\mathbf{e}_{\tau i}^{(s)}(\mathbf{k})\,\mathbf{e}_{\tau' j}^{(s)}(\mathbf{k})^{\!*}=\delta_{\tau\tau'}\delta_{ij}.
+    \]
+    In original (unweighted) displacements, this reads
+    \[
+    \mathbf{u}_{\ell\tau}(t)=\frac{1}{\sqrt{N\,M_\tau}}\sum_{\mathbf{k},s}
+    e^{i\mathbf{k}\cdot\mathbf{R}_\ell}\,\mathbf{e}_{\tau}^{(s)}(\mathbf{k})\,Q_{\mathbf{k}s}(t),
+    \]
+    and the classical Hamiltonian becomes a sum of independent oscillators:
+    \[
+    H=\frac{1}{2}\sum_{\mathbf{k},s}\Big(|\Pi_{\mathbf{k}s}|^2+\omega_s^2(\mathbf{k})\,|Q_{\mathbf{k}s}|^2\Big),
+    \quad \Pi_{\mathbf{k}s}=\dot Q_{\mathbf{k}s}.
+    \]
+\subsection{Quantization in k-space}
+From the last step we had independent oscillators
+\[
+H=\frac{1}{2}\sum_{\mathbf{k},s}\Big(|\Pi_{\mathbf{k}s}|^2+\omega_s^2(\mathbf{k})\,|Q_{\mathbf{k}s}|^2\Big),
+\quad \Pi_{\mathbf{k}s}=\dot Q_{\mathbf{k}s}.
+\]
+Promote $Q_{\mathbf{k}s}, \Pi_{\mathbf{k}s}$ to operators with
+\[
+[\,Q_{\mathbf{k}s},\Pi_{\mathbf{k}'s'}\,]=i\hbar\,\delta_{\mathbf{k}\mathbf{k}'}\delta_{ss'},\qquad
+[Q,Q]=[\Pi,\Pi]=0.
+\]
+Define ladder operators
+\[
+b_{\mathbf{k}s}=\sqrt{\frac{\omega_s(\mathbf{k})}{2\hbar}}\,Q_{\mathbf{k}s}
++\frac{i}{\sqrt{2\hbar\,\omega_s(\mathbf{k})}}\,\Pi_{\mathbf{k}s},
+\quad
+b_{\mathbf{k}s}^\dagger=\sqrt{\frac{\omega_s(\mathbf{k})}{2\hbar}}\,Q_{\mathbf{k}s}
+-\frac{i}{\sqrt{2\hbar\,\omega_s(\mathbf{k})}}\,\Pi_{\mathbf{k}s},
+\]
+so $[b_{\mathbf{k}s},b_{\mathbf{k}'s'}^\dagger]=\delta_{\mathbf{k}\mathbf{k}'}\delta_{ss'}$.
+
+Invert:
+\[
+Q_{\mathbf{k}s}=\sqrt{\frac{\hbar}{2\omega_s(\mathbf{k})}}\,(b_{\mathbf{k}s}+b_{-\mathbf{k}s}^\dagger),\quad
+\Pi_{\mathbf{k}s}=-\,i\sqrt{\frac{\hbar\,\omega_s(\mathbf{k})}{2}}\,(b_{\mathbf{k}s}-b_{-\mathbf{k}s}^\dagger).
+\]
+
+\subsubsection{The phonon Hamiltonian}
+\[
+\boxed{\;
+H=\sum_{\mathbf{k},s}\hbar\,\omega_s(\mathbf{k})\Big(b_{\mathbf{k}s}^\dagger b_{\mathbf{k}s}+\tfrac{1}{2}\Big).
+\;}
+\]
+
+\subsubsection{Displacement and momentum operators in real space}
+Using the mode expansion $\mathbf{u}_{\ell\tau}$ we introduced earlier and the eigenvectors $\mathbf{e}_\tau^{(s)}(\mathbf{k})$ (orthonormal in the mass--weighted sense), we get
+\[
+\mathbf{u}_{\ell\tau}=
+\frac{1}{\sqrt{N\,M_\tau}}\sum_{\mathbf{k},s}
+e^{i\mathbf{k}\cdot\mathbf{R}_\ell}\,
+\mathbf{e}_{\tau}^{(s)}(\mathbf{k})\,
+\sqrt{\frac{\hbar}{2\omega_s(\mathbf{k})}}\,
+\big(b_{\mathbf{k}s}+b_{-\mathbf{k}s}^\dagger\big),
+\]
+\[
+\mathbf{p}_{\ell\tau}=
+-i\sqrt{\frac{M_\tau}{N}}\sum_{\mathbf{k},s}
+e^{i\mathbf{k}\cdot\mathbf{R}_\ell}\,
+\mathbf{e}_{\tau}^{(s)}(\mathbf{k})\,
+\sqrt{\frac{\hbar\,\omega_s(\mathbf{k})}{2}}\,
+\big(b_{\mathbf{k}s}-b_{-\mathbf{k}s}^\dagger\big),
+\]
+which satisfy the canonical commutator
+$[\,u_{\ell\tau i},\,p_{\ell'\tau' j}\,]=i\hbar\,\delta_{\ell\ell'}\delta_{\tau\tau'}\delta_{ij}.$
+
+
+

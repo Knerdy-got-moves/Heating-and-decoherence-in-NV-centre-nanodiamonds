@@ -1,0 +1,897 @@
+\chapter{Power absorption for beyond Rayleigh size particle: Average Poynting vector}
+\begin{comment}
+\section{Interference Poynting vector for the $\perp$ channel}
+
+\paragraph{Given fields.}
+Let
+\[
+\Phi:=k_0 R\sin\theta\cos\phi,\qquad \cos\psi=\sin\theta\cos\phi,\qquad
+\sin\psi=\sqrt{1-\sin^2\theta\cos^2\phi}.
+\]
+Define the unit polarization (no radial component)
+\[
+\hat{\bm D}:=\frac{\sin\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\phi}.
+\]
+Then the \emph{incident} and \emph{scattered} fields in the $\perp$ channel read
+\[
+\bm E_{\rm inc}=e^{i\Phi}\hat{\bm D},\qquad
+\bm H_{\rm inc}=\hat x\times\bm E_{\rm inc},
+\]
+\[
+\bm E_{\rm sctd}=\frac{e^{ik_0 R}}{R}\,F(\psi)\,\hat{\bm D},\qquad
+\bm H_{\rm sctd}=\hat{\bm r}\times\bm E_{\rm sctd}.
+\]
+(The full expressions you provided reduce to these compact forms because
+$\bm E_{\rm inc}$ and $\bm E_{\rm sctd}$ are \emph{parallel} and purely transverse.)
+
+\paragraph{Useful identities.}
+\begin{align}
+\text{(i)}\quad & \hat{\bm r}\cdot\hat{\bm D}=0,\qquad
+\hat x = (\sin\theta\cos\phi)\,\hat{\bm r}+(\cos\theta\cos\phi)\,\hat{\bm\theta}-(\sin\phi)\,\hat{\bm\phi},\\
+\text{(ii)}\quad & \hat{\bm D}\cdot\hat{\bm D}=
+\frac{\sin^2\phi+\cos^2\theta\cos^2\phi}{\sin^2\psi}
+=\frac{1-\sin^2\theta\cos^2\phi}{\sin^2\psi}=1,\\
+\text{(iii)}\quad &
+\hat x\cdot\hat{\bm D}=\frac{\cos\theta\cos\phi\,\sin\phi-\sin\phi\,\cos\theta\cos\phi}{\sin\psi}=0.
+\end{align}
+
+\paragraph{Computing $\bm E_{\rm inc}\times\bm H_{\rm sctd}^*$.}
+Use $\,\bm H_{\rm sctd}^*=\hat{\bm r}\times\bm E_{\rm sctd}^*\,$ and the triple-product identity
+$\,\bm A\times(\hat{\bm r}\times\bm B)=(\bm A\!\cdot\!\bm B)\,\hat{\bm r}-(\bm A\!\cdot\!\hat{\bm r})\,\bm B$.
+Since $\bm E_{\rm inc}\perp\hat{\bm r}$ and $\bm E_{\rm sctd}\perp\hat{\bm r}$,
+\[
+\bm E_{\rm inc}\times\bm H_{\rm sctd}^*
+=(\bm E_{\rm inc}\!\cdot\!\bm E_{\rm sctd}^*)\,\hat{\bm r}.
+\]
+But $\bm E_{\rm inc}\!\cdot\!\bm E_{\rm sctd}^*
+=e^{i\Phi}\,\frac{e^{-ik_0 R}}{R}\,F(\psi)^*\,(\hat{\bm D}\!\cdot\!\hat{\bm D})
+=\frac{e^{i(\Phi-k_0 R)}}{R}\,F(\psi)^*$ by (ii). Hence
+\[
+\boxed{\ \bm E_{\rm inc}\times\bm H_{\rm sctd}^*
+=\frac{e^{i(\Phi-k_0 R)}}{R}\,F(\psi)^*\,\hat{\bm r}\ }.
+\]
+
+\paragraph{Computing $\bm E_{\rm sctd}\times\bm H_{\rm inc}^*$.}
+Use $\bm H_{\rm inc}^*=\hat x\times\bm E_{\rm inc}^*$ and
+$\bm A\times(\hat x\times\bm B)=(\bm A\!\cdot\!\bm B)\,\hat x-(\bm A\!\cdot\!\hat x)\,\bm B$:
+\[
+\bm E_{\rm sctd}\times\bm H_{\rm inc}^*
+=(\bm E_{\rm sctd}\!\cdot\!\bm E_{\rm inc}^*)\,\hat x
+-(\bm E_{\rm sctd}\!\cdot\!\hat x)\,\bm E_{\rm inc}^*.
+\]
+By (iii) the second term vanishes. The first term equals
+\[
+\bm E_{\rm sctd}\!\cdot\!\bm E_{\rm inc}^*
+=\frac{e^{ik_0 R}}{R}\,F(\psi)\,e^{-i\Phi}\,(\hat{\bm D}\!\cdot\!\hat{\bm D})
+=\frac{e^{i(k_0 R-\Phi)}}{R}\,F(\psi).
+\]
+Therefore
+\[
+\boxed{\ \bm E_{\rm sctd}\times\bm H_{\rm inc}^*
+=\frac{e^{i(k_0 R-\Phi)}}{R}\,F(\psi)\,\hat x\ }.
+\]
+
+\paragraph{Assembling the time-averaged interference Poynting vector.}
+By definition,
+\[
+\big\langle\bm S_{\rm int}\big\rangle
+=\frac{1}{2c}\Re\!\left(\bm E_{\rm inc}\times\bm H_{\rm sctd}^*
++\bm E_{\rm sctd}\times\bm H_{\rm inc}^*\right)
+=\frac{1}{2Rc}\Re\!\left(e^{i(\Phi-k_0 R)}F^*\,\hat{\bm r}
++e^{i(k_0 R-\Phi)}F\,\hat x\right).
+\]
+Let $F(\psi)=|F(\psi)|\,e^{i\delta(\psi)}$. Then both real parts coincide:
+\[
+\Re\!\big(e^{i(\Phi-k_0 R)}F^*\big)
+=\Re\!\big(e^{i(k_0 R-\Phi)}F\big)
+=|F(\psi)|\cos\!\big(k_0 R-\Phi+\delta(\psi)\big).
+\]
+Hence the compact vector form
+\[
+\boxed{\;
+\big\langle\bm S_{\rm int}\big\rangle
+=\frac{\Re\!\big(e^{i(k_0 R-\Phi)}F\big)}{2Rc}\,
+\big(\hat{\bm r}+\hat x\big).
+\;}
+\]
+
+\paragraph{Equivalence of the spherical-component form.}
+Using $\hat x=\sin\theta\cos\phi\,\hat{\bm r}
++\cos\theta\cos\phi\,\hat{\bm\theta}-\sin\phi\,\hat{\bm\phi}$,
+\[
+\boxed{\;
+\big\langle\bm S_{\rm int}\big\rangle
+=\frac{\Re\!\big(e^{i(k_0 R-\Phi)}F\big)}{2Rc}\,
+\Big[\,(1+\sin\theta\cos\phi)\,\hat{\bm r}
++\cos\theta\cos\phi\,\hat{\bm\theta}
+-\sin\phi\,\hat{\bm\phi}\,\Big].
+\;}
+\]
+
+\paragraph{Notes.}
+The limit $\sin\psi\to 0$ (forward/back scattering) is taken by continuity; the
+unit vector $\hat{\bm D}$ remains well behaved.
+
+\section{Extinction Cross section}
+
+Starting from
+\[
+\big\langle\bm S_{\rm int}\big\rangle\cdot\hat{\bm r}
+=\frac{\Re\!\big(e^{i(k_0 R-\Phi)}F\big)}{2Rc}\,
+\big(1+\sin\theta\cos\phi\big),
+\quad \cos\psi=\sin\theta\cos\phi,
+\]
+and integrating over a sphere of radius \(R\):
+\[
+\oint_{S_R}\!\big\langle\bm S_{\rm int}\big\rangle\cdot\hat{\bm r}\,dA
+=\frac{R}{2c}\!\int_0^{2\pi}\!\!\int_0^\pi
+\Re\!\big(e^{i(k_0 R-k_0 R\sin\theta\cos\phi)}F(sin\theta\cos\phi)\big)
+\,(1+\sin\theta\cos\phi)\,\sin\theta\,d\theta\,d\phi.
+\]
+
+\paragraph{Lemma (axis reduction).}
+If an integrand on the unit sphere depends only on \(x:=\sin\theta\cos\phi\) (i.e. the
+projection onto the \(x\)-axis), then
+\[
+\int_0^{2\pi}\!\!\int_0^\pi g(\sin\theta\cos\phi)\,\sin\theta\,d\theta\,d\phi
+=2\pi\int_{-1}^{1} g(x)\,dx.
+\]
+\textbf{Proof.}
+A point on the unit sphere can be written as
+\[
+(x,y,z)=(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta),
+\quad \theta\in[0,\pi],\ \phi\in[0,2\pi],
+\]
+so \(x=\sin\theta\cos\phi\).
+Reparameterize the sphere using spherical angles with the \(x\)-axis as the polar axis:
+\[
+(x,y,z)=(\cos\Theta,\ \sin\Theta\cos\Phi,\ \sin\Theta\sin\Phi),
+\quad \Theta\in[0,\pi],\ \Phi\in[0,2\pi].
+\]
+This change of coordinates is a rotation, so the surface element is unchanged:
+\[
+\sin\theta\,d\theta\,d\phi=\sin\Theta\,d\Theta\,d\Phi.
+\]
+Since \(x=\cos\Theta\) in these coordinates,
+\begin{align*}
+\int_0^{2\pi}\!\!\int_0^\pi g(\sin\theta\cos\phi)\,\sin\theta\,d\theta\,d\phi
+&=\int_0^{2\pi}\!\!\int_0^\pi g(\cos\Theta)\,\sin\Theta\,d\Theta\,d\Phi \\
+&=2\pi \int_0^\pi g(\cos\Theta)\,\sin\Theta\,d\Theta \\
+&\overset{u=\cos\Theta}{=} 2\pi \int_{1}^{-1} g(u)\,(-du)
+=2\pi \int_{-1}^{1} g(u)\,du.
+\end{align*}
+\qed
+
+Here the integrand depends on \(x=\sin\theta\cos\phi\) only;
+With \(x=\cos\psi\) and \(F(\psi)=F(\arccos x)=:F(x)\), the flux becomes
+\[
+\boxed{\;
+\oint_{S_R}\!\big\langle\bm S_{\rm int}\big\rangle\cdot\hat{\bm r}\,dA
+=\frac{\pi R}{c}\,\Re\!\left[
+e^{i k_0 R}\int_{-1}^{1} (1+x)\,F(x)\,e^{-i k_0 R x}\,dx\right].
+\;}
+\]
+This is an \emph{exact} 1D integral valid for all \(k_0R\).
+
+\paragraph{Exact form of \(F(X)\).}
+\[
+X=k_0 a\sqrt{1+m^2-2mx},\qquad
+F(x)=K\!\left[\frac{3j_1(X)}{X}+\gamma(X)\right],\qquad
+K=k_0^2\frac{(m^2-1)a^3}{3}.
+\]
+Solving for \(x\) in terms of \(X\):
+\[
+x(X)=\frac{1+m^2-(X/k_0a)^2}{2m},\qquad
+dx=\frac{-X}{m(k_0a)^2}\,dX.
+\]
+The endpoints are the branch–continuous images of \(x=\pm1\):
+\[
+X_-:=k_0a\,(m-1),\qquad X_+:=k_0a\,(m+1)
+\quad\text{(choose a continuous branch for the square root)}.
+\]
+Also \(1+x(X)=\dfrac{(m+1)^2-(X/k_0a)^2}{2m}\) and
+\(e^{-i k_0 R x(X)}=e^{-\frac{i k_0 R}{2m}(1+m^2)}\,
+e^{\,\frac{i k_0 R}{2m}\,(X/k_0a)^2}\).
+Thus
+\[
+\boxed{\;
+\begin{aligned}
+\oint_{S_R}\!\big\langle\bm S_{\rm int}\big\rangle\cdot\hat{\bm r}\,dA
+&=\frac{\pi R}{c}\,\Re\!\Bigg[
+e^{-\frac{i k_0 R}{2m}(m-1)^2}
+\int_{X_-}^{X_+}
+\frac{\big((m+1)^2-(X/k_0a)^2\big)\,X}{2m^2(k_0a)^2}\,
+F(X)\,e^{\,i\alpha X^2}\,dX
+\Bigg],\\[4pt]
+\alpha&:=\frac{k_0 R}{2m\,(k_0a)^2}=\frac{R}{2m\,k_0 a^2}.
+\end{aligned}
+\;}
+\]
+
+\subsection{Evaluation of the \texorpdfstring{$\gamma$}{gamma}-term for $\gamma(X)=X^{-3/2}$}
+
+We work with the sphere $S_a$ and use the exact 1D reduction obtained earlier. 
+With
+\[
+F(X)=K\!\left[\frac{3\,j_1(X)}{X}+\gamma(X)\right],\quad 
+\gamma(X)=X^{-3/2},\quad 
+K=k_0^2\frac{(m^2-1)a^3}{3},
+\]
+define
+\[
+X_\pm := k_0 a\,(m\pm 1),\qquad 
+u_\pm := X_\pm^2=(k_0 a)^2(m\pm 1)^2,\qquad
+\alpha := \frac{1}{2m\,k_0 a}.
+\]
+The contribution of the $\gamma$-piece to the interference flux is
+\[
+\frac{\pi a}{c}\,\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}\; I_\gamma
+\right\},
+\]
+where
+\[
+I_\gamma=\frac{K}{2m^2(k_0a)^2}\int_{X_-}^{X_+}
+\Big[(m+1)^2\,X^{-1/2}-\frac{1}{(k_0a)^2}\,X^{3/2}\Big]\,
+e^{\,i\alpha X^2}\,dX.
+\]
+
+Make the substitution $u=X^2$ (so $dX=\tfrac{du}{2X}$). Then
+\[
+\int X^{-\tfrac12} e^{\,i\alpha X^2}\,dX
+=\frac12\!\int u^{-\tfrac34} e^{\,i\alpha u}\,du
+=\frac12\,(-i\alpha)^{-1/4}\,\Gamma\!\left(\frac14,\,-i\alpha u\right),
+\]
+\[
+\int X^{\tfrac32} e^{\,i\alpha X^2}\,dX
+=\frac12\!\int u^{\tfrac14} e^{\,i\alpha u}\,du
+=\frac12\,(-i\alpha)^{-5/4}\,\Gamma\!\left(\frac54,\,-i\alpha u\right),
+\]
+where $\Gamma(\nu,z)$ is the upper incomplete Gamma function. Evaluating between 
+$u_-$ and $u_+$ gives
+\[
+I_\gamma=\frac{K}{4m^2(k_0a)^2}\left[
+(m+1)^2(-i\alpha)^{-1/4}\,\Delta\Gamma_{1/4}
+-\frac{1}{(k_0a)^2}(-i\alpha)^{-5/4}\,\Delta\Gamma_{5/4}
+\right],
+\]
+with the shorthand
+\[
+\Delta\Gamma_{\nu}
+:=\Gamma\!\left(\nu,\,-i\alpha u_+\right)-\Gamma\!\left(\nu,\,-i\alpha u_-\right)
+=\Gamma\!\left(\nu,\,-\,\frac{i k_0 a}{2m}(m+1)^2\right)
+-\Gamma\!\left(\nu,\,-\,\frac{i k_0 a}{2m}(m-1)^2\right).
+\]
+
+Therefore the $\gamma$-contribution to the surface integral is
+\[
+\boxed{\
+\frac{\pi a}{c}\,\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}
+\cdot
+\frac{K}{4m^2(k_0a)^2}\left[
+(m+1)^2(-i\alpha)^{-1/4}\,\Delta\Gamma_{1/4}
+-\frac{1}{(k_0a)^2}(-i\alpha)^{-5/4}\,\Delta\Gamma_{5/4}
+\right]
+\right\}.
+}
+\]
+All branch choices are understood as principal branches that continue continuously between the endpoints $X_\pm$.
+
+%--- Step C: Add the (3 j1(X)/X) contribution and assemble the full result -----
+
+\subsection{The $\frac{3\,j_1(X)}{X}$ contribution and the full surface integral}
+
+Recall the exact $X$-integral representation on $S_a$:
+\[
+\oint_{S_a}\!\langle\bm S_{\rm int}\rangle\!\cdot\!\hat{\bm r}\,dA
+=\pi a\,\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}\,
+\int_{X_-}^{X_+}
+\frac{\big((m+1)^2-(X/k_0a)^2\big)\,X}{2m^2(k_0a)^2}\,
+F(X)\,e^{\,i\alpha X^2}\,dX
+\right\},
+\]
+where
+\[
+F(X)=K\!\left[\frac{3\,j_1(X)}{X}+\gamma(X)\right],\qquad
+\gamma(X)=X^{-3/2},\qquad
+K=k_0^2\frac{(m^2-1)a^3}{3},\qquad
+\alpha=\frac{1}{2m\,k_0 a},
+\]
+and the endpoints
+\[
+X_\pm:=k_0 a\,(m\pm 1),\qquad u_\pm:=X_\pm^2=(k_0 a)^2(m\pm 1)^2.
+\]
+
+\paragraph{The $3j_1(X)/X$ piece.}
+Define
+\[
+I_{j_1}
+:=\frac{3K}{2m^2(k_0a)^2}\!\int_{X_-}^{X_+}\!
+\Big[(m+1)^2-\frac{X^2}{(k_0a)^2}\Big]\,j_1(X)\,e^{\,i\alpha X^2}\,dX.
+\]
+Introduce
+\[
+J(\alpha):=\int_{X_-}^{X_+} j_1(X)\,e^{\,i\alpha X^2}\,dX.
+\]
+Using \(j_1(X)=-\dfrac{d}{dX}\!\left(\dfrac{\sin X}{X}\right)\) and integrating by parts,
+\[
+J(\alpha)= -\Big[\frac{\sin X}{X}e^{\,i\alpha X^2}\Big]_{X_-}^{X_+}
++2i\alpha\int_{X_-}^{X_+}\!\sin X\,e^{\,i\alpha X^2}\,dX.
+\]
+Write the last integral via a completed square:
+\[
+\int_{X_-}^{X_+}\!\sin X\,e^{\,i\alpha X^2}\,dX
+=\Im\!\left\{\,\int_{X_-}^{X_+}\!e^{\,i\alpha X^2+iX}\,dX\right\}
+=\Im\!\left\{\,e^{-\frac{i}{4\alpha}}\,
+\frac{\sqrt{\pi}\,e^{i\pi/4}}{2\sqrt{\alpha}}\,
+\Big[\operatorname{erf}\big(z_+\big)-\operatorname{erf}\big(z_-\big)\Big]\right\},
+\]
+where
+\[
+z_\pm:=e^{i\pi/4}\sqrt{\alpha}\left(X_\pm+\frac{1}{2\alpha}\right).
+\]
+Hence
+\[
+\boxed{\
+J(\alpha)= -\Big[\frac{\sin X}{X}e^{\,i\alpha X^2}\Big]_{X_-}^{X_+}
++2i\alpha\;\Im\!\left\{\,e^{-\frac{i}{4\alpha}}\,
+\frac{\sqrt{\pi}\,e^{i\pi/4}}{2\sqrt{\alpha}}\,
+\Big[\operatorname{erf}\big(z_+\big)-\operatorname{erf}\big(z_-\big)\Big]\right\}.
+}
+\]
+
+To handle the $X^2 j_1(X)$ term, use
+\[
+\frac{\partial}{\partial\alpha}\Big(e^{\,i\alpha X^2}\Big)=iX^2 e^{\,i\alpha X^2}
+\quad\Rightarrow\quad
+\int_{X_-}^{X_+}\!X^2 j_1(X)\,e^{\,i\alpha X^2}\,dX
+=\frac{1}{i}\,\frac{d}{d\alpha}J(\alpha).
+\]
+Therefore,
+\[
+\boxed{\
+I_{j_1}
+=\frac{3K}{2m^2(k_0a)^2}\left[
+(m+1)^2\,J(\alpha)
+-\frac{1}{(k_0a)^2}\,\frac{1}{i}\,\frac{dJ}{d\alpha}
+\right].
+}
+\]
+The derivative $dJ/d\alpha$ follows by differentiating the boxed $J(\alpha)$ using
+$\dfrac{d}{d\alpha}\!\left(\alpha^{-1/2}e^{-i/(4\alpha)}\right)
+=\alpha^{-1/2}e^{-i/(4\alpha)}\!\left(\frac{i}{4\alpha^2}-\frac{1}{2\alpha}\right)$
+and $\dfrac{d}{d\alpha}\operatorname{erf}(z)=\dfrac{2}{\sqrt{\pi}}e^{-z^2}\,z'(\alpha)$ with
+\[
+z'_\pm(\alpha)
+=e^{i\pi/4}\left[
+\frac{X_\pm+\frac{1}{2\alpha}}{2\sqrt{\alpha}}
+-\frac{\sqrt{\alpha}}{2\alpha^2}
+\right].
+\]
+
+\paragraph{The $\gamma$-piece.}
+With $\gamma(X)=X^{-3/2}$ we already obtained
+\[
+I_\gamma=\frac{K}{4m^2(k_0a)^2}\left[
+(m+1)^2(-i\alpha)^{-1/4}\,\Delta\Gamma_{1/4}
+-\frac{1}{(k_0a)^2}(-i\alpha)^{-5/4}\,\Delta\Gamma_{5/4}
+\right],
+\]
+where
+\[
+\Delta\Gamma_{\nu}:=\Gamma\!\left(\nu,\,-i\alpha u_+\right)-\Gamma\!\left(\nu,\,-i\alpha u_-\right),
+\qquad u_\pm=(k_0 a)^2(m\pm 1)^2.
+\]
+
+\paragraph{Final assembled result.}
+Combining $I_{j_1}$ and $I_\gamma$,
+\[
+\boxed{\
+\begin{aligned}
+\sigma_{ext}
+&=\pi a\,
+\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}
+\left(I_{j_1}+I_\gamma\right)
+\right\},\\[4pt]
+I_{j_1}
+&=\frac{3K}{2m^2(k_0a)^2}\left[
+(m+1)^2\,J(\alpha)
+-\frac{1}{(k_0a)^2}\,\frac{1}{i}\,\frac{dJ}{d\alpha}
+\right],\\[4pt]
+J(\alpha)
+&= -\Big[\frac{\sin X}{X}e^{\,i\alpha X^2}\Big]_{X_-}^{X_+}
++2i\alpha\;\Im\!\left\{\,e^{-\frac{i}{4\alpha}}\,
+\frac{\sqrt{\pi}\,e^{i\pi/4}}{2\sqrt{\alpha}}\,
+\Big[\operatorname{erf}\big(z_+\big)-\operatorname{erf}\big(z_-\big)\Big]\right\},\\[4pt]
+z_\pm&=e^{i\pi/4}\sqrt{\alpha}\left(X_\pm+\frac{1}{2\alpha}\right),\\[4pt]
+I_\gamma
+&=\frac{K}{4m^2(k_0a)^2}\left[
+(m+1)^2(-i\alpha)^{-1/4}\,\Delta\Gamma_{1/4}
+-\frac{1}{(k_0a)^2}(-i\alpha)^{-5/4}\,\Delta\Gamma_{5/4}
+\right],\\[4pt]
+\Delta\Gamma_{\nu}
+&=\Gamma\!\left(\nu,\,-i\alpha (k_0 a)^2(m+1)^2\right)
+-\Gamma\!\left(\nu,\,-i\alpha (k_0 a)^2(m-1)^2\right),\\[4pt]
+K&=k_0^2\frac{(m^2-1)a^3}{3},\qquad \alpha=\frac{1}{2m\,k_0 a},\qquad X_\pm=k_0 a\,(m\pm 1).
+\end{aligned}
+}
+\]
+
+\noindent
+This expression is exact (no $k_0 a$ or $k_0 R$ asymptotics). The only
+special functions are the error function $\operatorname{erf}$ and the upper incomplete gamma
+$\Gamma(\nu,z)$, plus the elementary derivative $dJ/d\alpha$, which you can evaluate
+symbolically or numerically from the given $J(\alpha)$.
+\begin{comment}
+\section{Interference flux Leading order in the particle size $a$}
+
+We use the exact result
+\[
+\oint_{S_a}\!\langle\bm S_{\rm int}\rangle\!\cdot\!\hat{\bm r}\,dA
+=\frac{\pi a}{c}\,
+\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}
+\left(I_{j_1}+I_\gamma\right)
+\right\},
+\]
+with
+\[
+I_{j_1}
+=\frac{3K}{2m^2(k_0a)^2}\left[
+(m+1)^2\,J(\alpha)
+-\frac{1}{(k_0a)^2}\,\frac{1}{i}\,\frac{dJ}{d\alpha}
+\right],\qquad
+K=k_0^2\frac{(m^2-1)a^3}{3},\qquad
+\alpha=\frac{1}{2m\,k_0 a},
+\]
+and
+\[
+J(\alpha)
+= -\Big[\frac{\sin X}{X}e^{\,i\alpha X^2}\Big]_{X_-}^{X_+}
++2i\alpha\;\Im\!\left\{\,e^{-\frac{i}{4\alpha}}\,
+\frac{\sqrt{\pi}\,e^{i\pi/4}}{2\sqrt{\alpha}}\,
+\Big[\operatorname{erf}\big(z_+\big)-\operatorname{erf}\big(z_-\big)\Big]\right\}.
+\]
+
+\paragraph{Small-$a$ scalings.}
+As $a\to 0$,
+\[
+X_\pm=k_0 a\,(m\pm 1)=\mathcal{O}(a),\qquad
+\alpha=\frac{1}{2m\,k_0 a}=\mathcal{O}\!\big(a^{-1}\big).
+\]
+Expanding the $J$-pieces at leading order:
+\[
+\Big[\tfrac{\sin X}{X}e^{i\alpha X^2}\Big]_{X_-}^{X_+}
+=1-\frac{X_+^2-X_-^2}{6}+\mathcal{O}(a^3)
+=1-\frac{4m(k_0a)^2}{6}+\mathcal{O}(a^3),
+\]
+hence its contribution to $J(\alpha)$ is $\mathcal{O}(a^2)$.
+For the Fresnel error-function piece one finds (using
+$z_\pm=e^{i\pi/4}\sqrt{\alpha}(X_\pm+\tfrac{1}{2\alpha})$ and
+$\operatorname{erf}z= \tfrac{2}{\sqrt{\pi}}z+\mathcal{O}(z^3)$)
+\[
+\Im\!\left\{\,e^{-\frac{i}{4\alpha}}\,
+\frac{\sqrt{\pi}e^{i\pi/4}}{2\sqrt{\alpha}}\,
+\big[\operatorname{erf}(z_+)-\operatorname{erf}(z_-)\big]\right\}
+=2k_0 a\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)+\mathcal{O}(a^2),
+\]
+so
+\[
+J(\alpha)=2i\alpha\cdot 2k_0 a\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)
++\mathcal{O}(a^2)=\frac{2i}{m}\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)
++\mathcal{O}(a^2),
+\]
+and therefore
+\[
+\frac{dJ}{d\alpha}
+=4i k_0 a\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)+\mathcal{O}(a^2).
+\]
+
+\paragraph{Dominant piece in $I_{j_1}$.}
+Insert the above into $I_{j_1}$. The bracket contains
+\[
+(m+1)^2 J(\alpha)=\mathcal{O}(1),\qquad
+-\frac{1}{(k_0a)^2}\,\frac{1}{i}\frac{dJ}{d\alpha}
+= -\,\frac{4}{k_0 a}\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)
++ \mathcal{O}(1).
+\]
+The second term dominates as $a\to 0$. Using $K=k_0^2(m^2-1)a^3/3$,
+\[
+I_{j_1}=
+\frac{3K}{2m^2(k_0a)^2}\left[-\,\frac{4}{k_0 a}\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)\right]
++\mathcal{O}(a)
+= -\,\frac{2(m^2-1)}{m^2 k_0}\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)
++\mathcal{O}(a).
+\]
+
+\paragraph{Subleading $\gamma$-piece.}
+From Step B (with $\gamma(X)=X^{-3/2}$) one finds
+$I_\gamma=\mathcal{O}\!\big(a^{3/2}\big)$; hence
+$\frac{\pi a}{c}\,I_\gamma=\mathcal{O}\!\big(a^{5/2}\big)$ and is negligible at leading order.
+
+\paragraph{Assembling the leading term.}
+Thus
+\[
+\oint_{S_a}\!\langle\bm S_{\rm int}\rangle\!\cdot\!\hat{\bm r}\,dA
+= \frac{\pi a}{c}\,
+\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}
+\left[-\,\frac{2(m^2-1)}{m^2 k_0}\,\cos\!\Big(\tfrac{1}{4\alpha}\Big)\right]
+\right\}
++\mathcal{O}(a^2).
+\]
+Since $\tfrac{1}{4\alpha}=\tfrac{k_0 a}{2m}$, the two cosine phases coincide to
+$\mathcal{O}(a)$, and we may keep the compact leading form
+\[
+\boxed{\
+\oint_{S_a}\!\langle\bm S_{\rm int}\rangle\!\cdot\!\hat{\bm r}\,dA
+\;=\; -\,\frac{2\pi a}{c\,k_0}\,
+\Re\!\left[
+\frac{m^2-1}{m^2}\,
+\exp\!\left(-\,\frac{i k_0 a}{2m}(m-1)^2\right)
+\right]
+\;+\;\mathcal{O}(a^2).
+}
+\]
+
+\paragraph{Very-small-$a$ simplification.}
+Expanding the exponential as $a\to 0$,
+\[
+\exp\!\left(-\,\frac{i k_0 a}{2m}(m-1)^2\right)=1+\mathcal{O}(a),
+\]
+so the leading $a$-scaling is
+\[
+\boxed{\
+\oint_{S_a}\!\langle\bm S_{\rm int}\rangle\!\cdot\!\hat{\bm r}\,dA
+\;=\; -\,\frac{2\pi a}{c\,k_0}\,
+\Re\!\left(\frac{m^2-1}{m^2}\right)
+\;+\;\mathcal{O}(a^2).
+}
+\]
+This shows the net interference flux scales linearly with $a$ at small size,
+with subleading corrections of order $a^2$ (and an even smaller
+$\mathcal{O}(a^{5/2})$ contribution from the $\gamma$-term).
+\end{comment}
+
+
+
+
+\begin{comment}
+
+\section{Scattered Poynting vector \texorpdfstring{$\langle \bm S_{\rm sca}\rangle$}{<S_sca>}}
+
+We are given (Gaussian units, $\mu=1$, $e^{-i\omega t}$)
+\[
+\bm E_{\rm sca}
+=\frac{e^{ik_0 R}}{R}\,F(\psi)\,
+\underbrace{\left(\frac{\sin\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\phi}\right)}_{:=\ \hat{\bm D}},
+\qquad
+\bm H_{\rm sca}=\hat{\bm r}\times\bm E_{\rm sca}.
+\]
+Note that $\hat{\bm D}\!\cdot\!\hat{\bm r}=0$ and
+\[
+|\hat{\bm D}|^2
+=\frac{\sin^2\phi+\cos^2\theta\cos^2\phi}{\sin^2\psi}
+=\frac{1-\sin^2\theta\cos^2\phi}{\sin^2\psi}
+=\frac{\sin^2\psi}{\sin^2\psi}=1,
+\]
+so $\hat{\bm D}$ is a real unit vector.
+
+Time-averaged scattered Poynting vector:
+\[
+\langle \bm S_{\rm sca}\rangle
+=\frac{1}{2c}\,\Re\!\big(\bm E_{\rm sca}\times \bm H_{\rm sca}^*\big)
+=\frac{1}{2c}\,\Re\!\big(\bm E_{\rm sca}\times (\hat{\bm r}\times \bm E_{\rm sca}^*)\big).
+\]
+Use the triple-product identity:
+\[
+\bm E_{\rm sca}\times (\hat{\bm r}\times \bm E_{\rm sca}^*)
+=(\bm E_{\rm sca}\!\cdot\!\bm E_{\rm sca}^*)\,\hat{\bm r}
+-(\bm E_{\rm sca}\!\cdot\!\hat{\bm r})\,\bm E_{\rm sca}^*.
+\]
+Since $\bm E_{\rm sca}\perp\hat{\bm r}$, the second term vanishes. With
+$\bm E_{\rm sca}=\dfrac{e^{ik_0 R}}{R}F(\psi)\,\hat{\bm D}$ and $|\hat{\bm D}|=1$,
+\[
+\bm E_{\rm sca}\!\cdot\!\bm E_{\rm sca}^*=\frac{|F(\psi)|^2}{R^2}.
+\]
+Therefore
+\[
+\boxed{\
+\langle \bm S_{\rm sca}\rangle
+=\frac{1}{2c}\,\frac{|F(\psi)|^2}{R^2}\;\hat{\bm r}.\
+}
+\]
+Equivalently, the radial flux density is
+\[
+\boxed{\
+\langle \bm S_{\rm sca}\rangle\!\cdot\!\hat{\bm r}
+=\frac{1}{2c}\,\frac{|F(\psi)|^2}{R^2}.\
+}
+\]
+\section{Scattering cross section}
+
+From
+\[
+\langle \bm S_{\rm sca}\rangle
+=\frac{1}{2c}\,\frac{|F(\psi)|^2}{R^2}\,\hat{\bm r}
+\quad\Rightarrow\quad
+\langle \bm S_{\rm sca}\rangle\!\cdot\!\hat{\bm r}
+=\frac{1}{2c}\,\frac{|F(\psi)|^2}{R^2},
+\]
+the scattered power through a sphere of radius $R$ is
+\[
+P_{\rm sca}=\oint_{S_R}\langle \bm S_{\rm sca}\rangle\!\cdot\!\hat{\bm r}\,dA
+=\frac{1}{2c}\int_{4\pi}|F(\psi)|^2\,d\Omega,
+\qquad dA=R^2\,d\Omega.
+\]
+
+\paragraph{Axis reduction (exact).}
+Let $x:=\sin\theta\cos\phi=\cos\psi$. Since $|F|^2$ depends only on $x$,
+\[
+\int_0^{2\pi}\!\!\int_0^\pi g(\sin\theta\cos\phi)\,\sin\theta\,d\theta\,d\phi
+=2\pi\int_{-1}^{1} g(x)\,dx.
+\]
+Hence
+\[
+\boxed{\
+P_{\rm sca}
+=\frac{\pi}{c}\int_{-1}^{1}\!|F(x)|^2\,dx,
+\qquad x=\cos\psi=\sin\theta\cos\phi.\
+}
+\]
+
+\paragraph{Differential and total scattering cross-sections.}
+With incident intensity $\langle S_{\rm inc}\rangle=\tfrac{1}{2c}$ (unit
+incident field amplitude),
+\[
+\frac{d\sigma_{\rm sca}}{d\Omega}
+=\frac{R^2\langle \bm S_{\rm sca}\rangle\!\cdot\!\hat{\bm r}}{\langle S_{\rm inc}\rangle}
+=|F(\psi)|^2,
+\qquad
+\boxed{\ \sigma_{\rm sca}=\int_{4\pi}\!|F(\psi)|^2\,d\Omega
+=2\pi\int_{-1}^{1}\!|F(x)|^2\,dx.\ }
+\]
+
+\paragraph{Change of variable to your $X$ (Mie-like) argument (exact).}
+Recall
+\[
+X=k_0 a\sqrt{1+m^2-2mx},\quad
+x(X)=\frac{1+m^2-(X/k_0a)^2}{2m},\quad
+dx=\frac{-X}{m(k_0a)^2}\,dX,
+\]
+with endpoints
+\[
+X_-:=k_0a\,(m-1),\qquad X_+:=k_0a\,(m+1).
+\]
+Then
+\[
+\boxed{\
+\sigma_{\rm sca}
+=\frac{2\pi}{m(k_0a)^2}\int_{X_-}^{X_+}\!X\,|F(X)|^2\,dX.
+\ }
+\]
+Here, $F$ may be taken as
+\[
+F(X)=K\!\left[\frac{3\,j_1(X)}{X}+\gamma(X)\right],
+\qquad K=k_0^2\frac{(m^2-1)a^3}{3},
+\]
+with your chosen $\gamma(X)$.
+\subsection{Total scattering cross-section with $\gamma(X)=X^{-3/2}$}
+
+\paragraph{Setup.}
+\[
+\sigma_{\rm sca}=\int_{4\pi}|F(\psi)|^2\,d\Omega
+=2\pi\int_{-1}^{1}\!|F(x)|^2\,dx,
+\qquad x=\cos\psi=\sin\theta\cos\phi.
+\]
+Using \(X=k_0a\sqrt{1+m^2-2mx}\) and \(dx=\dfrac{-X}{m(k_0a)^2}\,dX\) (continuous branch),
+\[
+\sigma_{\rm sca}
+=\frac{2\pi}{m(k_0a)^2}\int_{X_-}^{X_+}\!X\,|F(X)|^2\,dX,
+\qquad
+X_\pm:=k_0a\,(m\pm 1).
+\]
+
+\paragraph{Amplitude and decomposition.}
+Take
+\[
+F(X)=K\!\left[\frac{3\,j_1(X)}{X}+\gamma(X)\right],\qquad
+\gamma(X)=X^{-3/2},\qquad
+K=\frac{k_0^2(m^2-1)a^3}{3}.
+\]
+Hence
+\[
+|F|^2=|K|^2\left[
+\left|\frac{3j_1}{X}\right|^2
++2\,\Re\!\left(\frac{3j_1}{X}\,\gamma^*\right)
++|\gamma|^2\right].
+\]
+
+\paragraph{Nonabsorbing case (real $m$; $X\in\mathbb{R}_+$) in closed form.}
+If $m$ is real (extend by analytic continuation for complex $m$; see remark below),
+all quantities under the $X$–integral are real, so
+\[
+\sigma_{\rm sca}
+=\frac{2\pi|K|^2}{m(k_0a)^2}\Big[
+9\,\mathcal{I}_1\big|_{X_-}^{X_+}
++6\,\mathcal{I}_2\big|_{X_-}^{X_+}
++\mathcal{I}_3\big|_{X_-}^{X_+}
+\Big],
+\]
+with the primitives
+\[
+\boxed{\
+\begin{aligned}
+\mathcal{I}_1(X)
+&=\int \frac{j_1(X)^2}{X}\,dX
+= -\,\frac{1}{4X^2}
++\frac{\sin X\,\cos X}{2X^3}
+-\frac{\sin^2 X}{4X^4},
+\\[6pt]
+\mathcal{I}_2(X)
+&=\int \frac{3\,j_1(X)}{X^{3/2}}\,dX
+=3\!\left[
+\int \frac{\sin X}{X^{7/2}}\,dX
+-\int \frac{\cos X}{X^{5/2}}\,dX
+\right],
+\\[4pt]
+&\hspace{1.5em}=
+3\left\{
+\Im\!\Big(i^{5/2}\,\Gamma\!\big(-\tfrac{5}{2},-iX\big)\Big)
+-\Re\!\Big(i^{3/2}\,\Gamma\!\big(-\tfrac{3}{2},-iX\big)\Big)
+\right\},
+\\[8pt]
+\mathcal{I}_3(X)
+&=\int X\cdot X^{-3}\,dX
+=\int X^{-2}\,dX
+= -\,\frac{1}{X}.
+\end{aligned}
+}
+\]
+Here $\Gamma(\nu,z)$ is the upper incomplete Gamma function and
+we used the identity
+\(\displaystyle \int x^{\nu-1}e^{ix}\,dx=i^{-\nu}\Gamma(\nu,-ix)\)
+(analytic continuation understood). Therefore
+\[
+\boxed{\
+\begin{aligned}
+\sigma_{\rm sca}
+&=\frac{2\pi|K|^2}{m(k_0a)^2}\Bigg[
+9\Big(\mathcal{I}_1(X_+)-\mathcal{I}_1(X_-)\Big)
++6\Big(\mathcal{I}_2(X_+)-\mathcal{I}_2(X_-)\Big)\\
+&\hspace{10em}
++\Big(\mathcal{I}_3(X_+)-\mathcal{I}_3(X_-)\Big)
+\Bigg],
+\\[4pt]
+X_\pm&=k_0a\,(m\pm 1),\qquad
+K=\frac{k_0^2(m^2-1)a^3}{3}.
+\end{aligned}
+}
+\]
+
+\paragraph{Remarks.}
+1) For real $m>0$ one has $X_\pm>0$, so the above expressions are elementary
+(trig functions and incomplete gamma at real arguments).\\
+2) For complex $m$, the same boxed formula holds by analytic continuation:
+use the continuous branch from $X_-$ to $X_+$ for all fractional powers and
+$\Gamma(\nu,-iX)$; the final $\sigma_{\rm sca}$ is real because it equals
+\(\int_{4\pi}|F(\psi)|^2 d\Omega\).\\
+3) $\mathcal{I}_2$ can also be written
+with generalized cosine/sine integrals, but the incomplete-gamma form is
+the most compact.
+
+\section{Absorption cross-section}
+
+By definition,
+\[
+\sigma_{\rm abs}=\sigma_{\rm ext}-\sigma_{\rm sca}.
+\]
+
+From the given exact results,
+\[
+\sigma_{\rm ext}
+=\frac{\pi a}{c}\,
+\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}
+\left(I_{j_1}+I_\gamma\right)
+\right\},
+\]
+and
+\[
+\sigma_{\rm sca}
+=\frac{2\pi|K|^2}{m(k_0a)^2}\Bigg[
+9\Big(\mathcal{I}_1(X_+)-\mathcal{I}_1(X_-)\Big)
++6\Big(\mathcal{I}_2(X_+)-\mathcal{I}_2(X_-)\Big)
++\Big(\mathcal{I}_3(X_+)-\mathcal{I}_3(X_-)\Big)
+\Bigg],
+\]
+with
+\[
+\begin{aligned}
+\mathcal{I}_1(X)
+&= -\,\frac{1}{4X^2}
++\frac{\sin X\,\cos X}{2X^3}
+-\frac{\sin^2 X}{4X^4},\\[4pt]
+\mathcal{I}_2(X)
+&=3\left\{
+\Im\!\Big(i^{5/2}\,\Gamma\!\big(-\tfrac{5}{2},-iX\big)\Big)
+-\Re\!\Big(i^{3/2}\,\Gamma\!\big(-\tfrac{3}{2},-iX\big)\Big)
+\right\},\\[4pt]
+\mathcal{I}_3(X)
+&= -\,\frac{1}{X},
+\end{aligned}
+\qquad
+X_\pm=k_0a\,(m\pm 1),
+\]
+and
+\[
+K=\frac{k_0^2(m^2-1)a^3}{3},\qquad
+\alpha=\frac{1}{2m\,k_0 a},\qquad
+\gamma(X)=X^{-3/2}.
+\]
+Here \(I_{j_1}\), \(I_\gamma\) are (from the interference integral)
+\[
+I_{j_1}
+=\frac{3K}{2m^2(k_0a)^2}\left[
+(m+1)^2\,J(\alpha)
+-\frac{1}{(k_0a)^2}\,\frac{1}{i}\,\frac{dJ}{d\alpha}
+\right],
+\]
+\[
+J(\alpha)
+= -\Big[\frac{\sin X}{X}e^{\,i\alpha X^2}\Big]_{X_-}^{X_+}
++2i\alpha\;\Im\!\left\{\,e^{-\frac{i}{4\alpha}}\,
+\frac{\sqrt{\pi}\,e^{i\pi/4}}{2\sqrt{\alpha}}\,
+\Big[\operatorname{erf}\big(z_+\big)-\operatorname{erf}\big(z_-\big)\Big]\right\},
+\]
+\[
+z_\pm=e^{i\pi/4}\sqrt{\alpha}\left(X_\pm+\frac{1}{2\alpha}\right),
+\]
+\[
+I_\gamma
+=\frac{K}{4m^2(k_0a)^2}\left[
+(m+1)^2(-i\alpha)^{-1/4}\,\Delta\Gamma_{1/4}
+-\frac{1}{(k_0a)^2}(-i\alpha)^{-5/4}\,\Delta\Gamma_{5/4}
+\right],
+\]
+\[
+\Delta\Gamma_{\nu}
+=\Gamma\!\left(\nu,\,-i\alpha (k_0 a)^2(m+1)^2\right)
+-\Gamma\!\left(\nu,\,-i\alpha (k_0 a)^2(m-1)^2\right).
+\]
+
+Therefore the absorption cross-section is
+\[
+\boxed{\
+\begin{aligned}
+\sigma_{\rm abs}
+&=\pi a\,
+\Re\!\left\{
+e^{-\,\frac{i k_0 a}{2m}(m-1)^2}
+\left(I_{j_1}+I_\gamma\right)
+\right\}\\
+&\quad -\;
+\frac{2\pi|K|^2}{m(k_0a)^2}\Bigg[
+9\Big(\mathcal{I}_1(X_+)-\mathcal{I}_1(X_-)\Big)
++6\Big(\mathcal{I}_2(X_+)-\mathcal{I}_2(X_-)\Big)
++\Big(\mathcal{I}_3(X_+)-\mathcal{I}_3(X_-)\Big)
+\Bigg].
+\end{aligned}
+}
+\]
+
+Using \(|K|^2=\dfrac{k_0^4 a^6}{9}\,|m^2-1|^2\),
+\[
+\frac{2\pi|K|^2}{m(k_0a)^2}
+=\frac{2\pi\,k_0^2 a^4}{9}\,\frac{|m^2-1|^2}{m},
+\]
+so the second line of the boxed formula can be written with this prefactor if desired.
+
+\medskip
+All expressions are exact for the chosen \(\gamma(X)=X^{-3/2}\); for complex \(m\) use analytic continuation (continuous branches) for the special functions and endpoints \(X_\pm\). These hold in the far-field limit, i.e, $k_0a\gg 1$.
+\end{comment}

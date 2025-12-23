@@ -1,0 +1,585 @@
+\chapter{Power absorption for beyond Rayleigh
+size particles: Gordon's approximation and spherical basis}
+\section{Conventions and Maxwell equations}
+
+Time dependence is $e^{-i\omega t}$. We use Gaussian units with $\mu=1$. The fields satisfy
+\begin{equation}
+\nabla\times \mathbf E=\frac{i\omega}{c}\,\mathbf H,\qquad
+\nabla\times \mathbf H=-\frac{i\omega}{c}\,\varepsilon\,\mathbf E.
+\end{equation}
+Inside a homogeneous dielectric sphere of radius $a$, we set $\varepsilon=m^2$ (constant). Define the vacuum wavenumber $k_0=\omega/c$. In the exterior (vacuum) $|\mathbf k|=k_0$, while in the homogeneous interior $|\mathbf k|=m k_0$.
+
+For any plane wave $\mathbf E=\hat n\,E_0\,e^{i\mathbf k\cdot\mathbf r}$ with $\mathbf k=k\,\hat s$,
+\begin{equation}
+\mathbf H=\frac{c}{\omega}\,\mathbf k\times \mathbf E=\frac{k}{k_0}\,\hat s\times \mathbf E.
+\end{equation}
+Hence, in the interior (\(k=m k_0\)) one has $\mathbf H=m\,\hat s\times \mathbf E$, so $|\mathbf H|=m\,|\mathbf E|$. In vacuum (\(k=k_0\)) one has $\mathbf H=\hat s\times \mathbf E$ and $|\mathbf H|=|\mathbf E|$.
+\section{Scattered electric field using Gordon's ansatz}
+
+\subsection{Setup}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.55\linewidth]{Figures//Chapter 3 figures/Mie scattering diagram.png}
+    \caption{$\hat{s}_0$ and $\hat{s}$ are unit vectors in the incident and scattering directions. $\mathbf{r}^{\prime}$ is a position vector of a point within the scattering sphere of radius $a$. P is the point at which the scattered radiation is observed. The position vector of $P$ is $\mathbf{r}$. In the text it is assumed that $r \gg a$.}
+    \label{3_Mie scattering geometry}
+\end{figure}
+We start from the far-field relation
+\begin{equation}
+\boxed{ \;
+\vec{E}_{\text{sctd}}(\vec r)=\frac{e^{ikr}}{r}\,\vec F_1(\hat s),
+\qquad
+\vec F_1(\hat s)=\hat s\times\big(\vec P(\hat s)\times \hat s\big)
+= \vec P(\hat s) - \hat s\,\big(\hat s\cdot \vec P(\hat s)\big)\; }
+\end{equation}
+with
+\begin{equation}
+\vec P(\hat s)=\frac{k^2}{4\pi}\int_{V} e^{-ik\,\hat s\cdot \vec r'}\,[\varepsilon(\vec r')-1]\;\vec E_{\text{int}}(\vec r')\,d^3 r',
+\qquad \hat s:=\frac{\vec r}{r}.
+\end{equation}
+For a homogeneous sphere of radius $a$ centred at the origin we set $\varepsilon(\vec r')=m^2$ inside and $1$ outside, so the integral extends over $|\vec r'|\le a$.
+
+We take the internal-field ansatz (Gordon type)
+\begin{equation}
+\vec E_{\text{int}}(\vec r')=\hat n_0\,e^{imk\,\hat s_0\cdot \vec r'} + \hat n\,\gamma\,e^{ik\,\hat s\cdot \vec r'},
+\end{equation}
+where $\hat s_0$ is the incident propagation direction, $\hat n_0$ its polarization, and $\hat n$ is a unit polarization transverse to $\hat s$ (see Fig. \ref{3_Mie scattering geometry}).
+
+We assume the amplitude of the incident electric field to be 1.
+
+\subsection{Computing \texorpdfstring{$\vec P(\hat s)$}{P(s)}}
+
+Insert the ansatz into $\vec P(\hat s)$:
+\begin{align}
+\vec P(\hat s)
+&=\frac{k^2}{4\pi}(m^2-1)\int_{|\vec r'|\le a} e^{-ik\,\hat s\cdot \vec r'}\!
+\left[\hat n_0\,e^{imk\,\hat s_0\cdot \vec r'}+\hat n\,\gamma\,e^{ik\,\hat s\cdot \vec r'}\right] d^3 r' \nonumber\\
+&=\frac{k^2}{4\pi}(m^2-1)\left[
+\hat n_0 \int_{|\vec r'|\le a}\! e^{-i\bm q\cdot \vec r'}\,d^3 r' \;+\;
+\hat n\,\gamma \int_{|\vec r'|\le a}\! 1\,d^3 r' \right],
+\end{align}
+with the mismatch wavevector
+\[
+\bm q:=k(\hat s - m\hat s_0), \qquad q:=|\bm q|,\qquad
+q a = k a\sqrt{1+m^2-2m\cos\theta},\qquad \cos\theta=\hat s\cdot \hat s_0.
+\]
+
+\subsubsection{Integral over a ball}
+
+We need
+\begin{equation}\label{3_eq:ballFT}
+I(\bm q):=\int_{|\vec r'|\le a} e^{-i\,\bm q\cdot \vec r'}\,d^3 r' \;=\;4\pi a^3\,\frac{j_1(q a)}{q a},
+\end{equation}
+where $j_1$ is the spherical Bessel function $j_1(z)=\dfrac{\sin z - z\cos z}{z^2}$.
+
+\paragraph{Derivation of \eqref{3_eq:ballFT} in detail.}
+Choose spherical coordinates with polar axis along $\bm q$, so $\bm q\cdot \vec r' = q r'\cos\theta$ and $d^3 r' = r'^2 \sin\theta\, d\theta\, d\phi\, dr'$:
+\begin{align}
+I(q)
+&=\int_0^a \int_0^{2\pi}\int_0^{\pi} e^{-i q r'\cos\theta}\, r'^2 \sin\theta\, d\theta\, d\phi\, dr'
+=2\pi\int_0^a r'^2\left[\int_{-1}^{1} e^{-iq r' \mu}\, d\mu \right]dr' \nonumber\\
+&=2\pi\int_0^a r'^2\left[ \frac{e^{-iq r'}-e^{iq r'}}{-iq r'}\right] dr'
+= \frac{4\pi}{q}\int_0^a r'\sin(q r')\,dr' \nonumber\\
+&=\frac{4\pi}{q}\left[-\frac{a\cos(q a)}{q}+\frac{\sin(q a)}{q^2}\right]
+=4\pi\,\frac{\sin(q a)-q a\cos(q a)}{q^3} \nonumber\\
+&=4\pi a^3\,\frac{j_1(q a)}{q a}.
+\end{align}
+As $q a\to 0$, $j_1(q a)\sim (q a)/3$ so $I\to 4\pi a^3/3$, the sphere volume.
+
+\subsubsection{Final expression \texorpdfstring{$\vec P$}{P}}
+
+Using \eqref{3_eq:ballFT} and $\int_{|\vec r'|\le a}\! d^3 r' = \frac{4\pi a^3}{3}$:
+\begin{align}
+\vec P(\hat s)
+&=\frac{k^2}{4\pi}(m^2-1)\left[\hat n_0\cdot 4\pi a^3\frac{j_1(q a)}{q a}
+\;+\;\hat n\,\gamma\cdot \frac{4\pi a^3}{3}\right] \nonumber\\
+&= k^2(m^2-1)\left[a^3\frac{j_1(x)}{x}\,\hat n_0 + \frac{a^3}{3}\,\gamma\,\hat n\right]
+= k^2\frac{(m^2-1)a^3}{3}\left\{\left[\frac{3 j_1(x)}{x}\right]\hat n_0 + \gamma\,\hat n\right\},
+\end{align}
+with
+\[
+x:=q a = k a\sqrt{1+m^2-2m\cos\theta}, \qquad \cos\theta=\hat s\cdot \hat s_0.
+\]
+
+
+\subsection{Far-field projection and \texorpdfstring{$\vec E_{\text{sctd}}$}{E\_sctd}}
+
+The radiation pattern is the transverse projection
+\[
+\vec F_1(\hat s)=\hat s\times(\vec P\times \hat s)=\vec P-\hat s(\hat s\cdot \vec P).
+\]
+Assuming $\hat n\perp \hat s$ (transverse polarization of the scattered wave), we get
+\begin{align}
+\hat s\cdot \vec P
+&= k^2\frac{(m^2-1)a^3}{3}
+\left\{\left[\frac{3 j_1(x)}{x}\right](\hat s\cdot \hat n_0) + \gamma\,(\hat s\cdot \hat n)\right\}
+= k^2\frac{(m^2-1)a^3}{3}\left[\frac{3 j_1(x)}{x}\right](\hat s\cdot \hat n_0),
+\end{align}
+and hence
+\begin{equation}
+\boxed{ \;
+\vec F_1(\hat s)=
+k^2\frac{(m^2-1)a^3}{3}
+\left\{
+\left[\frac{3 j_1(x)}{x}\right]\big[\hat n_0 - \hat s(\hat s\cdot \hat n_0)\big]
++ \gamma\,\hat n
+\right\}.
+\;}
+\end{equation}
+Therefore the scattered field is
+\begin{equation}
+\boxed{\;
+\vec E_{\text{sctd}}(\vec r)=\frac{e^{ikr}}{r}\;
+k^2\frac{(m^2-1)a^3}{3}
+\left\{
+\left[\frac{3 j_1(x)}{x}\right]\big[\hat n_0 - \hat s(\hat s\cdot \hat n_0)\big]
++ \gamma\,\hat n
+\right\}.
+\;}
+\end{equation}
+with
+\[
+x:= k a\sqrt{1+m^2-2m\cos\theta}, \qquad \cos\theta=\hat s\cdot \hat s_0.
+\]
+\subsection{Electric field in different polarisation bases}
+
+Let the scattering plane be spanned by $\hat s_0$ and $\hat s$, with scattering angle $\theta$:
+\[
+\hat e_\perp=\frac{\hat s\times \hat s_0}{\sin\theta}, \qquad
+\hat e_\parallel=\frac{\hat s_0-\cos\theta\,\hat s}{\sin\theta}.
+\]
+Both obey $\hat s\cdot \hat e_{\perp,\parallel}=0$. For either incident polarization choice $\hat n_0\in\{\hat e_\perp,\hat e_\parallel\}$ and taking $\hat n=\hat n_0$, one gets
+\begin{equation}
+\vec E_{\text{sctd}}^{(\perp\text{ or }\parallel)}(\vec r)
+=\frac{e^{ikr}}{r}\;
+k^2\frac{(m^2-1)a^3}{3}\left[\frac{3 j_1(x)}{x}+\gamma\right]\;\hat n_0.
+\end{equation}
+with
+\[
+x:= k a\sqrt{1+m^2-2m\cos\theta}, \qquad \cos\theta=\hat s\cdot \hat s_0.
+\]
+
+
+\section{Scattered magnetic field using Gordon's ansatz}
+
+
+\subsection{Internal fields (Gordon ansatz)}
+
+Take the internal electric field as
+\begin{equation}
+\mathbf E_{\text{int}}(\mathbf r')=\hat n_0\,e^{i m k_0\,\hat s_0\cdot \mathbf r'}+\gamma\,\hat n\,e^{i k_0\,\hat s\cdot \mathbf r'},
+\end{equation}
+where $\hat s_0$ is the incident direction, $\hat n_0$ its polarization, and $\hat n\perp \hat s$ a unit polarization for the scattered channel.
+Using $\mathbf H=(c/\omega)\nabla\times \mathbf E$,
+\begin{equation}
+\boxed{\
+\mathbf H_{\text{int}}(\mathbf r')=
+m\,(\hat s_0\times \hat n_0)\,e^{i m k_0\,\hat s_0\cdot \mathbf r'}
+\;+\;
+\gamma\,(\hat s\times \hat n)\,e^{i k_0\,\hat s\cdot \mathbf r'}.
+\ }
+\end{equation}
+Note: the magnitude ratio inside the medium is $|\mathbf H_{\text{int}}^{(1)}|/|\mathbf E_{\text{int}}^{(1)}|=m$ for the first term; for the ``vacuum-phase'' leakage term the factor is $1$.
+
+\subsection{Far-field magnetic scattering via volume integrals}
+
+The scattered magnetic field in the far zone is written as
+\begin{equation}
+\mathbf H_{\text{sctd}}(\mathbf r)=\frac{e^{i k_0 r}}{r}\ \mathbf F_2(\hat s),\qquad
+\mathbf F_2(\hat s)=-\hat s\times\Big[\hat s\times\big(\mathbf P'(\hat s)+\mathbf P''(\hat s)\big)\Big],
+\end{equation}
+with
+\begin{equation}
+\mathbf P'(\hat s)=\frac{k_0^2}{4\pi}\int_{V} e^{-i k_0\,\hat s\cdot \mathbf r'}\,[\varepsilon(\mathbf r')-1]\ \mathbf H(\mathbf r')\,d^3r',\qquad
+\mathbf P''(\hat s)=-\frac{i k_0}{4\pi}\int_{V} e^{-i k_0\,\hat s\cdot \mathbf r'}\,\nabla'\varepsilon(\mathbf r')\times \mathbf E_{\text{int}}(\mathbf r')\,d^3r'.
+\end{equation}
+
+
+Inserting $\mathbf H_{\text{int}}$ in \(\mathbf P'(\hat s)\) and splitting the integral into two parts:
+
+\noindent
+{\em mismatch (interior-phase) term:}
+\begin{align}
+\int_{|\mathbf r'|\le a}\! e^{-i k_0\,\hat s\cdot \mathbf r'}\,m(\hat s_0\times \hat n_0)\,e^{i m k_0\,\hat s_0\cdot \mathbf r'}\,d^3r'
+&= m(\hat s_0\times \hat n_0)\int_{|\mathbf r'|\le a} e^{-i\mathbf q\cdot \mathbf r'}\,d^3r' \nonumber\\
+&= m(\hat s_0\times \hat n_0)\,4\pi a^3\,\frac{j_1(x)}{x},
+\end{align}
+where $\mathbf q=k_0(\hat s-m\hat s_0)$, $x:=|\mathbf q|a=k_0 a\,\sqrt{1+m^2-2m\cos\theta}$, and $\cos\theta=\hat s\cdot \hat s_0$. Here $j_1(z)=(\sin z - z\cos z)/z^2$.
+
+\noindent
+{\em in-phase (vacuum-phase) term:}
+\begin{equation}
+\int_{|\mathbf r'|\le a}\! e^{-i k_0\,\hat s\cdot \mathbf r'}\,\gamma(\hat s\times \hat n)\,e^{i k_0\,\hat s\cdot \mathbf r'}\,d^3r'
+= \gamma(\hat s\times \hat n)\,\frac{4\pi a^3}{3}.
+\end{equation}
+Therefore
+\begin{equation}
+\boxed{\
+\mathbf P'(\hat s)
+= k_0^2\,\frac{(m^2-1)a^3}{3}\left\{
+m\left[\frac{3 j_1(x)}{x}\right](\hat s_0\times \hat n_0)
++\gamma\,(\hat s\times \hat n)
+\right\}.
+\ }
+\end{equation}
+\subsubsection{Explicit evaluation of the surface term $\mathbf P''$ and the cancellation of $m$}
+
+We start from the far-field magnetic amplitude (Gaussian units)
+\[
+\mathbf H_{\text{sctd}}(\mathbf r)=\frac{e^{ik_0 r}}{r}\,\mathbf F_2(\hat s),
+\qquad 
+\mathbf F_2(\hat s)=-\hat s\times\big[\hat s\times(\mathbf P'(\hat s)+\mathbf P''(\hat s))\big],
+\]
+with
+\begin{equation}
+\label{eq:PprimePpprime}
+\mathbf P'(\hat s)=\frac{k_0^2}{4\pi}\!\int_V\! e^{-ik_0\hat s\cdot\mathbf r'}\,[\varepsilon(\mathbf r')-1]\,\mathbf H_{\text{int}}(\mathbf r')\,d^3r',\qquad
+\mathbf P''(\hat s)=-\frac{ik_0}{4\pi}\!\int_V\! e^{-ik_0\hat s\cdot\mathbf r'}\,\nabla'\varepsilon(\mathbf r')\times \mathbf E_{\text{int}}(\mathbf r')\,d^3r'.
+\end{equation}
+
+\paragraph{Setup for a homogeneous sphere.}
+Let $\varepsilon(\mathbf r')=m^2$ inside the sphere $|\mathbf r'|\le a$ and $1$ outside. Then
+\[
+\nabla\varepsilon(\mathbf r')=(\varepsilon_{\rm out}-\varepsilon_{\rm in})\,\hat s'\,\delta_S
+=(1-m^2)\,\hat s'\,\delta_S=-(m^2-1)\,\hat s'\,\delta_S,
+\]
+where $\hat s'=\hat r'$ is the outward normal and $\delta_S$ is the surface delta supported on $|\mathbf r'|=a$. Hence the \emph{volume} integral in $\mathbf P''$ reduces to a \emph{surface} integral with a \emph{plus} sign:
+\begin{equation}
+\label{eq:Ppprime_surface}
+\boxed{\
+\mathbf P''(\hat s)=\frac{ik_0}{4\pi}\,(m^2-1)\!\!\oint_{|\mathbf r'|=a}\! e^{-ik_0\hat s\cdot\mathbf r'}\,\big(\hat s'\times \mathbf E_{\text{int}}(\mathbf r')\big)\,dS'.
+\ }
+\end{equation}
+
+\paragraph{Internal-field ansatz and split of terms.}
+With
+\[
+\mathbf E_{\text{int}}(\mathbf r')=\hat n_0\,e^{imk_0\hat s_0\cdot \mathbf r'}+\gamma\,\hat n\,e^{ik_0\hat s\cdot \mathbf r'},
+\]
+the surface integral splits into a ``mismatch'' term (phases $mk_0\hat s_0$ vs $k_0\hat s$) and an ``in-phase'' term:
+\begin{align}
+\mathbf P''(\hat s)
+&=\frac{ik_0}{4\pi}(m^2-1)\left[
+\oint e^{-ik_0\hat s\cdot\mathbf r'}\,\hat s'\times \hat n_0\,e^{imk_0\hat s_0\cdot \mathbf r'}\,dS'
+\;+\;
+\gamma\oint e^{-ik_0\hat s\cdot\mathbf r'}\,\hat s'\times \hat n\,e^{ik_0\hat s\cdot \mathbf r'}\,dS'
+\right].
+\end{align}
+The second integral vanishes from Gauss's theorem,$
+\mathbf{a} \cdot \left( \oint \hat{s}' \, dS' \right) = \oint \hat{s}' \cdot \mathbf{a} \, dS' = \iiint \nabla \cdot \mathbf{a} \, dV' = 0
+$, where \(\mathbf{a}\) is any constant vector.
+
+\paragraph{Vector surface integral on the sphere.}
+Let $\mathbf q:=k_0(\hat s-m\hat s_0)$ and $x:=qa=k_0a\sqrt{1+m^2-2m\cos\theta}$ with $\cos\theta=\hat s\cdot \hat s_0$. Using the identity
+\begin{equation}
+\label{eq:surf_vector_identity}
+\oint_{|\mathbf r'|=a}\! e^{-i\mathbf q\cdot \mathbf r'}\,\hat s'\,dS'
+= a^2\!\int d\Omega_{\hat r'}\,\hat r'\,e^{-iqa\,\hat q\cdot \hat r'}
+= -\,4\pi i\,a^2\,j_1(x)\,\hat q,
+\qquad \hat q=\frac{\mathbf q}{q},
+\end{equation}
+we obtain, for constant $\hat n_0$,
+\[
+\oint e^{-i\mathbf q\cdot \mathbf r'}\,(\hat s'\times \hat n_0)\,dS'
+=\left(\oint e^{-i\mathbf q\cdot \mathbf r'}\,\hat s'\,dS'\right)\times \hat n_0
+=\big[-4\pi i\,a^2\,j_1(x)\,\hat q\big]\times \hat n_0.
+\]
+Therefore
+\begin{equation}
+\label{eq:Ppprime_mismatch}
+\boxed{\
+\mathbf P''(\hat s)
+= k_0\,(m^2-1)\,a^2\,j_1(x)\,(\hat q\times \hat n_0),
+\qquad \hat q=\frac{\hat s-m\hat s_0}{\sqrt{1+m^2-2m\cos\theta}}.
+\ }
+\end{equation}
+
+\paragraph{Volume term for comparison.}
+From the volume current term in \eqref{eq:PprimePpprime} one finds (using the previously derived scalar form-factor $4\pi a^3 j_1(x)/x$ and $\mathbf H_{\text{int}}=m(\hat s_0\times \hat n_0)e^{imk_0\hat s_0\cdot\mathbf r'}+\cdots$)
+\begin{equation}
+\label{eq:Pprime_mismatch}
+\boxed{\
+\mathbf P'(\hat s)\Big|_{\text{mismatch}}
+= k_0^2\,\frac{(m^2-1)a^3}{3}\;
+m\left[\frac{3j_1(x)}{x}\right]\,
+(\hat s_0\times \hat n_0).
+\ }
+\end{equation}
+
+\paragraph{Projecting to the radiative (transverse) subspace.}
+The far-field operator $-\hat s\times(\hat s\times \cdot)$ projects any vector to its component $\perp \hat s$. For either polarization channel $\hat n_0\in\{\hat e_\perp,\hat e_\parallel\}$ (defined about the scattering plane), the following geometric identities hold:
+\begin{align}
+\label{eq:proj_identities}
+\big[(\hat s_0\times \hat n_0)\big]_{\perp \hat s}
+&=\cos\theta\,(\hat s\times \hat n_0),\\
+\big[(\hat q\times \hat n_0)\big]_{\perp \hat s}
+&=(\hat q\cdot \hat s)\,(\hat s\times \hat n_0)
+=\frac{1-m\cos\theta}{\sqrt{1+m^2-2m\cos\theta}}\;(\hat s\times \hat n_0)
+=\frac{k_0 a}{x}\,(1-m\cos\theta)\,(\hat s\times \hat n_0).
+\end{align}
+
+\paragraph{Cancellation of the spurious $m$ and the final amplitude.}
+Using \eqref{eq:Ppprime_mismatch}–\eqref{eq:proj_identities} and $x=qa$, the \emph{mismatch} parts of the projected amplitudes become
+\[
+\big[\mathbf P'(\hat s)\big]_{\perp \hat s}
+= k_0^2\frac{(m^2-1)a^3}{3}\; m\left[\frac{3j_1(x)}{x}\right]\cos\theta\,(\hat s\times \hat n_0),
+\]
+\[
+\big[\mathbf P''(\hat s)\big]_{\perp \hat s}
+= k_0(m^2-1)a^2\,j_1(x)\cdot \frac{k_0 a}{x}(1-m\cos\theta)\,(\hat s\times \hat n_0)
+= k_0^2\frac{(m^2-1)a^3}{3}\;\left[\frac{3j_1(x)}{x}\right](1-m\cos\theta)\,(\hat s\times \hat n_0).
+\]
+Summing,
+\[
+\big[\mathbf P'(\hat s)+\mathbf P''(\hat s)\big]_{\perp \hat s}
+= k_0^2\frac{(m^2-1)a^3}{3}\left[\frac{3j_1(x)}{x}\right]
+\underbrace{\big(m\cos\theta+1-m\cos\theta\big)}_{=\,1}\,(\hat s\times \hat n_0),
+\]
+so the offending \(m\) factor cancels \emph{exactly}:
+\begin{equation}
+\boxed{\
+\big[\mathbf P'(\hat s)+\mathbf P''(\hat s)\big]_{\perp \hat s}
+= k_0^2\frac{(m^2-1)a^3}{3}\left[\frac{3j_1(x)}{x}\right](\hat s\times \hat n_0).
+\ }
+\end{equation}
+Adding the in-phase ($\gamma$) piece (which contributes only via $\mathbf P'$ and is already transverse), the total far-field magnetic amplitude is
+\[
+\mathbf F_2(\hat s)=\big[\mathbf P'(\hat s)+\mathbf P''(\hat s)\big]_{\perp \hat s}
+= K\left[\frac{3j_1(x)}{x}+\gamma\right](\hat s\times \hat n_0),
+\qquad K:=k_0^2\frac{(m^2-1)a^3}{3}.
+\]
+Hence
+\begin{equation}
+\boxed{\
+\mathbf H_{\text{sctd}}(\mathbf r)=\frac{e^{ik_0 r}}{r}\;K\left[\frac{3j_1(x)}{x}+\gamma\right](\hat s\times \hat n_0).
+\ }
+\end{equation}
+Since in the vacuum exterior $\mathbf H_{\text{sctd}}=\hat s\times \mathbf E_{\text{sctd}}$, this coincides with the electric-field result and guarantees
+\(
+|\mathbf H_{\text{sctd}}|=|\mathbf E_{\text{sctd}}|
+\)
+outside the particle.
+
+
+
+\section{Summary of the scattered fields:}
+
+Defining the orthonormal basis about the scattering plane spanned by $\hat s_0$ and $\hat s$:
+\begin{equation}
+\hat e_\perp=\frac{\hat s\times \hat s_0}{\sin\theta},\qquad
+\hat e_\parallel=\frac{\hat s_0-\cos\theta\,\hat s}{\sin\theta},\qquad
+\hat s\cdot \hat e_{\perp,\parallel}=0,\quad \theta=\arccos(\hat s\cdot \hat s_0).
+\end{equation}
+choosing either incident polarization $\hat n_0\in\{\hat e_\perp,\hat e_\parallel\}$ and set isotropic sphere approximaton:$\hat n=\hat n_0$ (so $\hat s\cdot \hat n_0=0$). Time dependence is $e^{-i\omega t}$. We use Gaussian units with $\mu=1$. Then
+\begin{equation}\label{3_E scattered final}
+\boxed{\
+\mathbf E_{\text{sctd}}^{(\perp\ \mathrm{or}\ \parallel)}(\mathbf r)=\frac{e^{ik_0 r}}{r}\,F(\theta)\,\hat n_0,\qquad
+F(\theta):=K\left[\frac{3 j_1(x)}{x}+\gamma\right],\quad x=k_0 a\sqrt{1+m^2-2m\cos\theta}.
+\ }
+\end{equation}
+
+\begin{align}
+\mathbf H_{\text{sctd}}^{(\perp)}(\mathbf r)&=\frac{e^{ik_0 r}}{r}\,F(\theta)\,(\hat s\times \hat e_\perp)
+=\frac{e^{ik_0 r}}{r}\,F(\theta)\,(-\hat e_\parallel),\\[4pt]
+\mathbf H_{\text{sctd}}^{(\parallel)}(\mathbf r)&=\frac{e^{ik_0 r}}{r}\,F(\theta)\,(\hat s\times \hat e_\parallel)
+=\frac{e^{ik_0 r}}{r}\,F(\theta)\,\hat e_\perp,
+\end{align}
+here,
+\[ K:=k_0^2\frac{(m^2-1)a^3}{3}\] and $j_1$ is the spherical Bessel function $j_1(z)=\dfrac{\sin z - z\cos z}{z^2}$.
+The magnitudes are $|\mathbf H_{\text{sctd}}|=|\mathbf E_{\text{sctd}}|$ outside (Gaussian units), while inside the dielectric $|\mathbf H|=m\,|\mathbf E|$.
+
+\subsection{Checks}
+(i) transversality: $\hat s\cdot \mathbf H_{\text{sctd}}=0$ and $\hat s\cdot \mathbf E_{\text{sctd}}=0$. \\
+(ii) energy flow: in the interior, with $D=m^2 E$ and $B=H$, one finds $|\mathbf S|/u=c/m$, as expected.
+
+\section{Spherical coordinates transformation}
+
+Time dependence $e^{-i\omega t}$, Gaussian units with $\mu=1$.
+Incident direction $\hat s_0=\hat x$. Observation direction
+$\hat s=\hat{\bm r}$ is the spherical radial unit.
+
+Spherical basis (physics convention):
+\[
+\hat{\bm r}=(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta),\quad
+\hat{\bm\theta}=(\cos\theta\cos\phi,\ \cos\theta\sin\phi,\ -\sin\theta),\quad
+\hat{\bm\phi}=(-\sin\phi,\ \cos\phi,\ 0).
+\]
+Right-handedness: \(\hat{\bm r}\times\hat{\bm\theta}=\hat{\bm\phi}\),
+\(\hat{\bm\theta}\times\hat{\bm\phi}=\hat{\bm r}\),
+\(\hat{\bm\phi}\times\hat{\bm r}=\hat{\bm\theta}\).
+
+\section*{Scattering angle between \(\hat s_0=\hat x\) and \(\hat s=\hat{\mathbf r}\)}
+
+\paragraph{Writing the unit vectors.}
+In standard spherical coordinates,
+\[
+\hat{\mathbf r}=(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta),\qquad
+\hat s_0=\hat x=(1,0,0).
+\]
+
+\paragraph{Computing \(\cos\psi\) from the dot product.}
+By definition,
+\[
+\cos\psi=\hat s_0\cdot\hat s=\hat x\cdot\hat{\mathbf r}
+=(1,0,0)\cdot(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta)
+=\sin\theta\cos\phi.
+\]
+Hence
+\[
+\boxed{\ \cos\psi=\sin\theta\cos\phi\ }.
+\]
+
+\paragraph{Obtaining \(\sin\psi\).}
+Using \(\sin^2\psi=1-\cos^2\psi\),
+\[
+\sin\psi=\sqrt{\,1-\cos^2\psi\,}
+=\sqrt{\,1-\sin^2\theta\cos^2\phi\,}.
+\]
+Thus
+\[
+\boxed{\ \sin\psi=\sqrt{1-\sin^2\theta\cos^2\phi}\ }.
+\]
+
+%-------------------------------------------------------
+% Polarization basis tied to the scattering plane
+%-------------------------------------------------------
+\section{Polarisation basis tied to the scattering plane}
+
+Defining the orthonormal pair in the plane orthogonal to $\hat s$:
+\[
+\hat e_\perp=\frac{\hat s\times\hat s_0}{\sin\psi},\qquad
+\hat e_\parallel=\frac{\hat s_0-(\hat s_0\!\cdot\!\hat s)\,\hat s}{\sin\psi}.
+\]
+In spherical components (note there is no $\hat{\bm r}$ component):
+\[
+\boxed{\;
+\hat e_\perp=\frac{\sin\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\phi},\qquad
+\hat e_\parallel=\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\theta}
+-\frac{\sin\phi}{\sin\psi}\,\hat{\bm\phi}.
+\;}
+\]
+By construction $\hat e_{\perp,\parallel}\perp \hat s$ and
+$\hat e_\perp\times\hat e_\parallel=\hat s$.
+
+\emph{Remark (degenerate directions).}
+When $\sin\psi=0$ (forward/backward along $\hat x$), the scattering plane is undefined.
+Use a limiting procedure in $\psi$ if needed; the scattered amplitudes remain well behaved.
+
+%-------------------------------------------------------
+% Incident plane wave
+%-------------------------------------------------------
+\section{Incident plane wave, labelled in the spherical scattering basis}
+
+The incident phase is $k_0 x=k_0 R\sin\theta\cos\phi$.
+Using your scattering-basis labeling, take
+\[
+\bm E_{\rm inc}^{(\perp)}=e^{ik_0 R\sin\theta\cos\phi}\ \hat e_\perp,\qquad
+\bm E_{\rm inc}^{(\parallel)}=e^{ik_0 R\sin\theta\cos\phi}\ \hat e_\parallel.
+\]
+Thus, explicitly in spherical components:
+\[
+\boxed{\;
+\begin{aligned}
+\bm E_{\rm inc}^{(\perp)}
+&=e^{ik_0 R\sin\theta\cos\phi}\!
+\left(\frac{\sin\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\phi}\right),\\[4pt]
+\bm E_{\rm inc}^{(\parallel)}
+&=e^{ik_0 R\sin\theta\cos\phi}\!
+\left(\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\theta}
+-\frac{\sin\phi}{\sin\psi}\,\hat{\bm\phi}\right).
+\end{aligned}
+\;}
+\]
+The incident magnetic fields follow from $\bm H_{\rm inc}=\hat s_0\times\bm E_{\rm inc}$.
+The decomposition identities we use are
+\[
+\hat x\times\hat{\bm\theta}=\sin\phi\,\hat{\bm r}+\sin\theta\cos\phi\,\hat{\bm\phi},\qquad
+\hat x\times\hat{\bm\phi}=\cos\theta\cos\phi\,\hat{\bm r}-\sin\theta\cos\phi\,\hat{\bm\theta}.
+\]
+Therefore
+\[
+\boxed{\;
+\begin{aligned}
+\bm H_{\rm inc}^{(\perp)}&=e^{ik_0 R\sin\theta\cos\phi}\left[
+\frac{\sin\phi}{\sin\psi}\big(\sin\phi\,\hat{\bm r}+\sin\theta\cos\phi\,\hat{\bm\phi}\big)
++\frac{\cos\theta\cos\phi}{\sin\psi}\big(\cos\theta\cos\phi\,\hat{\bm r}-\sin\theta\cos\phi\,\hat{\bm\theta}\big)
+\right],\\[4pt]
+\bm H_{\rm inc}^{(\parallel)}&=e^{ik_0 R\sin\theta\cos\phi}\left[
+\frac{\cos\theta\cos\phi}{\sin\psi}\big(\sin\phi\,\hat{\bm r}+\sin\theta\cos\phi\,\hat{\bm\phi}\big)
+-\frac{\sin\phi}{\sin\psi}\big(\cos\theta\cos\phi\,\hat{\bm r}-\sin\theta\cos\phi\,\hat{\bm\theta}\big)
+\right].
+\end{aligned}
+\;}
+\]
+These expressions are exact and fully in the spherical basis.
+
+\paragraph{Plane-wave orthogonality check (incident).}
+Since $\bm H_{\rm inc}=\hat s_0\times\bm E_{\rm inc}$ and $\hat s_0\perp\bm E_{\rm inc}$,
+we have $\hat{\bm E}_{\rm inc}\times\hat{\bm H}_{\rm inc}=\hat s_0$.
+
+%-------------------------------------------------------
+% Scattered fields (far field)
+%-------------------------------------------------------
+\section{Far-field scattered fields for arbitrary $(\theta,\phi)$}
+
+Our far-field ansatz (with $R=|\bm r|$) is
+\[
+\bm E_{\rm sctd}^{(\perp\ /\ \parallel)}(R,\theta,\phi)
+=\frac{e^{ik_0 R}}{R}\,F(\psi)\,\hat n_0,\qquad
+\bm H_{\rm sctd}=\hat s\times\bm E_{\rm sctd},\quad \hat s=\hat{\bm r},
+\]
+with
+\[
+F(\psi)=K\!\left[\frac{3\,j_1(x)}{x}+\gamma\right],\quad
+K=k_0^2\frac{(m^2-1)a^3}{3},\quad
+x=k_0 a\sqrt{1+m^2-2m\cos\psi},\quad \cos\psi=\sin\theta\cos\phi.
+\]
+
+Using the spherical forms of $\hat e_{\perp,\parallel}$ above, we get the explicit components:
+
+\[
+\boxed{\;
+\begin{aligned}
+\bm E_{\rm sctd}^{(\perp)}
+&=\frac{e^{ik_0 R}}{R}\,F(\psi)
+\left(\frac{\sin\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\phi}\right),\\[4pt]
+\bm H_{\rm sctd}^{(\perp)}
+&=\hat{\bm r}\times\bm E_{\rm sctd}^{(\perp)}
+=\frac{e^{ik_0 R}}{R}\,F(\psi)
+\left(-\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\sin\phi}{\sin\psi}\,\hat{\bm\phi}\right),
+\end{aligned}
+\;}
+\]
+\[
+\boxed{\;
+\begin{aligned}
+\bm E_{\rm sctd}^{(\parallel)}
+&=\frac{e^{ik_0 R}}{R}\,F(\psi)
+\left(\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\theta}
+-\frac{\sin\phi}{\sin\psi}\,\hat{\bm\phi}\right),\\[4pt]
+\bm H_{\rm sctd}^{(\parallel)}
+&=\hat{\bm r}\times\bm E_{\rm sctd}^{(\parallel)}
+=\frac{e^{ik_0 R}}{R}\,F(\psi)
+\left(\frac{\sin\phi}{\sin\psi}\,\hat{\bm\theta}
++\frac{\cos\theta\cos\phi}{\sin\psi}\,\hat{\bm\phi}\right).
+\end{aligned}
+\;}
+\]
+
+\paragraph{Radiation-zone checks (scattered).}
+Transversality holds identically:
+\[
+\hat{\bm r}\cdot\bm E_{\rm sctd}=0,\qquad \hat{\bm r}\cdot\bm H_{\rm sctd}=0.
+\]
+Moreover, with $\bm H_{\rm sctd}=\hat{\bm r}\times\bm E_{\rm sctd}$ and
+$|\hat e_{\perp,\parallel}|=1$, the Poynting direction is
+\[
+\hat{\bm E}_{\rm sctd}\times\hat{\bm H}_{\rm sctd}
+=\hat e_{(\cdot)}\times(\hat{\bm r}\times\hat e_{(\cdot)})
+=(\hat e\!\cdot\!\hat e)\,\hat{\bm r}-(\hat e\!\cdot\!\hat{\bm r})\,\hat e
+=\hat{\bm r},
+\]
+so the energy flux points along the propagation direction $\hat s=\hat{\bm r}$.

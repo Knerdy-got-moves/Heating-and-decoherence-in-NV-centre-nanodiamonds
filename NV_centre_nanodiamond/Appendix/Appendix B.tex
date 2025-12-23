@@ -1,0 +1,470 @@
+\chapter{Appendix B}
+\section{Derivation of the Time-Domain Poynting Theorem}
+
+We start from Maxwell's curl equations:
+\begin{align}
+    \nabla \times \vv{E} &= - \frac{\partial \vv{B}}{\partial t} \label{B eq:faraday} \\
+    \nabla \times \vv{H} &= \vv{J} + \frac{\partial \vv{D}}{\partial t} \label{B eq:ampere}
+\end{align}
+
+First, we take the dot product of Eq.~\eqref{B eq:faraday} with $\vv{H}$:
+\begin{equation}
+    \vv{H} \cdot (\nabla \times \vv{E}) = - \vv{H} \cdot \frac{\partial \vv{B}}{\partial t} \label{B eq:dot1}
+\end{equation}
+
+Next, we take the dot product of Eq.~\eqref{B eq:ampere} with $\vv{E}$:
+\begin{equation}
+    \vv{E} \cdot (\nabla \times \vv{H}) = \vv{E} \cdot \vv{J} + \vv{E} \cdot \frac{\partial \vv{D}}{\partial t} \label{B eq:dot2}
+\end{equation}
+
+Now, we subtract Eq.~\eqref{B eq:dot2} from Eq.~\eqref{B eq:dot1}:
+\begin{equation}
+    \vv{H} \cdot (\nabla \times \vv{E}) - \vv{E} \cdot (\nabla \times \vv{H}) = - \left( \vv{H} \cdot \frac{\partial \vv{B}}{\partial t} + \vv{E} \cdot \frac{\partial \vv{D}}{\partial t} \right) - \vv{E} \cdot \vv{J} \label{B eq:subtract}
+\end{equation}
+
+We use the vector identity $\nabla \cdot (\vv{A} \times \vv{B}) = \vv{B} \cdot (\nabla \times \vv{A}) - \vv{A} \cdot (\nabla \times \vv{B})$. Applying this to the left-hand side (LHS) of Eq.~\eqref{B eq:subtract} gives:
+\begin{equation}
+    \nabla \cdot (\vv{E} \times \vv{H}) = - \left( \vv{H} \cdot \frac{\partial \vv{B}}{\partial t} + \vv{E} \cdot \frac{\partial \vv{D}}{\partial t} \right) - \vv{J} \cdot \vv{E} \label{B eq:identity }
+\end{equation}
+
+Rearranging the terms to bring the time derivatives to the LHS, we get:
+\begin{equation}
+    \vv{E} \cdot \frac{\partial \vv{D}}{\partial t} + \vv{H} \cdot \frac{\partial \vv{B}}{\partial t} + \nabla \cdot (\vv{E} \times \vv{H}) = - \vv{J} \cdot \vv{E} \label{B eq:rearranged}
+\end{equation}
+
+This answers the question: \textbf{before substituting the constitutive relations, the left-hand side is $\displaystyle \vv{E} \cdot \frac{\partial \vv{D}}{\partial t} + \vv{H} \cdot \frac{\partial \vv{B}}{\partial t} + \nabla \cdot (\vv{E} \times \vv{H})$}.
+
+Finally, we introduce the constitutive relations for a linear, isotropic medium: $\vv{D} = \varepsilon\vv{E}$ and $\vv{B} = \mu\vv{H}$.
+The time-derivative terms can be rewritten as:
+\begin{align}
+    \vv{E} \cdot \frac{\partial \vv{D}}{\partial t} &= \vv{E} \cdot \frac{\partial (\varepsilon \vv{E})}{\partial t} = \varepsilon \vv{E} \cdot \frac{\partial \vv{E}}{\partial t} = \frac{\partial}{\partial t} \left( \frac{1}{2} \varepsilon |\vv{E}|^2 \right) \\
+    \vv{H} \cdot \frac{\partial \vv{B}}{\partial t} &= \vv{H} \cdot \frac{\partial (\mu \vv{H})}{\partial t} = \mu \vv{H} \cdot \frac{\partial \vv{H}}{\partial t} = \frac{\partial}{\partial t} \left( \frac{1}{2} \mu |\vv{H}|^2 \right)
+\end{align}
+Here, we used the identity $\vv{v} \cdot \frac{d\vv{v}}{dt} = \frac{1}{2} \frac{d}{dt}(\vv{v} \cdot \vv{v}) = \frac{1}{2} \frac{d}{dt}(|\vv{v}|^2)$.
+
+Substituting these back into Eq.~\eqref{B eq:rearranged} gives the final target equation, the differential form of Poynting's theorem:
+\begin{equation}
+    \label{Poynting theorem}
+\frac{\partial}{\partial t} \left[ \frac{1}{2} (\varepsilon |\vv{E}|^2 + \mu |\vv{H}|^2) \right] + \nabla \cdot (\vv{E} \times \vv{H}) = - \vv{J} \cdot \vv{E}
+\end{equation}
+
+\section{Time-Averaged Poynting Theorem and Ohmic Loss}
+
+In the time-domain Poynting theorem, $\frac{\partial u}{\partial t}+\nabla\cdot\vv{S}=-\vv{J}\cdot\vv{E}$, the current density $\vv{J}$ represents only the \textbf{free (conduction) current}. Bound (polarization) currents are already accounted for within the $\partial\vv{D}/\partial t$ term, which becomes part of the stored energy density $u$.
+
+For a lossy dielectric, we can model the loss as Ohmic, where $\vv{J}=\sigma\,\vv{E}$ for a conductivity $\sigma \ge 0$. This is equivalent to using a complex permittivity $\tilde\varepsilon=\varepsilon'+i\varepsilon''$ with $\varepsilon''=\sigma/\omega$. Let's verify this equivalence for the power dissipation.
+
+\subsection{Phasor Time-Average Calculation}
+We express the fields in phasor form, assuming an $e^{-i\omega t}$ time-dependence:
+\begin{align}
+    \vv{E}(\vv{r},t) &= \Re\{\vv{E}(\vv{r})e^{-i\omega t}\} \label{B_E_phasor}\\
+    \vv{J}(\vv{r},t) &= \Re\{\sigma\,\vv{E}(\vv{r})\,e^{-i\omega t}\} \label{B_J_phasor}
+\end{align}
+The instantaneous power density dissipated is $\vv{J}\cdot\vv{E}$. We time-average this quantity over one period $T=2\pi/\omega$. Using the identity for the time-average of two harmonic quantities, $\langle \Re\{A e^{-i\omega t}\} \Re\{B e^{-i\omega t}\} \rangle = \frac{1}{2}\Re\{A \cdot B^*\}$, we get:
+\begin{align}
+    \langle \vv{J}\cdot\vv{E} \rangle &= \frac{1}{2}\Re\{\vv{E}\cdot(\sigma\vv{E})^*\} \nonumber \\
+    &= \frac{1}{2}\Re\{\sigma\,\vv{E}\cdot\vv{E}^*\} \quad (\text{since } \sigma \text{ is real}) \nonumber \\
+    &= \frac{1}{2}\sigma\,|\vv{E}|^2 \label{B_power_sigma}
+\end{align}
+We substitute $\sigma=\omega\varepsilon''$ into our result:
+\begin{equation}
+    \langle \vv{J}\cdot\vv{E} \rangle = \frac{1}{2}(\omega\varepsilon'')\,|\vv{E}|^2 = \frac{\omega}{2}\varepsilon''\,|\vv{E}|^2 \label{B_power_eps}
+\end{equation}
+This confirms that modeling Ohmic loss with conductivity $\sigma$ is equivalent to using a complex permittivity with imaginary part $\varepsilon'' = \sigma/\omega$ for calculating time-averaged power dissipation.
+
+In a steady harmonic regime, the time-average of the stored energy is constant, so $\partial\langle u\rangle/\partial t=0$. The averaged Poynting theorem becomes (assuming magnetic losses are zero, $\mu''=0$):
+\begin{equation}
+    \langle \nabla\cdot\vv{S}\rangle = -\frac{\omega}{2}\varepsilon''\,|\vv{E}|^2
+    \label{B_avg_poynting}
+\end{equation}
+Integrating over a volume $V$ enclosing the absorbing particle and applying the divergence theorem gives the total absorbed power, $P_{\text{abs}}$:
+\begin{equation}
+    \oint_{\partial V} \langle \vv{S}\rangle \cdot \hat{\vv{n}}\,dA = -\frac{\omega}{2}\int_{V_{\text{particle}}}\varepsilon''|\vv{E}|^2\,dV \equiv -P_{\text{abs}}
+    \label{B_P_abs}
+\end{equation}
+The net power flux into the volume equals the power absorbed inside.
+
+\subsection{Derivation of Complex Permittivity in Phasor Form}
+The equivalence between Ohmic current and complex permittivity arises directly from Maxwell's equations in the frequency domain. We start with Ampere's law in the time domain, including the constitutive relations for a simple lossy dielectric:
+\begin{equation}
+    \nabla\times\vv{H}=\vv{J}+\frac{\partial \vv{D}}{\partial t}, \qquad \vv{D}=\varepsilon'\vv{E}, \quad \vv{J}=\sigma \vv{E}
+    \label{B_ampere_time}
+\end{equation}
+Transforming to the phasor domain, the time derivative $\partial/\partial t$ becomes a multiplication by $-i\omega$:
+\begin{align}
+    \nabla\times\vv{H} &= \sigma\vv{E} - i\omega \varepsilon'\vv{E} \nonumber \\
+    &= (\sigma - i\omega\varepsilon')\vv{E} \nonumber \\
+    &= -i\omega\left(\varepsilon' + i\frac{\sigma}{\omega}\right)\vv{E} \label{B_phasor_combine}
+\end{align}
+This has the same form as the lossless Ampere's law, $\nabla\times\vv{H} = -i\omega\tilde{\varepsilon}\vv{E}$, if we define the complex permittivity $\tilde{\varepsilon}$ as:
+\begin{equation}
+    \tilde{\varepsilon} = \varepsilon' + i\frac{\sigma}{\omega} = \varepsilon' + i\varepsilon''
+    \label{B_complex_epsilon}
+\end{equation}
+Note: Some texts use an $e^{+i\omega t}$ convention, which results in $\tilde{\varepsilon} = \varepsilon' - i\sigma/\omega$. Regardless of convention, for a passive (lossy) medium, the time-averaged dissipated power density, $\langle p_{\text{diss}} \rangle$, must be positive. This requires the imaginary part of the permittivity to have the correct sign to represent loss. For our $e^{-i\omega t}$ convention, this means $\varepsilon'' > 0$.
+\section{Proof of zero divergence for the incident Poynting vector}
+\subsection{Convention}
+We consider time-harmonic fields with an assumed time dependence of $e^{-i\omega t}$. The exterior medium is homogeneous, lossless, and source-free, characterized by real permittivity $\varepsilon_m$ and permeability $\mu_0$. The incident fields $(\vv{E}_{\text{inc}}, \vv{H}_{\text{inc}})$ are solutions to the source-free Maxwell's equations in this medium. The time-averaged Poynting vector is defined as $\vv{S}_{\text{inc}} := \frac{1}{2} \Re(\vv{E}_{\text{inc}} \times \vv{H}_{\text{inc}}^*)$.
+
+Our goal is to show that $\left\langle\nabla\cdot\vv{S}_{\text{inc}}\right\rangle = 0$.
+
+\subsection{Derivation}
+
+\subsubsection{Vector Identity for the Divergence of a Cross Product}
+We begin with the standard vector identity for the divergence of the cross product of two complex vector fields, $\vv{A}$ and $\vv{B}$:
+\begin{equation}
+    \nabla\cdot(\vv{A} \times \vv{B}) = \vv{B}\cdot(\nabla\times\vv{A}) - \vv{A}\cdot(\nabla\times\vv{B})
+\end{equation}
+
+We apply this identity by setting $\vv{A} = \vv{E}_{\text{inc}}$ and $\vv{B} = \vv{H}_{\text{inc}}^*$:
+\begin{equation}
+    \nabla\cdot(\vv{E}_{\text{inc}} \times \vv{H}_{\text{inc}}^*) = \vv{H}_{\text{inc}}^*\cdot(\nabla\times\vv{E}_{\text{inc}}) - \vv{E}_{\text{inc}}\cdot(\nabla\times\vv{H}_{\text{inc}}^*)
+\end{equation}
+
+\subsubsection{Time average of phasors}
+
+\[
+\text{Let } A,B\in\mathbb{C} \text{ be phasors and } T=\frac{2\pi}{\omega}.
+\]
+Use \(\Re z=\tfrac12(z+z^*)\):
+\[
+\Re\{A e^{-i\omega t}\}=\frac{1}{2}\!\left(A e^{-i\omega t}+A^* e^{i\omega t}\right),\quad
+\Re\{B e^{-i\omega t}\}=\frac{1}{2}\!\left(B e^{-i\omega t}+B^* e^{i\omega t}\right).
+\]
+Multiply:
+\begin{align*}
+\Re\{A e^{-i\omega t}\}\,\Re\{B e^{-i\omega t}\}
+&=\frac14\Big[
+A B\, e^{-i2\omega t} + A B^* + A^* B + A^* B^* e^{i2\omega t}
+\Big].
+\end{align*}
+Average over one period:
+\[
+\left\langle \Re\{A e^{-i\omega t}\}\,\Re\{B e^{-i\omega t}\}\right\rangle
+=\frac{1}{T}\int_{0}^{T}\frac14\Big[
+A B\, e^{-i2\omega t} + A B^* + A^* B + A^* B^* e^{i2\omega t}
+\Big]\,dt\]
+\[
+=\frac14\Big[ 0 + A B^* + A^* B + 0 \Big]
+=\frac{1}{2}\,\Re\{A B^*\}.
+\]
+This proves
+\[
+\boxed{\ \left\langle \Re\{A e^{-i\omega t}\}\,\Re\{B e^{-i\omega t}\}\right\rangle
+=\frac{1}{2}\,\Re\{A B^*\}\ }.
+\]
+
+% Vector generalization (componentwise)
+\[
+\left\langle \Re\{\mathbf A e^{-i\omega t}\}\cdot \Re\{\mathbf B e^{-i\omega t}\}\right\rangle
+=\frac{1}{2}\,\Re\{\mathbf A\cdot \mathbf B^*\},\qquad
+\left\langle \Re\{\mathbf A e^{-i\omega t}\}\times \Re\{\mathbf B e^{-i\omega t}\}\right\rangle
+=\frac{1}{2}\,\Re\{\mathbf A\times \mathbf B^*\}.
+\]
+
+To find the divergence of the Poynting vector, we take the real part of this expression and divide by 2:
+\begin{equation}
+    \left\langle\nabla\cdot\vv{S}_{\text{inc}}\right\rangle = \frac{1}{2} \Re\left\{ \vv{H}_{\text{inc}}^*\cdot(\nabla\times\vv{E}_{\text{inc}}) - \vv{E}_{\text{inc}}\cdot(\nabla\times\vv{H}_{\text{inc}}^*) \right\}
+    \label{B_Grad S_inc 1}
+\end{equation}
+
+\subsubsection{Maxwell’s Curl Equations (Phasor Form)}
+In the source-free, homogeneous exterior, the incident fields satisfy Maxwell's curl equations in phasor form:
+\begin{align}
+    \nabla\times\vv{E}_{\text{inc}} &= i\omega \mu_0 \vv{H}_{\text{inc}} \label{B_eq:faraday_inc} \\
+    \nabla\times\vv{H}_{\text{inc}} &= -i\omega \varepsilon_m \vv{E}_{\text{inc}} \label{B_eq:ampere_inc}
+\end{align}
+We take the complex conjugate of the second equation \eqref{B_eq:ampere_inc}. Since $\varepsilon_m$ is real, this gives:
+\begin{equation}
+    \nabla\times\vv{H}_{\text{inc}}^* = +i\omega \varepsilon_m \vv{E}_{\text{inc}}^*
+    \label{B_eq:ampere_conj_inc}
+\end{equation}
+Now, we substitute equations \eqref{B_eq:faraday_inc} and \eqref{B_eq:ampere_conj_inc} into our result from above \eqref{B_Grad S_inc 1}:
+\begin{equation}
+\left\langle\nabla\cdot\vv{S}_{\text{inc}}\right\rangle = \frac{1}{2} \Re\left\{ \vv{H}_{\text{inc}}^*\cdot(i\omega \mu_0 \vv{H}_{\text{inc}}) - \vv{E}_{\text{inc}}\cdot(i\omega \varepsilon_m \vv{E}_{\text{inc}}^*) \right\}
+    \label{B_Grad S_inc 2}
+\end{equation}
+
+\subsubsection{Simplifying and expanding the Pyonting vector}
+We can simplify the dot products inside the curly braces using the identities $\vv{H}_{\text{inc}}^*\cdot\vv{H}_{\text{inc}} = |\vv{H}_{\text{inc}}|^2$ and $\vv{E}_{\text{inc}}\cdot\vv{E}_{\text{inc}}^* = |\vv{E}_{\text{inc}}|^2$. These squared magnitudes are real, non-negative quantities.
+\begin{align}
+\left\langle\nabla\cdot\vv{S}_{\text{inc}}\right\rangle &= \frac{1}{2} \Re\left\{ i\omega \mu_0 |\vv{H}_{\text{inc}}|^2 - i\omega \varepsilon_m |\vv{E}_{\text{inc}}|^2 \right\} \\
+    &= \frac{1}{2} \Re\left\{ i\omega \left( \mu_0 |\vv{H}_{\text{inc}}|^2 - \varepsilon_m |\vv{E}_{\text{inc}}|^2 \right) \right\}
+\end{align}
+The term inside the curly braces is a purely imaginary number (the imaginary unit $i$ times a real number). The real part of any purely imaginary number is zero. Therefore,
+\begin{equation}\label{B_Grad_S_inc 3}
+\left\langle\nabla\cdot\vv{S}_{\text{inc}}\right\rangle = 0
+\end{equation}
+
+\subsubsection{Zero Net Flux for Any Closed Surface}
+By the divergence theorem, the net flux of $\avg{\vv{S}_{\text{inc}}}$ through any closed surface $\partial V$ bounding a volume $V$ in the lossless exterior must be zero:
+\begin{equation}
+    \oint_{\partial V} \avg{\vv{S}_{\text{inc}} \cdot \vv{n}} \,dA = \int_V \avg{\nabla\cdot\vv{S}_{\text{inc}} }\,dV = \int_V 0 \,dV = 0
+\end{equation}
+This result is general and holds for any source-free field configuration in a lossless medium, such as plane waves, spherical waves, or focused beams (e.g., a Debye-Wolf beam), because the derivation relied only on Maxwell's equations.
+
+\section{Free-space Helmholtz Green's function and Sommerfeld condition}
+\subsection{Setup}
+We consider a scalar wave field $u$ in a homogeneous, lossless medium, governed by the Helmholtz equation. The wave is generated by sources or scattering objects confined to a finite region $|\vv{r}| \le R_0$. Outside this region, the field $u$ satisfies the source-free equation:
+\[
+(\nabla^2 + k^2)u = 0, \quad \text{for } |\vv{r}| > R_0
+\]
+We assume a time-harmonic dependence of $e^{-i\omega t}$. Our goal is to derive the mathematical condition that ensures our solution corresponds to a physically realistic wave radiating outwards to infinity.
+
+\vspace{1em}
+\noindent\textbf{Goal:}\quad \boxed{\lim_{r\to\infty} r\big(\partial_r u - i k\,u\big)=0}\quad\text{(Sommerfeld Radiation Condition)}
+\vspace{1em}
+
+\subsection{Green's function method}
+Find \(G(\mathbf r,\mathbf r')\) such that
+\[
+(\nabla^2 + k^2)G(\mathbf r,\mathbf r')=-\delta(\mathbf r-\mathbf r'),\qquad k>0,
+\]
+in a homogeneous, lossless medium with the time convention \(e^{-i\omega t}\).
+By translation invariance let \(\mathbf R:=\mathbf r-\mathbf r'\) and \(G(\mathbf r,\mathbf r')=G(R)\), \(R=|\mathbf R|\).
+
+\subsection{Fourier transform and retarded prescription}
+Define the spatial Fourier transform \(\widehat G(\mathbf q)=\int_{\mathbb R^3} G(\mathbf R)\,e^{-i\mathbf q\cdot\mathbf R}\,d^3R\).
+Transforming the PDE gives
+\[
+(-|\mathbf q|^2 + k^2)\,\widehat G(\mathbf q) = -1
+\quad\Rightarrow\quad
+\widehat G(\mathbf q)=\frac{1}{k^2-|\mathbf q|^2}\,.
+\]
+To select the \emph{outgoing} (retarded) solution under the \(e^{-i\omega t}\) convention, use the
+\emph{limiting-absorption} prescription
+\[
+\boxed{\ \widehat G(\mathbf q)=\frac{1}{k^2-|\mathbf q|^2-\;i0}\ }\qquad
+(\text{vanishingly small loss }~k\to k+i0~\Rightarrow~ -i0 \text{ here}).
+\]
+
+\subsection{Inverse transform reducing to one oscillatory integral)}
+Using spherical \(\mathbf q\)-coordinates with polar axis along \(\mathbf R\),
+\[
+\int_{\mathbb S^2} e^{i\mathbf q\cdot\mathbf R}\,d\Omega_q
+=4\pi\,\frac{\sin(qR)}{qR},
+\]
+so
+\[
+G(R)=\frac{1}{(2\pi)^3}\,\frac{4\pi}{R}\,I(R),\qquad
+I(R):=\int_0^\infty \frac{q\,\sin(qR)}{\,k^2-q^2-\;i0\,}\,dq.
+\]
+
+\subsection{Evaluating scalar Helmholtz Equation Green's function by Sokhotski-Plemelj}
+Using,
+\[
+\frac{1}{k^2-q^2-\;i0}=\operatorname{PV}\!\frac{1}{k^2-q^2}\;+\;i\pi\,\delta(k^2-q^2).
+\]
+Hence
+\[
+I(R)=
+\underbrace{\operatorname{PV}\!\int_0^\infty \frac{q\sin(qR)}{k^2-q^2}\,dq}_{\text{principal value}}
+\;+\; i\pi\!\int_0^\infty q\sin(qR)\,\delta(k^2-q^2)\,dq.
+\]
+The delta term is elementary since \(\delta(k^2-q^2)=\frac{1}{2k}\,\delta(q-k)\) on \([0,\infty)\):
+\[
+\int_0^\infty q\sin(qR)\,\delta(k^2-q^2)\,dq=\frac{1}{2}\sin(kR).
+\]
+For the PV integral, we use the standard sine-transform identity (proved by differentiating a known cosine PV integral):
+
+
+For $a>0$ and $b>0$,
+\[
+\boxed{\ \operatorname{PV}\!\int_{0}^{\infty}\frac{x\,\sin(ax)}{\,b^{2}-x^{2}\,}\,dx
+= -\,\frac{\pi}{2}\cos(ab)\ }.
+\]
+
+Define
+\[
+K(a):=\operatorname{PV}\!\int_{0}^{\infty}\frac{\cos(ax)}{\,b^{2}-x^{2}\,}\,dx,\qquad a>0.
+\]
+Extend to the full line using evenness and write
+\[
+2K(a)=\operatorname{PV}\!\int_{-\infty}^{\infty}\frac{\cos(ax)}{\,b^{2}-x^{2}\,}\,dx
+=\Re\left\{\operatorname{PV}\!\int_{-\infty}^{\infty}\frac{e^{iax}}{\,b^{2}-x^{2}\,}\,dx\right\}.
+\]
+Compute the PV integral by residues: for $a>0$ close in the upper half–plane and take
+half–residues at the real poles $x=\pm b$ (the PV prescription). Since
+\[
+\operatorname{Res}\!\left(\frac{e^{iax}}{b^{2}-x^{2}},x=\pm b\right)=\mp\frac{e^{\pm iab}}{2b},
+\]
+their sum is $-\tfrac{i}{b}\sin(ab)$, hence
+\[
+\operatorname{PV}\!\int_{-\infty}^{\infty}\frac{e^{iax}}{\,b^{2}-x^{2}\,}\,dx
+=i\pi\!\left(-\frac{i}{b}\sin(ab)\right)=\frac{\pi}{b}\sin(ab).
+\]
+Taking the real part and halving,
+\[
+K(a)=\frac{\pi}{2b}\sin(ab).
+\]
+Differentiate under the (principal–value) integral sign (justified since the integrand decays and the PV removes the pole):
+\[
+K'(a)=\operatorname{PV}\!\int_{0}^{\infty}\frac{-x\sin(ax)}{\,b^{2}-x^{2}\,}\,dx.
+\]
+But from the closed form, $K'(a)=\tfrac{\pi}{2}\cos(ab)$. Therefore
+\[
+\operatorname{PV}\!\int_{0}^{\infty}\frac{x\sin(ax)}{\,b^{2}-x^{2}\,}\,dx
+=-\,K'(a)= -\,\frac{\pi}{2}\cos(ab),
+\]
+as claimed.
+
+
+
+
+
+
+Applying this with \(a=R\), \(b=k\) yields
+\[
+I(R)=\frac{\pi}{2}\cos(kR)\;+\;i\,\frac{\pi}{2}\sin(kR)
+=\frac{\pi}{2}\,e^{ikR}.
+\]
+
+\begin{equation}\label{B_Scalar green's function}
+\boxed{  G(R)=\frac{1}{(2\pi)^3}\,\frac{4\pi}{R}\,\frac{\pi}{2}\,e^{ikR}
+=\ \frac{e^{ikR}}{4\pi R}\ }.  
+\end{equation}
+
+
+\subsection{Sommerfeld radiation condition}
+Differentiate:
+\[
+(\partial_R-ik)\,G(R)=\Big(\frac{ik}{4\pi R}-\frac{1}{4\pi R^2}-\frac{ik}{4\pi R}\Big)e^{ikR}
+=-\,\frac{e^{ikR}}{4\pi R^2}.
+\]
+Hence
+\begin{equation}\label{B_Sommerfield rad}
+   \boxed{\ \lim_{R\to\infty} R\big(\partial_R-ik\big)G(R)=0\ } \qquad \text{(Sommerfeld condition)}. 
+\end{equation}
+
+
+
+\paragraph{Remark on sign conventions.}
+With \(e^{-i\omega t}\), the \emph{retarded/outgoing} prescription is \(k^2-|\mathbf q|^2-\;i0\) and yields \(e^{+ikR}/(4\pi R)\).
+If one instead used \(+\;i0\), the result would be \(e^{-ikR}/(4\pi R)\), i.e.\ the \emph{incoming} (advanced) solution under this time convention.
+\section{Dyadic Green's function from the scalar Helmholtz Green's function}
+
+\subsection{Setting and notation}
+Let $k>0$ be the (free-space) wavenumber. The scalar Green's function $G:\mathbb R^3\times\mathbb R^3\to\mathbb C$ is
+\[
+G(\mathbf r,\mathbf r')=\frac{e^{ik|\mathbf r-\mathbf r'|}}{4\pi|\mathbf r-\mathbf r'|},
+\]
+and solves, in the distributional sense,
+\begin{equation}
+(\nabla^2 + k^2)G(\mathbf r,\mathbf r') = -\delta(\mathbf r-\mathbf r').
+\label{B_eq:scalar-Helmholtz}
+\end{equation}
+Here $\nabla$ acts on $\mathbf r$ and $\nabla'$ acts on $\mathbf r'$. We also use
+\[
+\nabla\times\nabla\times\mathbf A=\nabla(\nabla\cdot\mathbf A)-\nabla^2\mathbf A
+\quad\text{for any smooth vector field }\mathbf A.
+\]
+
+\subsection*{Claim}
+Define the dyadic (tensor) field
+\begin{equation}
+\boldsymbol{\Gamma}(\mathbf r,\mathbf r') \;:=\; \Big(\mathbf I-\frac{1}{k^2}\,\nabla\nabla'\Big)\,G(\mathbf r,\mathbf r').
+\label{B_eq:dyadic-def}
+\end{equation}
+Then
+\begin{equation}
+\nabla\times\nabla\times\boldsymbol{\Gamma}(\mathbf r,\mathbf r')-k^2\,\boldsymbol{\Gamma}(\mathbf r,\mathbf r')
+=\mathbf I\,\delta(\mathbf r-\mathbf r'),
+\label{B_eq:dyadic-equation}
+\end{equation}
+and the reciprocity/symmetry relation
+\begin{equation}
+\tilde{\boldsymbol{\Gamma}}(\mathbf r',\mathbf r)=\boldsymbol{\Gamma}(\mathbf r,\mathbf r')
+\label{B_eq:dyadic-reciprocity}
+\end{equation}
+holds (where $\tilde{\cdot}$ denotes transpose).
+
+\subsection{Proof of \eqref{B_eq:dyadic-equation}}
+We act with the operator $\mathcal L:=\nabla\times\nabla\times-k^2\mathbf I$ on $\boldsymbol{\Gamma}$ and show that $\mathcal L\boldsymbol{\Gamma}=\mathbf I\,\delta$.
+
+\paragraph{Divergence of $\boldsymbol{\Gamma}$.}
+Compute $\nabla\cdot\boldsymbol{\Gamma}$. Using \eqref{B_eq:dyadic-def} and the fact that $\nabla$ and $\nabla'$ commute on $G$,
+\[
+\nabla\cdot\boldsymbol{\Gamma}
+= \nabla G - \frac{1}{k^2}\,\nabla\cdot\big(\nabla\nabla' G\big)
+= \nabla G - \frac{1}{k^2}\,\nabla\big(\nabla^2 G\big)',
+\]
+where $(\cdot)'$ indicates that the derivative inside is with respect to $\mathbf r'$. Since $G=G(\mathbf r-\mathbf r')$, we have the standard identity
+$\nabla G = -\nabla' G$. Using \eqref{B_eq:scalar-Helmholtz}, $\nabla^2 G = -k^2 G - \delta$, hence
+\[
+\nabla\cdot\boldsymbol{\Gamma}
+= \nabla G - \frac{1}{k^2}\,\nabla\big(-k^2 G - \delta\big)'
+= \nabla G + \nabla' G + \frac{1}{k^2}\,\nabla' \delta
+= \frac{1}{k^2}\,\nabla' \delta,
+\]
+because $\nabla G + \nabla' G=0$. Therefore
+\begin{equation}
+k^2\,\nabla\cdot\boldsymbol{\Gamma}(\mathbf r,\mathbf r')=\nabla'\delta(\mathbf r-\mathbf r').
+\label{B_eq:div-gamma}
+\end{equation}
+
+\paragraph{Apply $\mathcal L$ to the two pieces in \eqref{B_eq:dyadic-def}.}
+Write $\boldsymbol{\Gamma} = \mathbf I\,G - \frac{1}{k^2}\,\nabla\nabla' G$ and use linearity.
+
+\smallskip
+\emph{(i) First term: $\mathcal L(\mathbf I\,G)$.} Using $\nabla\times\nabla\times(\mathbf I\,G)=\nabla(\nabla G)-\nabla^2(\mathbf I\,G)$,
+\[
+\mathcal L(\mathbf I\,G)=\nabla\nabla G - \mathbf I\,\nabla^2 G - k^2\,\mathbf I\,G.
+\]
+By \eqref{B_eq:scalar-Helmholtz}, $-\nabla^2 G - k^2 G = \delta$, hence
+\begin{equation}
+\mathcal L(\mathbf I\,G)=\mathbf I\,\delta + \nabla\nabla G.
+\label{B_eq:L-on-IG}
+\end{equation}
+
+\smallskip
+\emph{(ii) Second term: $\mathcal L\big(-\frac{1}{k^2}\nabla\nabla' G\big)$.} Consider any column of the dyadic $\nabla\nabla' G$, say $\nabla(\partial'_{j}G)$. Since the curl of a gradient vanishes,
+\[
+\nabla\times\nabla\times\big(\nabla(\partial'_j G)\big)=\nabla\big(\nabla^2(\partial'_j G)\big)-\nabla^2\big(\nabla(\partial'_j G)\big)=\mathbf 0,
+\]
+because Laplacian and gradient commute on scalars. Therefore
+\[
+\mathcal L\big(\nabla(\partial'_j G)\big)=-k^2\,\nabla(\partial'_j G),
+\]
+and, columnwise,
+\begin{equation}
+\mathcal L\big(\nabla\nabla' G\big)=-k^2\,\nabla\nabla' G.
+\label{B_eq:L-on-gradgrad}
+\end{equation}
+Hence
+\begin{equation}
+\mathcal L\!\left(-\frac{1}{k^2}\,\nabla\nabla' G\right)=+\nabla\nabla' G.
+\label{B_eq:L-on-second-piece}
+\end{equation}
+
+\paragraph{Combining term}
+From \eqref{B_eq:L-on-IG} and \eqref{B_eq:L-on-second-piece} we get
+\[
+\mathcal L\boldsymbol{\Gamma}
+= \big(\mathbf I\,\delta + \nabla\nabla G\big) + \nabla\nabla' G.
+\]
+Using $\nabla G = -\nabla' G$ again, we have $\nabla\nabla G = -\,\nabla\nabla' G$, so the last two terms cancel:
+\[
+\mathcal L\boldsymbol{\Gamma}=\mathbf I\,\delta,
+\]
+which is \eqref{B_eq:dyadic-equation}.
+\qed
+
+\subsection{Proof of reciprocity \eqref{B_eq:dyadic-reciprocity}}
+Since $G(\mathbf r,\mathbf r')=G(\mathbf r',\mathbf r)$ and $\nabla$ (on $\mathbf r$) and $\nabla'$ (on $\mathbf r'$) commute on $G$,
+\[
+\tilde{\boldsymbol{\Gamma}}(\mathbf r',\mathbf r)
+= \left(\mathbf I-\frac{1}{k^2}\,\nabla'\nabla\right)G(\mathbf r',\mathbf r)
+= \left(\mathbf I-\frac{1}{k^2}\,\nabla\nabla'\right)G(\mathbf r,\mathbf r')
+= \boldsymbol{\Gamma}(\mathbf r,\mathbf r'),
+\]
+which proves \eqref{B_eq:dyadic-reciprocity}.
+\qed
+
+\subsection{Remarks}
+(i) Eq. \eqref{B_eq:div-gamma} is the divergence relation used in the Levine--Schwinger method:
+\(
+k^2\,\nabla\cdot\boldsymbol{\Gamma} = -\nabla\delta = \nabla'\delta
+\),
+since $\nabla\delta(\mathbf r-\mathbf r')=-\nabla'\delta(\mathbf r-\mathbf r')$.
+
+(ii) The outgoing radiation condition is inherited from $G$; hence the dyadic $\boldsymbol{\Gamma}$ defined in \eqref{B_eq:dyadic-def} is the outgoing Green dyadic for the vector Helmholtz operator.

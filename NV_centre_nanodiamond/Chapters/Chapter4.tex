@@ -1,0 +1,675 @@
+
+\chapter{Mie theory and Rayleigh limit}
+We now use standard Mie scattering to show the Rayleigh limit and calculate higher-order terms.
+
+We introduce $x$, the expansion parameter
+\[
+x \equiv k_0 a,
+\]
+
+\section{Maxwell's Problem and Separation in Spherical Waves}
+
+We seek the fields for a plane wave incident on a sphere of radius $a$. We adopt the $e^{-i\omega t}$ time dependence throughout.
+
+In each homogeneous region (host: subscript $m$; particle: subscript $p$), 
+the frequency-domain Maxwell equations imply the vector Helmholtz equation:
+
+\[
+\nabla\times\nabla\times \mathbf{E} - k^2 \mathbf{E} = 0, \qquad
+k = \omega \sqrt{\varepsilon \mu},
+\]
+
+and the same equation holds for $\mathbf{H}$.
+
+\subsection{Maxwell to the Vector Helmholtz Equation and Transversality}
+
+In a homogeneous, isotropic, source-free region with constant permittivity $\varepsilon$ and permeability $\mu$, the frequency-domain Maxwell 
+equations are:
+\[
+\nabla\times\mathbf{E}=i\omega\mu\,\mathbf{H},\qquad
+\nabla\times\mathbf{H}=-i\omega\varepsilon\,\mathbf{E},
+\]
+\[
+\nabla\cdot(\varepsilon\mathbf{E})=0,\qquad
+\nabla\cdot(\mu\mathbf{H})=0.
+\]
+
+Since $\varepsilon$ is constant within the region and there is no free charge, $\nabla\cdot\mathbf{E}=0$; likewise, in the absence of magnetic charge and for constant $\mu$, $\nabla\cdot\mathbf{H}=0$. 
+
+Taking the curl of Faraday's law and using the vector identity 
+$\nabla\times\nabla\times\mathbf{E}=\nabla(\nabla\cdot\mathbf{E})-\nabla^2\mathbf{E}$:
+
+\[
+\nabla\times\nabla\times\mathbf{E}=\nabla(\nabla\cdot\mathbf{E})-\nabla^2\mathbf{E}
+= -\nabla^2\mathbf{E} = i\omega\mu\,(\nabla\times\mathbf{H})
+\]
+\[
+= i\omega\mu(-i\omega\varepsilon)\mathbf{E}
+= \omega^2\mu\varepsilon\,\mathbf{E}.
+\]
+
+Hence each component of $\mathbf{E}$ satisfies the vector Helmholtz equation:
+
+\[
+\nabla\times\nabla\times\mathbf{E}-k^2\mathbf{E}=0
+\quad\Longleftrightarrow\quad
+(\nabla^2+k^2)\mathbf{E}=0,\qquad
+k\equiv\omega\sqrt{\mu\varepsilon},
+\]
+
+and the same holds for $\mathbf{H}$; moreover $\nabla\cdot\mathbf{E}=0=\nabla\cdot\mathbf{H}$ 
+(transverse fields).
+
+\subsection{Scalar Helmholtz Separation in Spherical Coordinates}
+
+The scalar Helmholtz equation $(\nabla^2+k^2)\psi=0$ separates in spherical 
+coordinates with solutions:
+
+\[
+\psi_{\ell m}^{(q)}(r,\theta,\phi)=z_\ell^{(q)}(kr)\,Y_{\ell m}(\theta,\phi),
+\qquad
+\ell=0,1,2,\dots,\; m=-\ell,\dots,\ell,
+\]
+
+where $Y_{\ell m}$ are scalar spherical harmonics, and the radial functions 
+$z_\ell^{(q)}$ are chosen from:
+
+\[
+z_\ell^{(1)}(kr)=j_\ell(kr)\quad\text{(regular at the origin)},
+\]
+\[
+z_\ell^{(3)}(kr)=h_\ell^{(1)}(kr)\quad\text{(outgoing at infinity)}.
+\]
+
+The asymptotics justify these labels:
+
+\[
+j_\ell(\rho)\sim\frac{\rho^\ell}{(2\ell+1)!!}\quad(\rho\to0),
+\qquad
+h_\ell^{(1)}(\rho)\sim (-i)^{\ell+1}\frac{e^{i\rho}}{\rho}\quad(\rho\to\infty),
+\]
+
+and $h_\ell^{(1)}$ satisfies the Sommerfeld radiation condition.
+
+\subsection{Building Transverse Vector Solutions from Scalar Ones}
+
+Let $\psi$ be any scalar solution of $(\nabla^2+k^2)\psi=0$. 
+
+Define the (dimensionless) orbital angular-momentum operator:
+\[
+\mathbf{L}=-i\,\mathbf{r}\times\nabla,
+\qquad 
+\mathbf{L}^2=-\nabla_\Omega^2.
+\]
+where \(\nabla_\Omega^2\) the symbol indicates it acts only on angular variables and commutes with the Laplacian: 
+$[\nabla^2,\mathbf{L}]=0$.
+
+Consider the two vector fields:
+\[
+\mathbf{M}\equiv \nabla\times(\mathbf{r}\,\psi),\qquad
+\mathbf{N}\equiv \frac{1}{k}\,\nabla\times\mathbf{M}.
+\]
+With the above convention for $\mathbf{L}$, one has $\mathbf{M}=i\,\mathbf{L}\psi$.
+
+These are the solenoidal vector spherical wave functions (VSWFs) once 
+$\psi=z_\ell^{(q)}(kr)Y_{\ell m}(\hat{\mathbf{r}})$ is specified.
+
+\paragraph{Transversality.}
+Since divergence of a curl is zero,
+\[
+\nabla\cdot\mathbf{M}=0,
+\qquad 
+\nabla\cdot\mathbf{N}=\frac{1}{k}\,\nabla\cdot(\nabla\times\mathbf{M})=0.
+\]
+Hence both $\mathbf{M}$ and $\mathbf{N}$ are transverse (solenoidal), as 
+required by Maxwell in a homogeneous, source-free region.
+
+\paragraph{Vector Helmholtz equation.}
+Because $[\nabla^2,\mathbf{L}]=0$ and $(\nabla^2+k^2)\psi=0$,
+\[
+(\nabla^2+k^2)\mathbf{M}=(\nabla^2+k^2)\,\mathbf{L}\psi
+=\mathbf{L}\,(\nabla^2+k^2)\psi=0.
+\]
+Using $\nabla^2\nabla\times=\nabla\times\nabla^2$ for smooth fields,
+\[
+(\nabla^2+k^2)\mathbf{N}=\frac{1}{k}(\nabla^2+k^2)\,\nabla\times\mathbf{M}
+=\frac{1}{k}\,\nabla\times\big[(\nabla^2+k^2)\mathbf{M}\big]=0.
+\]
+Thus $\mathbf{M}$ and $\mathbf{N}$ each satisfy the vector Helmholtz equation.
+
+\paragraph{First-order curl relations.}
+Directly from the definitions and the scalar Helmholtz equation,
+\[
+\nabla\times\mathbf{M}=k\,\mathbf{N},
+\qquad
+\nabla\times\mathbf{N}=k\,\mathbf{M},
+\]
+whenever $\psi$ solves $(\nabla^2+k^2)\psi=0$. Consequently,
+\[
+\nabla\times\nabla\times\mathbf{M}=k^2\mathbf{M},
+\qquad
+\nabla\times\nabla\times\mathbf{N}=k^2\mathbf{N},
+\]
+which is exactly the vector Helmholtz form 
+$\nabla\times\nabla\times\mathbf{F}-k^2\mathbf{F}=0$.
+
+\subsection{Explicit VSWFs and Their Radial Behavior}
+
+Choose $\psi_{\ell m}^{(q)}(r,\theta,\phi)=z_\ell^{(q)}(kr)Y_{\ell m}(\theta,\phi)$. 
+Then:
+\[
+\boxed{\ \mathbf{M}_{\ell m}^{(q)}(k\mathbf{r})=\nabla\times\big[\mathbf{r}\,z_\ell^{(q)}(kr)Y_{\ell m}(\hat{\mathbf{r}})\big]\ ,\qquad
+\mathbf{N}_{\ell m}^{(q)}(k\mathbf{r})=\frac{1}{k}\nabla\times \mathbf{M}_{\ell m}^{(q)}(k\mathbf{r})\ }.
+\]
+
+Writing the purely tangential vector harmonic:
+\[
+\mathbf{X}_{\ell m}(\hat{\mathbf{r}})\equiv \frac{1}{\sqrt{\ell(\ell+1)}}\,\mathbf{L}Y_{\ell m}(\hat{\mathbf{r}}),
+\]
+one finds the standard decompositions:
+\[
+\mathbf{M}_{\ell m}^{(q)}=z_\ell^{(q)}(kr)\,\sqrt{\ell(\ell+1)}\,\mathbf{X}_{\ell m},
+\]
+\[
+\mathbf{N}_{\ell m}^{(q)}=\frac{\ell(\ell+1)}{kr}\,z_\ell^{(q)}(kr)\,Y_{\ell m}\,\hat{\mathbf{r}}
++\frac{1}{r}\frac{d}{d(kr)}\big[(kr)z_\ell^{(q)}(kr)\big]\;\mathbf{W}_{\ell m},
+\]
+where $\mathbf{W}_{\ell m}\equiv \hat{\mathbf{r}}\times\mathbf{X}_{\ell m}$ is also tangential.
+
+From these forms:
+\[
+\hat{\mathbf{r}}\cdot\mathbf{M}_{\ell m}^{(q)}=0\quad(\text{TE w.r.t. }\hat{\mathbf{r}}),
+\]
+\[
+\hat{\mathbf{r}}\times\mathbf{N}_{\ell m}^{(q)}\neq 0,\ 
+\hat{\mathbf{r}}\cdot\mathbf{N}_{\ell m}^{(q)}\propto z_\ell^{(q)}(kr)\ (\text{TM}).
+\]
+Regularity and radiation follow from $z_\ell^{(q)}$: choose $j_\ell$ for fields 
+finite at $r\to0$ (interior problem), and $h_\ell^{(1)}$ for fields satisfying 
+the outgoing radiation condition at $r\to\infty$ (scattered field).
+
+\subsection{Why These Span the Maxwell Solutions}
+
+Any divergence-free vector solution of $(\nabla^2+k^2)\mathbf{F}=0$ on a 
+spherical surface admits an expansion in the orthonormal basis 
+$\{\mathbf{X}_{\ell m},\mathbf{W}_{\ell m}\}$ for each $(\ell,m)$. 
+The radial dependence is then constrained by the scalar radial Helmholtz 
+equation, whose independent solutions are $j_\ell(kr)$ and $h_\ell^{(1)}(kr)$. 
+The two transverse families constructed above:
+\begin{itemize}
+\item TE: $\mathbf{M}_{\ell m}^{(q)}$ (tangential electric modes)
+\item TM: $\mathbf{N}_{\ell m}^{(q)}$ (tangential magnetic modes)
+\end{itemize}
+therefore, furnish a complete set for source-free Maxwell fields in 
+a homogeneous spherical region.
+
+\subsection{Plane Wave Expansion and Mie Scattering Solution}
+
+A plane wave can be expanded on this basis. For definiteness, take propagation 
+along $+\hat{\mathbf{z}}$ and polarization along $\hat{\mathbf{x}}$. Then 
+(Bohren--Huffman convention):
+\[
+\mathbf{E}_{\mathrm{inc}} = E_0\sum_{\ell=1}^{\infty} i^\ell \frac{2\ell+1}{\ell(\ell+1)}
+\Big(\mathbf{M}^{(1)}_{o1\ell}(k_m\mathbf{r}) - i\,\mathbf{N}^{(1)}_{e1\ell}(k_m\mathbf{r})\Big),
+\]
+with a corresponding $\mathbf{H}_{\mathrm{inc}}$ related by the medium impedance 
+$\eta_m=\sqrt{\mu_m/\varepsilon_m}$.
+
+The scattered field in the host must be purely outgoing:
+\[
+\mathbf{E}_{\mathrm{sca}} = E_0\sum_{\ell=1}^{\infty} i^\ell \frac{2\ell+1}{\ell(\ell+1)}
+\Big(a_\ell\,\mathbf{N}^{(3)}_{e1\ell}(k_m\mathbf{r}) 
++ b_\ell\,\mathbf{M}^{(3)}_{o1\ell}(k_m\mathbf{r})\Big),
+\]
+and the internal field in the particle must be regular:
+\[
+\mathbf{E}_{\mathrm{int}} = E_0\sum_{\ell=1}^{\infty} i^\ell \frac{2\ell+1}{\ell(\ell+1)}
+\Big(c_\ell\,\mathbf{N}^{(1)}_{e1\ell}(k_p\mathbf{r}) 
++ d_\ell\,\mathbf{M}^{(1)}_{o1\ell}(k_p\mathbf{r})\Big),
+\]
+with $k_p=\omega\sqrt{\varepsilon_p\mu_p} = m k_m$.
+
+The four sets of coefficients $\{a_\ell,b_\ell,c_\ell,d_\ell\}$ are fixed by 
+electromagnetic boundary conditions at $r=a$.
+
+
+\section{Boundary conditions at the spherical interface (derivation and $2\times2$ systems)}
+
+We take the time dependence $e^{-i\omega t}$ and define
+\[
+x \equiv k_m a,\qquad 
+m \equiv \sqrt{\frac{\varepsilon_p\mu_p}{\varepsilon_m\mu_m}}\!,
+\qquad
+\psi_\ell(\rho)=\rho\,j_\ell(\rho),\quad 
+\xi_\ell(\rho)=\rho\,h_\ell^{(1)}(\rho),
+\]
+with prime $'$ denoting $d/d\rho$. The vector spherical wave functions (VSWFs) satisfy
+\[
+\mathbf M_{\ell m}^{(q)}=z_\ell^{(q)}(kr)\,\sqrt{\ell(\ell+1)}\,\mathbf X_{\ell m},\qquad
+\mathbf N_{\ell m}^{(q)}=\frac{\ell(\ell+1)}{kr}\,z_\ell^{(q)}(kr)\,Y_{\ell m}\,\hat{\mathbf r}
++\frac{1}{r}\frac{d}{d(kr)}\!\big[(kr)z_\ell^{(q)}(kr)\big]\mathbf W_{\ell m},
+\]
+so that on a sphere $r=a$ the tangential parts are proportional to $z_\ell(ka)$ for $\mathbf M$ and to $\frac{d}{d(ka)}[(ka)z_\ell(ka)]$ for $\mathbf N$.
+Outside (host, $r>a$) we write the field as the sum of incident (regular) and scattered (outgoing) parts; inside ($r<a$) the field is regular. For each fixed $(\ell,m)$ this yields two uncoupled $2\times2$ systems, one for TM (electric-type, $\mathbf N$) and one for TE (magnetic-type, $\mathbf M$), obtained by enforcing continuity of the tangential components of $\mathbf E$ and $\mathbf H$ and using $\mathbf H=(1/i\omega\mu)\nabla\times\mathbf E$ together with $\nabla\times\mathbf M=k\mathbf N$, $\nabla\times\mathbf N=k\mathbf M$.
+
+\paragraph{TM (electric-type) block.}
+Let $c_\ell$ and $a_\ell$ denote, respectively, the internal and scattered coefficients of the TM ($\mathbf N$) mode. Continuity of $\mathbf E_t$ and $\mathbf H_t$ at $r=a$ gives
+\begin{align}
+\psi_\ell'(mx)\,c_\ell\;-\;\xi_\ell'(x)\,a_\ell &= \psi_\ell'(x), \label{eq:TM_E}\\
+\frac{\psi_\ell(mx)}{\mu_p}\,c_\ell\;-\;\frac{\xi_\ell(x)}{\mu_m}\,a_\ell &= \frac{\psi_\ell(x)}{\mu_m}. \label{eq:TM_H}
+\end{align}
+Equations \eqref{eq:TM_E}--\eqref{eq:TM_H} form a $2\times2$ linear system for $(c_\ell,a_\ell)$.
+
+\paragraph{TE (magnetic-type) block.}
+Let $d_\ell$ and $b_\ell$ denote, respectively, the internal and scattered coefficients of the TE ($\mathbf M$) mode. Continuity of $\mathbf E_t$ and $\mathbf H_t$ yields
+\begin{align}
+\psi_\ell(mx)\,d_\ell\;-\;\xi_\ell(x)\,b_\ell &= \psi_\ell(x), \label{eq:TE_E}\\
+\frac{\psi_\ell'(mx)}{\varepsilon_p}\,d_\ell\;-\;\frac{\xi_\ell'(x)}{\varepsilon_m}\,b_\ell &= \frac{\psi_\ell'(x)}{\varepsilon_m}. \label{eq:TE_H}
+\end{align}
+Equations \eqref{eq:TE_E}--\eqref{eq:TE_H} form a $2\times2$ linear system for $(d_\ell,b_\ell)$.
+
+\paragraph{Solution for the Mie coefficients.}
+Solving the systems (e.g.\ by Cramer’s rule) for $a_\ell$ and $b_\ell$ gives the magneto–dielectric Mie coefficients
+\begin{equation}
+\label{eq:a_general_mueps}
+a_\ell=\frac{\mu_p\,\psi_\ell(mx)\,\psi_\ell'(x)-\mu_m\,\psi_\ell(x)\,\psi_\ell'(mx)}
+             {\mu_p\,\psi_\ell(mx)\,\xi_\ell'(x)-\mu_m\,\xi_\ell(x)\,\psi_\ell'(mx)},
+\qquad
+b_\ell=\frac{\varepsilon_p\,\psi_\ell(mx)\,\psi_\ell'(x)-\varepsilon_m\,\psi_\ell(x)\,\psi_\ell'(mx)}
+             {\varepsilon_p\,\psi_\ell(mx)\,\xi_\ell'(x)-\varepsilon_m\,\xi_\ell(x)\,\psi_\ell'(mx)}.
+\end{equation}
+For nonmagnetic particles $\mu_p=\mu_m$ these reduce to the familiar textbook formulas in terms of the relative index $m$ only.
+
+\paragraph{Equivalent $(m,z)$ form}
+Introducing the impedance ratio $z\equiv\eta_p/\eta_m=\sqrt{(\mu_p\varepsilon_m)/(\mu_m\varepsilon_p)}$ and $m=\sqrt{(\varepsilon_p\mu_p)/(\varepsilon_m\mu_m)}$, \eqref{eq:a_general_mueps} can be rearranged algebraically into the “$(m,z)$” representation
+\[
+a_\ell=\frac{ m\,\psi_\ell(mx)\,\psi_\ell'(x) - z\,\psi_\ell(x)\,\psi_\ell'(mx) }
+            { m\,\psi_\ell(mx)\,\xi_\ell'(x) - z\,\xi_\ell(x)\,\psi_\ell'(mx) },
+\qquad
+b_\ell=\frac{ z\,\psi_\ell(mx)\,\psi_\ell'(x) - m\,\psi_\ell(x)\,\psi_\ell'(mx) }
+            { z\,\psi_\ell(mx)\,\xi_\ell'(x) - m\,\xi_\ell(x)\,\psi_\ell'(mx) }.
+\]
+
+
+
+
+\subsection{From VSWFs to the angle–resolved amplitudes $S_1(\theta),S_2(\theta)$}
+
+\paragraph{1) Far-field ansatz and meaning of $S_1,S_2$.}
+In the radiation zone ($k_m r\gg 1$) any outgoing spherical solution has the universal radial factor $e^{ik_m r}/r$ and is locally transverse with $\mathbf H_{\mathrm{sca}}=\eta_m^{-1}\,\hat{\mathbf r}\times\mathbf E_{\mathrm{sca}}$, where $\eta_m=\sqrt{\mu_m/\varepsilon_m}$. We therefore \emph{define} the two scalar amplitude functions $S_1(\theta)$ and $S_2(\theta)$ by
+\[
+\mathbf{E}_{\mathrm{sca}}(r,\theta,\phi)
+= E_0\,\frac{e^{i k_m r}}{-i k_m r}\,\Big[S_2(\theta)\,\hat{\boldsymbol{\theta}}
++ S_1(\theta)\,\hat{\boldsymbol{\phi}}\Big],\qquad
+\mathbf{H}_{\mathrm{sca}}=\frac{1}{\eta_m}\,\hat{\mathbf r}\times\mathbf{E}_{\mathrm{sca}}.
+\]
+The task is to compute $S_1,S_2$ from the Mie series. 
+% (Far-field plane-wave impedance and $1/r$ decay in the radiation zone support this definition.)
+
+\paragraph{2) Scattered-field expansion in outgoing VSWFs.}
+For a $+\hat{\mathbf z}$ plane wave with $\hat{\mathbf x}$ polarization, only $m=1$ terms enter. Using the ``odd''/``even'' parity VSWFs, the scattered field outside the sphere ($r>a$) is
+\[
+\mathbf{E}_{\mathrm{sca}}(r,\theta,\phi)
+= E_0\sum_{\ell=1}^{\infty} i^\ell \frac{2\ell+1}{\ell(\ell+1)}
+\Big(a_\ell\,\mathbf{M}^{(3)}_{o1\ell}(k_m\mathbf{r})
+- i\,b_\ell\,\mathbf{N}^{(3)}_{e1\ell}(k_m\mathbf{r})\Big),
+\]
+with $a_\ell$ (electric/TM) and $b_\ell$ (magnetic/TE) fixed by the boundary conditions at $r=a$.
+
+\paragraph{3) Far-field forms of $\mathbf M^{(3)}$ and $\mathbf N^{(3)}$.}
+Write $\rho\equiv k_m r$. The outgoing radial dependence is carried by $h_\ell^{(1)}(\rho)$, whose large-argument asymptotic is
+\[
+h_\ell^{(1)}(\rho)\sim (-i)^{\ell+1}\frac{e^{i\rho}}{\rho},
+\qquad
+\frac{1}{\rho}\frac{d}{d\rho}\big[\rho\,h_\ell^{(1)}(\rho)\big]\sim i\,h_\ell^{(1)}(\rho)\qquad (\rho\to\infty).
+\]
+Using the component forms of the VSWFs,
+\[
+\mathbf{M}_{o1\ell}^{(3)}=\Bigg[\frac{\cos\phi}{\sin\theta}P_\ell^1(\cos\theta)\,h_\ell^{(1)}(\rho)\Bigg]\hat{\boldsymbol\theta}
+-\Bigg[\sin\phi\,\frac{dP_\ell^1(\cos\theta)}{d\theta}\,h_\ell^{(1)}(\rho)\Bigg]\hat{\boldsymbol\phi},
+\]
+\[
+\mathbf{N}_{e1\ell}^{(3)}=\Bigg[\cos\phi\,\frac{dP_\ell^1(\cos\theta)}{d\theta}\,\frac{1}{r}\frac{d}{d\rho}\big(\rho h_\ell^{(1)}(\rho)\big)\Bigg]\hat{\boldsymbol\theta}
+-\Bigg[\frac{\sin\phi}{\sin\theta}P_\ell^1(\cos\theta)\,\frac{1}{r}\frac{d}{d\rho}\big(\rho h_\ell^{(1)}(\rho)\big)\Bigg]\hat{\boldsymbol\phi}
++\text{(radial)},
+\]
+and defining the standard Mie angular functions
+\[
+\pi_\ell(\cos\theta)=\frac{P_\ell^{1}(\cos\theta)}{\sin\theta},\qquad
+\tau_\ell(\cos\theta)=\frac{d}{d\theta}P_\ell^{1}(\cos\theta),
+\]
+the radiation-zone (tangential) parts become
+\[
+\mathbf{M}_{o1\ell}^{(3)}\;\xrightarrow{k_m r\to\infty}\;(-i)^{\ell+1}\frac{e^{ik_m r}}{k_m r}\,\big[\ \pi_\ell\,\cos\phi\ \hat{\boldsymbol\theta}\;-\;\tau_\ell\,\sin\phi\ \hat{\boldsymbol\phi}\ \big],
+\]
+\[
+\mathbf{N}_{e1\ell}^{(3)}\;\xrightarrow{k_m r\to\infty}\;(-i)^{\ell+1}\frac{e^{ik_m r}}{k_m r}\,i\,\big[\ \tau_\ell\,\cos\phi\ \hat{\boldsymbol\theta}\;-\;\pi_\ell\,\sin\phi\ \hat{\boldsymbol\phi}\ \big].
+\]
+When these are inserted into the series of Step 2, the $\phi$-dependence cancels between the even/odd combinations appropriate to an $x$-polarized plane wave, leaving a purely $\theta$-dependent pattern. Collecting the $\hat{\boldsymbol\theta}$ and $\hat{\boldsymbol\phi}$ components and matching to the far-field ansatz of Step 1 yields
+\[
+S_1(\theta)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\Big(a_\ell\,\pi_\ell(\cos\theta)+ b_\ell\,\tau_\ell(\cos\theta)\Big),
+\qquad
+S_2(\theta)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\Big(a_\ell\,\tau_\ell(\cos\theta)+ b_\ell\,\pi_\ell(\cos\theta)\Big).
+\]
+By construction,
+\[
+\mathbf{E}_{\mathrm{sca}}(r,\theta,\phi)
+= E_0\,\frac{e^{i k_m r}}{-i k_m r}\,\Big[S_2(\theta)\,\hat{\boldsymbol{\theta}}
++ S_1(\theta)\,\hat{\boldsymbol{\phi}}\Big],\qquad
+\mathbf{H}_{\mathrm{sca}}=\frac{1}{\eta_m}\,\hat{\mathbf r}\times\mathbf E_{\mathrm{sca}}.
+\]
+
+
+
+
+\subsection{From far field to differential and integrated cross-sections}
+
+\paragraph{Set–up and notation.}
+We use the time convention $e^{-i\omega t}$ and the host wavenumber $k_m$.
+In the far field ($k_m r\gg1$), the scattered field is purely transverse and we
+\emph{define} the scalar amplitude functions $S_1(\theta),S_2(\theta)$ by
+\begin{equation}
+\label{eq:Efar-def}
+\mathbf{E}_{\mathrm{sca}}(r,\theta,\phi)
+= E_0\,\frac{e^{i k_m r}}{-i\,k_m r}\,\Big[S_2(\theta)\,\hat{\boldsymbol{\theta}}
++ S_1(\theta)\,\hat{\boldsymbol{\phi}}\Big],
+\qquad
+\mathbf{H}_{\mathrm{sca}}=\frac{1}{\eta_m}\,\hat{\mathbf r}\times\mathbf E_{\mathrm{sca}},
+\end{equation}
+with medium impedance $\eta_m=\sqrt{\mu_m/\varepsilon_m}$.
+For a $+\hat{\mathbf z}$ plane wave (polarized along $\hat{\mathbf x}$), only $m=1$
+contributes, and the amplitude functions are (Mie series)
+\begin{equation}
+\label{eq:S1S2-series}
+S_1(\theta)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\Big(a_\ell\,\pi_\ell(\cos\theta)+ b_\ell\,\tau_\ell(\cos\theta)\Big),
+\qquad
+S_2(\theta)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\Big(a_\ell\,\tau_\ell(\cos\theta)+ b_\ell\,\pi_\ell(\cos\theta)\Big),
+\end{equation}
+where
+\[
+\pi_\ell(\cos\theta)=\frac{P_\ell^{1}(\cos\theta)}{\sin\theta},\qquad
+\tau_\ell(\cos\theta)=\frac{d}{d\theta}P_\ell^{1}(\cos\theta).
+\]
+
+\paragraph{Differential cross-section.}
+The time-averaged Poynting vector of the scattered field in the radiation zone is
+\[
+\langle\mathbf S\rangle
+=\frac{1}{2}\Re\{\mathbf E_{\mathrm{sca}}\times\mathbf H_{\mathrm{sca}}^*\}
+=\frac{1}{2\eta_m}\,\big|\mathbf E_{\mathrm{sca}}\big|^2\,\hat{\mathbf r},
+\]
+because $\mathbf H_{\mathrm{sca}}=(1/\eta_m)\hat{\mathbf r}\times\mathbf E_{\mathrm{sca}}$ and
+$\hat{\mathbf r}\cdot\mathbf E_{\mathrm{sca}}=0$.
+Using \eqref{eq:Efar-def}, the magnitude is
+\[
+\big|\mathbf E_{\mathrm{sca}}\big|^2
+=|E_0|^2\,\frac{1}{(k_m r)^2}\Big(|S_1(\theta)|^2+|S_2(\theta)|^2\Big).
+\]
+Hence the scattered power per unit solid angle is
+\[
+\frac{dP_{\mathrm{sca}}}{d\Omega}
+= r^2\,\langle\mathbf S\rangle\cdot\hat{\mathbf r}
+= \frac{|E_0|^2}{2\eta_m}\,\frac{1}{k_m^2}\,\Big(|S_1|^2+|S_2|^2\Big).
+\]
+Dividing by the incident intensity $I_0=|E_0|^2/(2\eta_m)$ gives the
+\emph{differential} cross-section
+\begin{equation}
+\label{eq:dCdo}
+\frac{dC_{\mathrm{sca}}}{d\Omega}
+=\frac{1}{k_m^2}\,\Big(|S_1(\theta)|^2+|S_2(\theta)|^2\Big).
+\end{equation}
+
+\paragraph{Orthogonality ingredients.}
+Insert \eqref{eq:S1S2-series} into \eqref{eq:dCdo}, expand the modulus squares,
+and integrate over solid angle. Since $S_{1,2}$ depend only on $\theta$,
+the $\phi$–integration gives a factor $2\pi$. For the $\theta$–integration,
+use the standard identities (with prime denoting a different multipole index)
+\begin{align}
+\int_0^\pi\!\big[\pi_\ell\pi_{\ell'}+\tau_\ell\tau_{\ell'}\big]\sin\theta\,d\theta
+&=\frac{2\,\ell(\ell+1)}{2\ell+1}\,\delta_{\ell\ell'},\\
+\int_0^\pi\!\big[\pi_\ell\tau_{\ell'}+\tau_\ell\pi_{\ell'}\big]\sin\theta\,d\theta&=0,
+\end{align}
+which ensure that all cross terms with $\ell\neq\ell'$ vanish and
+$\pi\mbox{–}\tau$ cross-terms cancel.
+
+\paragraph{Integrated scattering cross-section.}
+Let $c_\ell=(2\ell+1)/[\ell(\ell+1)]$. Then
+\[
+\int_0^\pi |S_1|^2 \sin\theta\,d\theta
+=\sum_{\ell} c_\ell^2\,\frac{2\,\ell(\ell+1)}{2\ell+1}\,\big(|a_\ell|^2+|b_\ell|^2\big)
+=\sum_{\ell}\frac{2(2\ell+1)}{\ell(\ell+1)}\big(|a_\ell|^2+|b_\ell|^2\big),
+\]
+and the same result holds for $\int_0^\pi |S_2|^2 \sin\theta\,d\theta$.
+Therefore,
+\[
+\int |S_1|^2+|S_2|^2\,d\Omega
+=2\pi\cdot 2\sum_{\ell}\frac{2\ell+1}{\ell(\ell+1)}\big(|a_\ell|^2+|b_\ell|^2\big).
+\]
+Finally, inserting into \eqref{eq:dCdo} yields
+\begin{equation}
+\label{eq:Csca-final}
+C_{\mathrm{sca}}
+=\int \frac{dC_{\mathrm{sca}}}{d\Omega}\,d\Omega
+=\frac{2\pi}{k_m^2}\sum_{\ell=1}^\infty (2\ell+1)\,\big(|a_\ell|^2+|b_\ell|^2\big).
+\end{equation}
+
+\subsection{Optical theorem and extinction (derivation in our normalization)}
+
+\paragraph{Setup and definitions.}
+Let the incident intensity be \(I_0=|E_0|^2/(2\eta_m)\) with time dependence \(e^{-i\omega t}\).
+On a large sphere of radius \(r\), the total time-averaged power flowing out is
+\[
+P_{\mathrm{tot}}=\oint_{S_r}\!\langle\mathbf S\rangle\cdot\hat{\mathbf r}\,dA
+=\frac12\Re\!\oint_{S_r}\! \big(\mathbf E_{\mathrm{inc}}+\mathbf E_{\mathrm{sca}}\big)\times
+\big(\mathbf H_{\mathrm{inc}}+\mathbf H_{\mathrm{sca}}\big)^{\!*}\cdot\hat{\mathbf r}\,dA.
+\]
+Decompose into the incident, scattered-only, and \emph{interference} parts:
+\[
+P_{\mathrm{tot}}=P_{\mathrm{inc}}+P_{\mathrm{sca}}+P_{\mathrm{int}}.
+\]
+Define cross-sections by \(P_{\mathrm{sca}}=I_0\,C_{\mathrm{sca}}\) and the \emph{extinction}
+\[
+P_{\mathrm{ext}}=-P_{\mathrm{int}}=I_0\,C_{\mathrm{ext}}.
+\]
+By energy balance in the far field, \(C_{\mathrm{abs}}=C_{\mathrm{ext}}-C_{\mathrm{sca}}\).
+
+\paragraph{Interference term in the far field.}
+Using \(\mathbf H_{\mathrm{sca}}=(1/\eta_m)\,\hat{\mathbf r}\times\mathbf E_{\mathrm{sca}}\) and keeping the
+\(1/r\) terms (radiation zone),
+\[
+P_{\mathrm{int}}
+=\frac12\Re\!\oint_{S_r}\!\Big(\mathbf E_{\mathrm{inc}}\times\mathbf H_{\mathrm{sca}}^{\!*}
++\mathbf E_{\mathrm{sca}}\times\mathbf H_{\mathrm{inc}}^{\!*}\Big)\cdot\hat{\mathbf r}\,dA.
+\]
+Insert the far-field ansatz
+\(
+\mathbf{E}_{\mathrm{sca}}=E_0\,\dfrac{e^{ik_m r}}{-ik_m r}\,[S_2(\theta)\hat{\boldsymbol\theta}+S_1(\theta)\hat{\boldsymbol\phi}]
+\)
+and expand the tangential incident plane wave on the spherical surface in vector spherical harmonics.
+Using orthogonality on the unit sphere, the \(\phi\)-integration eliminates cross-couplings, and the
+\(\theta\)-integration reduces the interference integral to the \emph{forward} direction.
+This yields the optical-theorem identity
+\[
+C_{\mathrm{ext}}=\frac{4\pi}{k_m^2}\,\Re\{S(0)\},\qquad S(0)\equiv S_1(0)=S_2(0)\quad\text{(sphere)}.
+\]
+
+
+\paragraph{Forward amplitude in terms of Mie coefficients.}
+Recall the Mie angular functions
+\(
+\pi_\ell(\mu)=P_\ell^1(\mu)/\sin\theta,\;
+\tau_\ell(\mu)=\dfrac{d}{d\theta}P_\ell^1(\mu)
+\)
+with \(\mu=\cos\theta\), and
+\[
+S_1(\theta)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\big(a_\ell\,\pi_\ell+b_\ell\,\tau_\ell\big),\qquad
+S_2(\theta)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\big(a_\ell\,\tau_\ell+b_\ell\,\pi_\ell\big).
+\]
+Use \(P_\ell^1(\mu)=-\sqrt{1-\mu^2}\,P_\ell'(\mu)\) to write
+\[
+\pi_\ell(\mu)=\frac{P_\ell^1(\mu)}{\sin\theta}=-P_\ell'(\mu),\qquad
+\tau_\ell(\mu)=\frac{dP_\ell^1}{d\theta}=-\sin\theta\,\frac{dP_\ell^1}{d\mu}.
+\]
+Taking \(\theta\to 0\) (\(\mu\to 1\)) and using \(P_\ell'(1)=\ell(\ell+1)/2\),
+one finds the standard limits
+\[
+\pi_\ell(1)=\tau_\ell(1)=-\,\frac{\ell(\ell+1)}{2}.
+\]
+Hence, in the forward direction,
+\[
+S_1(0)=S_2(0)=\sum_{\ell=1}^\infty \frac{2\ell+1}{\ell(\ell+1)}\Big(a_\ell\,\tfrac{-\ell(\ell+1)}{2}
++b_\ell\,\tfrac{-\ell(\ell+1)}{2}\Big)
+=-\frac12\sum_{\ell=1}^\infty (2\ell+1)\,(a_\ell+b_\ell).
+\]
+Combining with the optical theorem then gives
+\[
+C_{\mathrm{ext}}
+=\frac{4\pi}{k_m^2}\,\Re\{S(0)\}
+=\frac{4\pi}{k_m^2}\,\Re\{-S_1(0)\}
+=\frac{2\pi}{k_m^2}\sum_{\ell=1}^\infty (2\ell+1)\,\Re\{a_\ell+b_\ell\}.
+\]
+
+\paragraph{Scattering and absorption.}
+From the angle integration of the differential cross-section using the orthogonality of
+\(\pi_\ell,\tau_\ell\); one has
+\[
+C_{\mathrm{sca}}=\frac{2\pi}{k_m^2}\sum_{\ell=1}^\infty (2\ell+1)\big(|a_\ell|^2+|b_\ell|^2\big),
+\qquad
+C_{\mathrm{abs}}=C_{\mathrm{ext}}-C_{\mathrm{sca}}.
+\]
+
+\paragraph{Summary}
+\[
+\boxed{\;
+C_{\mathrm{ext}}
+=\frac{2\pi}{k_m^2}\sum_{\ell=1}^\infty (2\ell+1)\,\Re\{a_\ell+b_\ell\},
+\quad
+C_{\mathrm{sca}}
+=\frac{2\pi}{k_m^2}\sum_{\ell=1}^\infty (2\ell+1)\big(|a_\ell|^2+|b_\ell|^2\big),
+\quad
+C_{\mathrm{abs}}=C_{\mathrm{ext}}-C_{\mathrm{sca}}.\;}
+\]
+
+
+
+
+
+\paragraph{Rayleigh scaling check (nonmagnetic): detailed derivation.}
+Let $x\equiv k_m a \ll 1$ and assume $\mu_p=\mu_m$ so the magnetic dipole term is higher order ($b_1=O(x^5)$).
+
+Keeping only the dipole term in $C_{\rm sca}$:
+\[
+C_{\mathrm{sca}}
+=\frac{2\pi}{k_m^2}\sum_{\ell=1}^\infty (2\ell+1)\big(|a_\ell|^2+|b_\ell|^2\big)
+\ \xrightarrow[\text{keep }\ell=1]{}\ 
+\frac{2\pi}{k_m^2}\,3\,|a_1|^2+O(x^8).
+\]
+
+Small-$x$ expansion of the dipole Mie coefficient:
+
+
+\paragraph{i) Exact $a_1$ (nonmagnetic sphere).}
+Let $x=k_m a$ and $m^2=\varepsilon_p/\varepsilon_m$. With
+$\psi_\ell(\rho)=\rho j_\ell(\rho)$ and
+$\xi_\ell(\rho)=\rho h_\ell^{(1)}(\rho)$,
+the electric-type dipole coefficient is
+\[
+a_1=\frac{\,m\,\psi_1(mx)\,\psi_1'(x)\;-\;\psi_1(x)\,\psi_1'(mx)\,}
+{\,m\,\psi_1(mx)\,\xi_1'(x)\;-\;\xi_1(x)\,\psi_1'(mx)\,}.
+\tag{1}
+\]
+
+\paragraph{ii) Small-argument series needed.}
+From $j_1(z)=\dfrac{\sin z}{z^2}-\dfrac{\cos z}{z}$ and
+$y_1(z)=-\dfrac{\cos z}{z^2}-\dfrac{\sin z}{z}$, expand as $z\to0$:
+\[
+j_1(z)=\frac{z}{3}-\frac{z^3}{30}+O(z^5),\qquad
+y_1(z)=-\frac{1}{z^2}-\frac{1}{2}+\frac{z^2}{8}+O(z^4).
+\]
+Hence, for the Riccati–Bessel functions
+\[
+\psi_1(z)=z j_1(z)=\frac{z^2}{3}-\frac{z^4}{30}+O(z^6),
+\quad
+\psi_1'(z)=\frac{2z}{3}-\frac{2z^3}{15}+O(z^5),
+\]
+and, using $\xi_1(z)=\psi_1(z)+i\,z y_1(z)$,
+\[
+\xi_1(z)=-\frac{i}{z}-\frac{i}{2}z+\frac{z^2}{3}-\frac{i}{8}z^3-\frac{z^4}{30}+O(z^5),
+\quad
+\xi_1'(z)=\frac{i}{z^2}+\frac{2z}{3}-\frac{i}{2}+O(z^2).
+\tag{2}
+\]
+
+\paragraph{iii) Expand numerator and denominator of (1).}
+Keep the lowest nonvanishing powers in $x$.
+Using (2),
+\[
+\begin{aligned}
+\text{Num} &:= m\,\psi_1(mx)\,\psi_1'(x)-\psi_1(x)\,\psi_1'(mx) \\
+&= m\Big(\tfrac{m^2x^2}{3}\Big)\Big(\tfrac{2x}{3}\Big)
+   \;-\;\Big(\tfrac{x^2}{3}\Big)\Big(\tfrac{2mx}{3}\Big)
+   \;+\;O(x^5)
+= \frac{2m}{9}(m^2-1)\,x^3+O(x^5),
+\\[4pt]
+\text{Den} &:= m\,\psi_1(mx)\,\xi_1'(x)-\xi_1(x)\,\psi_1'(mx) \\
+&= m\Big(\tfrac{m^2x^2}{3}\Big)\Big(\tfrac{i}{x^2}\Big)
+   \;-\;\Big(-\tfrac{i}{x}\Big)\Big(\tfrac{2mx}{3}\Big)
+   \;+\;O(x^2)
+= i\,\frac{m}{3}(m^2+2)\;+\;O(x^2).
+\end{aligned}
+\tag{3}
+\]
+
+\paragraph{iv) Form the ratio.}
+From (3),
+\[
+a_1=\frac{\text{Num}}{\text{Den}}
+=\frac{\frac{2m}{9}(m^2-1)x^3}{\,i\,\frac{m}{3}(m^2+2)\,}
+\;+\;O(x^5)
+= i\,\frac{2}{3}\,\frac{m^2-1}{m^2+2}\,x^3 \;+\;O(x^5).
+\tag{4}
+\]
+Since $m^2=\varepsilon_p/\varepsilon_m$ (nonmagnetic), this is
+\[
+a_1
+= i\,\frac{2}{3}\,
+\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\,x^3
+\;+\;O(x^5).
+\tag{5}
+\]
+
+\paragraph{v) Magnitude.}
+Taking the modulus of (5),
+\[
+|a_1|^2=\Big|\tfrac{2}{3}\Big|^2
+\left|\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\right|^2 x^6
+\;+\;O(x^8).
+\tag{6}
+\]
+
+
+Plug into $C_{\rm sca}$ and simplify powers of $x$:
+\[
+\begin{aligned}
+C_{\mathrm{sca}}
+&\simeq \frac{2\pi}{k_m^2}\,3\,
+\Big(\tfrac{4}{9}\Big)\,
+\left|\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\right|^2 x^6\\[4pt]
+&= \frac{8\pi}{3}\,\frac{x^6}{k_m^2}\,
+\left|\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\right|^2
+\;=\;\frac{8\pi}{3}\,k_m^4 a^6
+\left|\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\right|^2.
+\end{aligned}
+\]
+Neglecting dynamical corrections in the imaginary part in the strict Rayleigh limit,
+\[
+C_{\mathrm{ext}}
+\simeq \frac{k_m}{\varepsilon_m}\,\Im\{\alpha_e^{(0)}\}
+= \frac{k_m}{\varepsilon_m}\,\Im\!\left\{4\pi\varepsilon_m a^3
+\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\right\}
+= \boxed{\,4\pi k_m a^3\,\Im\!\left\{\frac{\varepsilon_p-\varepsilon_m}{\varepsilon_p+2\varepsilon_m}\right\}\,}.
+\]
+Thus \(C_{\mathrm{abs}}=C_{\mathrm{ext}}-C_{\mathrm{sca}}\), and as \(a\to0\) one has \(C_{\mathrm{ext}}\propto a^3\) while \(C_{\mathrm{sca}}\propto a^6\), so absorption dominates for sufficiently small lossy particles.
+
+
+

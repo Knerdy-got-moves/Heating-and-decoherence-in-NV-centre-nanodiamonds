@@ -1,0 +1,221 @@
+    \subsection{Change in phonon occupation state and shift in phonon DOS}
+
+
+We need to construct the Hamiltonian for an optically illuminated nanodiamond (modelled as a crystal insulator), including electron-photon (\(H_{ER}\)) and electron-phonon (\(H_{EL}\)) interactions. We then analyse a process where \(H_{ER}\) is applied twice and \(H_{EL}\) once, resulting in the annihilation of a photon to produce a photon and a phonon. Finally, we calculate the change in phonon occupation and the shift in the phonon density of states.
+
+\subsubsection{Hamiltonian Construction}
+
+The total Hamiltonian for the system is:
+
+\[ H = H_0 + H_{ER} + H_{EL}, \]
+
+where \(H_0\) is the non-interacting Hamiltonian for electrons, photons, and phonons, \(H_{ER}\) describes the electron-photon interaction, and \(H_{EL}\) describes the electron-phonon interaction.
+
+\textbf{Non-Interacting Hamiltonian (\(H_0\))}
+
+The non-interacting Hamiltonian includes contributions from electrons in the nanodiamond’s valence and conduction bands, photons in the optical field, and phonons in the crystal lattice:
+
+\[ H_0 = H_e + H_{\text{photon}} + H_{\text{phonon}}. \]
+\begin{itemize}
+    \item \textbf{Electron Hamiltonian (\(H_e\)):}
+
+For a nanodiamond as a crystal insulator, we model the electronic structure with an effective mass approximation, considering valence and conduction bands. The electron Hamiltonian is:
+
+\[ H_e = \sum_{\mathbf{k}, \sigma} \epsilon_v(\mathbf{k}) c_{\mathbf{k}, \sigma}^\dagger c_{\mathbf{k}, \sigma} + \sum_{\mathbf{k}, \sigma} \epsilon_c(\mathbf{k}) d_{\mathbf{k}, \sigma}^\dagger d_{\mathbf{k}, \sigma}, \]
+
+where \(c_{\mathbf{k}, \sigma}^\dagger\) (\(c_{\mathbf{k}, \sigma}\)) creates (annihilates) an electron with momentum \(\mathbf{k}\) and spin \(\sigma\) in the valence band with energy \(\epsilon_v(\mathbf{k})\), and \(d_{\mathbf{k}, \sigma}^\dagger\) (\(d_{\mathbf{k}, \sigma}\)) does the same for the conduction band with energy \(\epsilon_c(\mathbf{k})\). For a nanodiamond, \(\mathbf{k}\) is quantized due to confinement, but we use a bulk-like dispersion for simplicity, with \(\epsilon_c(\mathbf{k}) - \epsilon_v(\mathbf{k}) \approx E_g\), the band gap.
+
+\item \textbf{Photon Hamiltonian (\(H_{\text{photon}}\)):}
+
+The optical field is quantized as:
+
+\[ H_{\text{photon}} = \sum_{\mathbf{q}, \lambda} \hbar \omega_q a_{\mathbf{q}, \lambda}^\dagger a_{\mathbf{q}, \lambda}, \]
+
+where \(a_{\mathbf{q}, \lambda}^\dagger\) (\(a_{\mathbf{q}, \lambda}\)) creates (annihilates) a photon with wavevector \(\mathbf{q}\), polarization \(\lambda\), and frequency \(\omega_q = c |\mathbf{q}|\).
+
+\item \textbf{Phonon Hamiltonian (\(H_{\text{phonon}}\)):}
+
+The phonon Hamiltonian for the nanodiamond lattice is:
+
+\[ H_{\text{phonon}} = \sum_{\mathbf{p}, \nu} \hbar \omega_{\mathbf{p}, \nu} \left( b_{\mathbf{p}, \nu}^\dagger b_{\mathbf{p}, \nu} + \frac{1}{2} \right), \]
+
+where \(b_{\mathbf{p}, \nu}^\dagger\) (\(b_{\mathbf{p}, \nu}\)) creates (annihilates) a phonon with wavevector \(\mathbf{p}\), branch \(\nu\), and frequency \(\omega_{\mathbf{p}, \nu}\). 
+
+For diamond, longitudinal acoustic phonons dominate, with \(\omega_{\mathbf{p}, \nu} \approx c_s |\mathbf{p}|\), where \(c_s \approx 17.5 \times 10^3 \, \text{m/s}\) (sound speed, as per the document).
+    
+
+
+\end{itemize}
+
+
+\textbf{Electron-Photon Interaction (\(H_{ER}\))}
+
+The electron-photon interaction arises from the coupling of the electron’s momentum to the vector potential of the optical field. In the dipole approximation (valid for optical wavelengths much larger than the nanodiamond size, typically ~10–100 nm), the interaction is:
+
+\[ H_{ER} = -\frac{e}{m_e} \sum_{\mathbf{k}, \mathbf{q}, \sigma, \lambda} \mathbf{p}_{\mathbf{k}, \mathbf{k}+\mathbf{q}} \cdot \mathbf{A}_{\mathbf{q}, \lambda} \left( c_{\mathbf{k}+\mathbf{q}, \sigma}^\dagger d_{\mathbf{k}, \sigma} a_{\mathbf{q}, \lambda} + \text{h.c.} \right), \]
+
+where \(e\) is the electron charge, \(m_e\) is the effective electron mass, \(\mathbf{p}_{\mathbf{k}, \mathbf{k}+\mathbf{q}}\) is the momentum matrix element between valence and conduction bands, and \(\mathbf{A}_{\mathbf{q}, \lambda}\) is the quantized vector potential:
+
+\[ \mathbf{A}_{\mathbf{q}, \lambda} = \sqrt{\frac{\hbar}{2 \epsilon_0 \omega_q V}} \mathbf{e}_{\mathbf{q}, \lambda} \left( a_{\mathbf{q}, \lambda} + a_{-\mathbf{q}, \lambda}^\dagger \right), \]
+
+with \(\mathbf{e}_{\mathbf{q}, \lambda}\) as the polarization vector, \(\epsilon_0\) the permittivity, and \(V\) the quantization volume. The term \(c_{\mathbf{k}+\mathbf{q}, \sigma}^\dagger d_{\mathbf{k}, \sigma} a_{\mathbf{q}, \lambda}\) represents an electron transitioning from valence to conduction band while absorbing a photon.
+
+\textbf{Electron-Phonon Interaction (\(H_{EL}\))}
+
+The electron-phonon interaction in insulators like diamond is typically due to deformation potential coupling for acoustic phonons. The interaction Hamiltonian is:
+
+\[ H_{EL} = \sum_{\mathbf{k}, \mathbf{p}, \sigma, \nu} M_{\mathbf{p}, \nu} \left( d_{\mathbf{k}+\mathbf{p}, \sigma}^\dagger d_{\mathbf{k}, \sigma} + c_{\mathbf{k}+\mathbf{p}, \sigma}^\dagger c_{\mathbf{k}, \sigma} \right) \left( b_{\mathbf{p}, \nu} + b_{-\mathbf{p}, \nu}^\dagger \right), \]
+
+where \(M_{\mathbf{p}, \nu}\) is the coupling matrix element. For deformation potential coupling:
+
+\[ M_{\mathbf{p}, \nu} = D \sqrt{\frac{\hbar |\mathbf{p}|}{2 \rho V c_s}}, \]
+
+with \(D\) as the deformation potential constant, \(\rho \approx 3.51 \times 10^3 \, \text{kg/m}^3\) (diamond density), and \(V\) the crystal volume. The terms \(d_{\mathbf{k}+\mathbf{p}, \sigma}^\dagger d_{\mathbf{k}, \sigma} b_{\mathbf{p}, \nu}\) and \(c_{\mathbf{k}+\mathbf{p}, \sigma}^\dagger c_{\mathbf{k}, \sigma} b_{\mathbf{p}, \nu}\) represent scattering within the conduction or valence band with phonon emission.
+
+\subsubsection{Process Description}
+
+The process involves \(H_{ER}\) acting twice and \(H_{EL}\) acting once, where an initial photon is annihilated to produce a final photon and a phonon. This suggests a second-order electron-photon interaction followed by an electron-phonon interaction, resembling a Raman-like process (e.g., Stokes scattering), where an incoming photon (\(\mathbf{q}_1, \lambda_1\)) is absorbed, an electron is excited, a phonon (\(\mathbf{p}, \nu\)) is emitted, and a photon (\(\mathbf{q}_2, \lambda_2\)) is emitted.
+
+The sequence is:
+\begin{enumerate}
+    \item \textbf{First \(H_{ER}\):} An electron in the valence band (\(\mathbf{k}, \sigma\)) absorbs photon (\(\mathbf{q}_1, \lambda_1\)) and transitions to the conduction band (\(\mathbf{k}+\mathbf{q}_1, \sigma\)).
+
+\item  \textbf{\(H_{EL}\):} The conduction-band electron (\(\mathbf{k}+\mathbf{q}_1, \sigma\)) scatters to (\(\mathbf{k}+\mathbf{q}_1+\mathbf{p}, \sigma\)) by emitting phonon (\(\mathbf{p}, \nu\)).
+
+\item  \textbf{Second \(H_{ER}\):} The electron (\(\mathbf{k}+\mathbf{q}_1+\mathbf{p}, \sigma\)) transitions back to the valence band (\(\mathbf{k}’, \sigma\)) by emitting photon (\(\mathbf{q}_2, \lambda_2\)).
+\end{enumerate}
+
+
+
+The initial state is:
+
+\[ |i\rangle = |0_e, 1_{\mathbf{q}_1, \lambda_1}, n_{\mathbf{p}, \nu}\rangle, \]
+
+where \(0_e\) is the filled valence band (Fermi level below \(E_g\)), \(1_{\mathbf{q}_1, \lambda_1}\) is one photon, and \(n_{\mathbf{p}, \nu}\) is the initial phonon occupation. The final state is:
+
+\[ |f\rangle = |0_e, 1_{\mathbf{q}_2, \lambda_2}, n_{\mathbf{p}, \nu}+1\rangle. \]
+
+\subsubsection{Change in Phonon Occupation}
+
+To compute the change in phonon occupation, we use time-dependent perturbation theory to calculate the transition amplitude for the process. The effective interaction Hamiltonian is third-order:
+
+\[ H_{\text{eff}} \sim H_{ER} \cdot H_{EL} \cdot H_{ER}, \]
+
+but we evaluate the transition matrix element using second-order perturbation for the intermediate electron-hole pair states.
+
+The transition amplitude is:
+
+\[ T_{fi} = \sum_{m_1, m_2} \frac{\langle f | H_{ER} | m_2 \rangle \langle m_2 | H_{EL} | m_1 \rangle \langle m_1 | H_{ER} | i \rangle}{(E_i - E_{m_1} + i \eta)(E_{m_1} - E_{m_2} + i \eta)}, \]
+
+where \(m_1\) and \(m_2\) are intermediate states, and \(\eta \to 0^+\) ensures causality.
+\begin{itemize}
+    \item  \textbf{Initial state:} \(|i\rangle = c_{\mathbf{k}, \sigma} |0_e\rangle \otimes |1_{\mathbf{q}_1, \lambda_1}\rangle \otimes |n_{\mathbf{p}, \nu}\rangle\).
+
+\item \textbf{First \(H_{ER}\):}
+
+\[ |m_1\rangle = d_{\mathbf{k}+\mathbf{q}_1, \sigma}^\dagger c_{\mathbf{k}, \sigma} |0_e\rangle \otimes |0_{\mathbf{q}_1, \lambda_1}\rangle \otimes |n_{\mathbf{p}, \nu}\rangle, \]
+
+\[ \langle m_1 | H_{ER} | i \rangle = -\frac{e}{m_e} \mathbf{p}_{\mathbf{k}, \mathbf{k}+\mathbf{q}_1} \cdot \mathbf{A}_{\mathbf{q}_1, \lambda_1}, \]
+
+\[ E_i - E_{m_1} = \hbar \omega_{\mathbf{q}_1} - [\epsilon_c(\mathbf{k}+\mathbf{q}_1) - \epsilon_v(\mathbf{k})] \approx \hbar \omega_{\mathbf{q}_1} - E_g. \]
+
+\item \textbf{\(H_{EL}\):}
+
+\[ |m_2\rangle = d_{\mathbf{k}+\mathbf{q}_1+\mathbf{p}, \sigma}^\dagger c_{\mathbf{k}, \sigma} |0_e\rangle \otimes |0_{\mathbf{q}_1, \lambda_1}\rangle \otimes |n_{\mathbf{p}, \nu}+1\rangle, \]
+
+\[ \langle m_2 | H_{EL} | m_1 \rangle = M_{\mathbf{p}, \nu} \sqrt{n_{\mathbf{p}, \nu} + 1}, \]
+
+\[ E_{m_1} - E_{m_2} = [\epsilon_c(\mathbf{k}+\mathbf{q}_1) - \epsilon_c(\mathbf{k}+\mathbf{q}_1+\mathbf{p})] - \hbar \omega_{\mathbf{p}, \nu} \approx -\hbar \omega_{\mathbf{p}, \nu}. \]
+
+\item \textbf{Second \(H_{ER}\):}
+
+\[ \langle f | H_{ER} | m_2 \rangle = -\frac{e}{m_e} \mathbf{p}_{\mathbf{k}+\mathbf{q}_1+\mathbf{p}, \mathbf{k}'} \cdot \mathbf{A}_{\mathbf{q}_2, \lambda_2}, \]
+
+with momentum conservation implying \(\mathbf{k}' = \mathbf{k} + \mathbf{q}_1 + \mathbf{p} - \mathbf{q}_2\).
+\end{itemize}
+
+
+The transition rate is given by Fermi’s golden rule:
+
+\[ \Gamma = \frac{2 \pi}{\hbar} \sum_{\mathbf{k}, \mathbf{q}_2, \mathbf{p}} |T_{fi}|^2 \delta(E_f - E_i), \]
+
+where \(E_i = \hbar \omega_{\mathbf{q}_1} + n_{\mathbf{p}, \nu} \hbar \omega_{\mathbf{p}, \nu}\), \(E_f = \hbar \omega_{\mathbf{q}_2} + (n_{\mathbf{p}, \nu} + 1) \hbar \omega_{\mathbf{p}, \nu}\), and the energy conservation is:
+
+\[ \hbar \omega_{\mathbf{q}_1} = \hbar \omega_{\mathbf{q}_2} + \hbar \omega_{\mathbf{p}, \nu}. \]
+
+The change in phonon occupation for mode \((\mathbf{p}, \nu)\) is proportional to the transition rate times the phonon creation factor:
+
+\[ \Delta n_{\mathbf{p}, \nu} = \langle b_{\mathbf{p}, \nu}^\dagger b_{\mathbf{p}, \nu} \rangle_f - \langle b_{\mathbf{p}, \nu}^\dagger b_{\mathbf{p}, \nu} \rangle_i = \Gamma \cdot (n_{\mathbf{p}, \nu} + 1). \]
+
+Summing over final states and averaging over initial photon polarizations, the differential rate gives:
+
+\[ \Delta n_{\mathbf{p}, \nu} \propto \left| \frac{e^2}{m_e^2} M_{\mathbf{p}, \nu} \sqrt{\frac{\hbar}{2 \epsilon_0 \omega_{\mathbf{q}_2} V}} \sum_{\mathbf{k}} \frac{(\mathbf{p}_{\mathbf{k}, \mathbf{k}+\mathbf{q}_1} \cdot \mathbf{e}_{\mathbf{q}_1, \lambda_1})(\mathbf{p}_{\mathbf{k}+\mathbf{q}_1+\mathbf{p}, \mathbf{k}'} \cdot \mathbf{e}_{\mathbf{q}_2, \lambda_2})}{(\hbar \omega_{\mathbf{q}_1} - E_g - i \eta)(-\hbar \omega_{\mathbf{p}, \nu} - i \eta)} \right|^2 (n_{\mathbf{p}, \nu} + 1). \]
+
+For a nanodiamond, the sum over \(\mathbf{k}\) is discrete due to confinement, but for estimation, we approximate it as an integral over the Brillouin zone, weighted by the density of states. The phonon occupation increases by:
+
+\[ \Delta n_{\mathbf{p}, \nu} \approx \frac{2 \pi}{\hbar} \frac{e^4 D^2 \hbar^2 |\mathbf{p}|}{m_e^4 \rho V c_s \epsilon_0 \omega_{\mathbf{q}_2}} \left| \sum_{\mathbf{k}} \frac{|\mathbf{p}_{\mathbf{k}, \mathbf{k}+\mathbf{q}_1}|^2}{(\hbar \omega_{\mathbf{q}_1} - E_g)^2 (\hbar \omega_{\mathbf{p}, \nu})^2} \right|^2 (n_{\mathbf{p}, \nu} + 1) \delta(\hbar \omega_{\mathbf{q}_1} - \hbar \omega_{\mathbf{q}_2} - \hbar \omega_{\mathbf{p}, \nu}). \]
+
+For diamond, with \(E_g \approx 5.5 \, \text{eV}\), \(\hbar \omega_{\mathbf{q}_1} \approx 5.6 \, \text{eV}\), and \(\hbar \omega_{\mathbf{p}, \nu} \approx 10^{-2} \, \text{eV}\), the denominator is large, suppressing the rate. The factor \(n_{\mathbf{p}, \nu} + 1\) accounts for stimulated and spontaneous phonon emission.
+
+\subsubsection{Shift in Phonon Density of States}
+
+The phonon density of states (DOS), \(\rho(\omega)\), is defined as:
+
+\[ \rho(\omega) = \sum_{\mathbf{p}, \nu} \delta(\omega - \omega_{\mathbf{p}, \nu}). \]
+
+The interaction \(H_{EL}\) modifies the phonon self-energy, leading to a shift in the DOS. The self-energy \(\Sigma_{\mathbf{p}, \nu}(\omega)\) arises from electron-phonon coupling, calculated via the Dyson equation. To first order, the self-energy is:
+
+\[ \Sigma_{\mathbf{p}, \nu}(\omega) = \sum_{\mathbf{k}, \sigma} |M_{\mathbf{p}, \nu}|^2 \left[ \frac{f(\epsilon_c(\mathbf{k})) - f(\epsilon_c(\mathbf{k}+\mathbf{p}))}{\hbar \omega - [\epsilon_c(\mathbf{k}+\mathbf{p}) - \epsilon_c(\mathbf{k})] + i \eta} + \frac{f(\epsilon_v(\mathbf{k})) - f(\epsilon_v(\mathbf{k}+\mathbf{p}))}{\hbar \omega - [\epsilon_v(\mathbf{k}+\mathbf{p}) - \epsilon_v(\mathbf{k})] + i \eta} \right], \]
+
+where \(f(\epsilon)\) is the Fermi-Dirac distribution. For an insulator at low temperature, the valence band is full (\(f(\epsilon_v) \approx 1\)), and the conduction band is empty (\(f(\epsilon_c) \approx 0\)). Optical illumination creates a non-equilibrium electron distribution, but for simplicity, we assume thermal equilibrium.
+
+The real part of \(\Sigma_{\mathbf{p}, \nu}(\omega)\) shifts the phonon frequency:
+
+\[ \omega_{\mathbf{p}, \nu}' \approx \omega_{\mathbf{p}, \nu} + \frac{\text{Re} \Sigma_{\mathbf{p}, \nu}(\omega_{\mathbf{p}, \nu})}{\hbar}. \]
+
+The modified DOS is:
+
+\[ \rho'(\omega) = \sum_{\mathbf{p}, \nu} \delta(\omega - \omega_{\mathbf{p}, \nu}'). \]
+
+For acoustic phonons, \(\omega_{\mathbf{p}, \nu} = c_s |\mathbf{p}|\), and in a nanodiamond of size \(L\), the minimum frequency is \(\omega_0 = \pi c_s / L\). For \(M = 10^{-18} \, \text{kg}\), \(\rho = 3.51 \times 10^3 \, \text{kg/m}^3\), \(L \approx (M/\rho)^{1/3} \approx 6.6 \, \text{nm}\), so \(\omega_0 \approx 8 \times 10^{12} \, \text{rad/s}\).
+
+The self-energy is small due to the large band gap and high phonon frequencies in diamond. Estimating:
+
+\[ |M_{\mathbf{p}, \nu}|^2 \approx \frac{D^2 \hbar |\mathbf{p}|}{2 \rho V c_s}, \]
+
+\[ \text{Re} \Sigma_{\mathbf{p}, \nu}(\omega) \propto \frac{D^2}{\rho c_s} \int d^3 k \frac{|\mathbf{p}|}{\hbar \omega - \Delta \epsilon(\mathbf{k}, \mathbf{p})}, \]
+
+where \(\Delta \epsilon \sim \hbar^2 p^2 / 2m_e\). For \(\omega \approx \omega_{\mathbf{p}, \nu}\), the integral is logarithmic, and the shift is:
+
+\[ \Delta \omega_{\mathbf{p}, \nu} \approx \frac{D^2 |\mathbf{p}|}{4 \pi^2 \rho c_s^2 \hbar} \ln \left( \frac{k_F}{p} \right), \]
+
+with \(k_F\) as the Fermi wavevector (approximated for valence electrons). For \(D \approx 10 \, \text{eV}\), \(p \approx \pi/L\), the shift is small (\(\Delta \omega / \omega \sim 10^{-3}\)).
+
+The DOS shift is:
+
+\[ \rho'(\omega) \approx \rho(\omega - \Delta \omega), \]
+
+where \(\rho(\omega) \propto \omega^2\) for 3D acoustic phonons. The relative change is:
+
+\[ \frac{\Delta \rho(\omega)}{\rho(\omega)} \approx -3 \frac{\Delta \omega}{\omega}. \]
+
+
+ Summary
+
+- **Hamiltonian**:
+
+\[ H = \sum_{\mathbf{k}, \sigma} \left[ \epsilon_v(\mathbf{k}) c_{\mathbf{k}, \sigma}^\dagger c_{\mathbf{k}, \sigma} + \epsilon_c(\mathbf{k}) d_{\mathbf{k}, \sigma}^\dagger d_{\mathbf{k}, \sigma} \right] + \sum_{\mathbf{q}, \lambda} \hbar \omega_q a_{\mathbf{q}, \lambda}^\dagger a_{\mathbf{q}, \lambda} + \sum_{\mathbf{p}, \nu} \hbar \omega_{\mathbf{p}, \nu} \left( b_{\mathbf{p}, \nu}^\dagger b_{\mathbf{p}, \nu} + \frac{1}{2} \right) \]
+\[ + \sum_{\mathbf{k}, \mathbf{q}, \sigma, \lambda} \frac{e}{m_e} \mathbf{p}_{\mathbf{k}, \mathbf{k}+\mathbf{q}} \cdot \mathbf{A}_{\mathbf{q}, \lambda} \left( c_{\mathbf{k}+\mathbf{q}, \sigma}^\dagger d_{\mathbf{k}, \sigma} a_{\mathbf{q}, \lambda} + \text{h.c.} \right) \]
+\[ + \sum_{\mathbf{k}, \mathbf{p}, \sigma, \nu} M_{\mathbf{p}, \nu} \left( d_{\mathbf{k}+\mathbf{p}, \sigma}^\dagger d_{\mathbf{k}, \sigma} + c_{\mathbf{k}+\mathbf{p}, \sigma}^\dagger c_{\mathbf{k}, \sigma} \right) \left( b_{\mathbf{p}, \nu} + b_{-\mathbf{p}, \nu}^\dagger \right). \]
+
+- **Phonon Occupation Change**:
+
+\[ \Delta n_{\mathbf{p}, \nu} \propto \frac{e^4 D^2 |\mathbf{p}|}{m_e^4 \rho c_s \epsilon_0 \omega_{\mathbf{q}_2} (\hbar \omega_{\mathbf{q}_1} - E_g)^2 (\hbar \omega_{\mathbf{p}, \nu})^2} (n_{\mathbf{p}, \nu} + 1), \]
+
+with a small increase due to high phonon frequencies and large band gap.
+
+- **Phonon DOS Shift**:
+
+\[ \rho'(\omega) \approx \rho(\omega - \Delta \omega), \quad \Delta \omega \approx \frac{D^2 |\mathbf{p}|}{4 \pi^2 \rho c_s^2 \hbar} \ln \left( \frac{k_F}{p} \right), \]
+
+resulting in a minor shift (\(\Delta \rho / \rho \sim -10^{-2}\)) due to weak coupling in diamond.

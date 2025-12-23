@@ -1,0 +1,520 @@
+\chapter{Laser light heating of NV-centre nanodiamond (Rayleigh regime)}
+
+
+\section{Heat absorption in an optically trapped nanodiamond as an electric dipole}
+
+We know that for a nanodiamond illuminated (optically levitated or dipole trapping) by light, the power absorbed \(E_{\text{abs}}\) is given by:
+\begin{equation}
+    \frac{d E_{\text{abs}}}{dt} = C_x I 
+\end{equation}
+where \(C_x\) is the absorption cross-section and I is the intensity of light at the focus.
+
+\subsection{Polarizability and Dipole Moment:}
+
+
+When the laser’s electric field ($ \mathbf{E} $) acts on the nanodiamond, it polarizes the material, creating an induced dipole moment ($ \mathbf{p} = \alpha \mathbf{E} $).
+
+The polarizability $ \alpha $ depends on the nanodiamond’s material properties ($ \epsilon $) and size ($ V $). For an NV-centred nanodiamond, the NV centres (defects with electronic transitions) increase $ \epsilon_i $, the dielectric constant making $ \alpha $ complex: $ \alpha = \alpha_r + i \alpha_i $, where $ \alpha_i $ (the imaginary part) relates to energy loss.
+
+
+
+
+\subsection{Polarizability of a Dielectric Sphere}
+
+The polarizability arises from electrostatics in the Rayleigh regime, where the nanoparticle is much smaller than the wavelength of light (\( r \ll \lambda \)), so the electric field is approximately uniform across the particle. We’ll derive this using the electrostatic solution for a dielectric sphere in a uniform electric field, assuming SI units for clarity, as used in the previous derivation of the absorption cross-section.
+
+Considering a dielectric sphere of radius \( r \), volume \( V = \frac{4}{3} \pi r^3 \), and relative dielectric constant \( \epsilon = \epsilon_r + i \epsilon_i \) (complex to account for absorption, as in "Equations.pdf"). The sphere is placed in a medium with dielectric constant \( \epsilon_m \epsilon_0 \) (where \( \epsilon_m \approx 1 \) for air or vacuum, and \( \epsilon_0 \) is the permittivity of free space). A uniform external electric field \( \mathbf{E}_0 = E_0 \hat{z} \) is applied (e.g., from the laser).
+
+The dipole moment induced in the sphere is:
+
+\[ \mathbf{p} = \alpha \mathbf{E}_0 \]
+
+Our task is to find \( \alpha \) by solving for the electric fields inside and outside the sphere and calculating the induced dipole moment.
+
+ \subsubsection{Electrostatic Solution for a Dielectric Sphere}
+
+In the Rayleigh regime, we use the quasi-static approximation (ignoring time-dependent effects since \( r \ll \lambda \)). The electric field is described by the electric potential \( \Phi \), which satisfies Laplace’s equation (\( \nabla^2 \Phi = 0 \)) in regions with no free charges. We define two regions:
+\begin{itemize}
+    \item  \textbf{Inside the sphere} (\( r < a \), where \( a \) is the radius): Permittivity is \( \epsilon \epsilon_0 \).
+    \item  \textbf{Outside the sphere} (\( r > a \)): Permittivity is \( \epsilon_m \epsilon_0 \approx \epsilon_0 \) (since \( \epsilon_m = 1 \)).
+\end{itemize}
+
+
+The boundary conditions are:
+\begin{enumerate}
+    \item The potential is continuous at \( r = a \).
+    \item The normal component of the displacement field \( \mathbf{D} = \epsilon \epsilon_0 \mathbf{E} \) is continuous at \( r = a \).
+    \item Far from the sphere (\( r \to \infty \)), the field is \( \mathbf{E}_0 = -\nabla \Phi \), corresponding to \( \Phi = -E_0 z = -E_0 r \cos \theta \) in spherical coordinates.
+\end{enumerate}
+
+
+We solve Laplace’s equation in spherical coordinates, using the general solution for the potential:
+
+\[ \Phi(r, \theta) = \sum_{l=0}^\infty \left( A_l r^l + \frac{B_l}{r^{l+1}} \right) P_l(\cos \theta) \]
+
+where \( P_l \) are Legendre polynomials. For a uniform field, the \( l = 1 \) term (dipole term) dominates due to symmetry.
+
+\textbf{Inside the sphere (\( r < a \)):}
+
+\[ \Phi_{\text{in}} = A r \cos \theta \]
+
+(The \( r^{-2} \) term is excluded to avoid singularity at \( r = 0 \).)
+
+\textbf{Outside the sphere} (\( r > a \)):
+
+\[ \Phi_{\text{out}} = \left( -E_0 r + \frac{B}{r^2} \right) \cos \theta \]
+
+The \( -E_0 r \cos \theta \) term gives the applied field \( \mathbf{E}_0 = E_0 \hat{z} \), and \( \frac{B}{r^2} \cos \theta \) represents the dipole field of the sphere.
+
+\textbf{Boundary Conditions:}
+\begin{enumerate}
+    
+\item  \textbf{Continuity of potential} at \( r = a \):
+
+\[ \Phi_{\text{in}}(r=a) = \Phi_{\text{out}}(r=a) \]
+
+\[ A a \cos \theta = \left( -E_0 a + \frac{B}{a^2} \right) \cos \theta \]
+
+\[ A a = -E_0 a + \frac{B}{a^2} \quad (1) \]
+
+\item  \textbf{Continuity of the normal displacement field:} The normal component of \( \mathbf{D} = \epsilon \epsilon_0 \mathbf{E} \) is continuous. Since \( \mathbf{E} = -\nabla \Phi \), the radial component is \( E_r = -\frac{\partial \Phi}{\partial r} \).
+
+\end{enumerate}
+Inside:
+
+\[ E_{r,\text{in}} = -\frac{\partial \Phi_{\text{in}}}{\partial r} = -A \cos \theta \]
+
+\[ D_{r,\text{in}} = \epsilon \epsilon_0 E_{r,\text{in}} = -\epsilon \epsilon_0 A \cos \theta \]
+
+Outside:
+
+\[ E_{r,\text{out}} = -\frac{\partial \Phi_{\text{out}}}{\partial r} = -\left( -E_0 - \frac{2B}{r^3} \right) \cos \theta \]
+
+At \( r = a \):
+
+\[ E_{r,\text{out}} = \left( E_0 + \frac{2B}{a^3} \right) \cos \theta \]
+
+\[ D_{r,\text{out}} = \epsilon_m \epsilon_0 E_{r,\text{out}} = \epsilon_m \epsilon_0 \left( E_0 + \frac{2B}{a^3} \right) \cos \theta \]
+
+Continuity of \( D_r \):
+
+\[ \epsilon \epsilon_0 (-A) = \epsilon_m \epsilon_0 \left( E_0 + \frac{2B}{a^3} \right) \]
+
+\[ -\epsilon A = \epsilon_m \left( E_0 + \frac{2B}{a^3} \right) \quad (2) \]
+
+Solving for the equations (1) and (2):
+
+From (1):
+
+\[ A a = -E_0 a + \frac{B}{a^2} \]
+
+\[ B = a^3 (A + E_0) \quad (3) \]
+
+From (2):
+
+\[ -\epsilon A = \epsilon_m \left( E_0 + \frac{2B}{a^3} \right) \]
+
+Substitute \( B = a^3 (A + E_0) \):
+
+\[ -\epsilon A = \epsilon_m \left( E_0 + \frac{2 a^3 (A + E_0)}{a^3} \right) = \epsilon_m (E_0 + 2A + 2E_0) = \epsilon_m (3E_0 + 2A) \]
+
+\[ -\epsilon A = \epsilon_m (2A + 3E_0) \]
+
+\[ -\epsilon A = 2 \epsilon_m A + 3 \epsilon_m E_0 \]
+
+\[ -(\epsilon + 2 \epsilon_m) A = 3 \epsilon_m E_0 \]
+
+\[ A = -\frac{3 \epsilon_m E_0}{\epsilon + 2 \epsilon_m} \]
+
+Now find \( B \):
+
+\[ B = a^3 \left( -\frac{3 \epsilon_m E_0}{\epsilon + 2 \epsilon_m} + E_0 \right) = a^3 E_0 \left( \frac{-3 \epsilon_m + (\epsilon + 2 \epsilon_m)}{\epsilon + 2 \epsilon_m} \right) = a^3 E_0 \frac{\epsilon - \epsilon_m}{\epsilon + 2 \epsilon_m} \]
+
+The potential outside includes a dipole term:
+
+\[ \Phi_{\text{out}} = -E_0 r \cos \theta + \frac{B \cos \theta}{r^2} \]
+
+The dipole field is \( \Phi_{\text{dipole}} = \frac{p \cos \theta}{4 \pi \epsilon_m \epsilon_0 r^2} \), so:
+
+\[ \frac{B \cos \theta}{r^2} = \frac{p \cos \theta}{4 \pi \epsilon_m \epsilon_0 r^2} \]
+
+\[ p = 4 \pi \epsilon_m \epsilon_0 B \]
+
+Substitute \( B \):
+
+\[ p = 4 \pi \epsilon_m \epsilon_0 \cdot a^3 E_0 \frac{\epsilon - \epsilon_m}{\epsilon + 2 \epsilon_m} \]
+
+Since \( p = \alpha E_0 \):
+
+\[ \alpha = \frac{p}{E_0} = 4 \pi \epsilon_m \epsilon_0 a^3 \frac{\epsilon - \epsilon_m}{\epsilon + 2 \epsilon_m} \]
+
+Since \( V = \frac{4}{3} \pi a^3 \), we have \( a^3 = \frac{3 V}{4 \pi} \), so:
+
+\[ \alpha = 4 \pi \epsilon_m \epsilon_0 \cdot \frac{3 V}{4 \pi} \frac{\epsilon - \epsilon_m}{\epsilon + 2 \epsilon_m} = 3 \epsilon_m \epsilon_0 V \frac{\epsilon - \epsilon_m}{\epsilon + 2 \epsilon_m} \]
+
+For air or vacuum, \( \epsilon_m = 1 \):
+
+\[ \alpha = 3 \epsilon_0 V \frac{\epsilon - 1}{\epsilon + 2} \]
+
+This is the desired polarizability, where \( \epsilon \) is the relative dielectric constant of the nanoparticle.
+
+
+\textbf{Energy Absorption from the Dipole:}
+
+
+The power absorbed by the dipole is given by the work done by the electric field on the oscillating dipole, averaged over time:
+$ P_{\text{abs}} = \frac{\omega}{2} \operatorname{Im} \left( \mathbf{p} \cdot \mathbf{E}^* \right) $
+
+
+Since $ \mathbf{p} = \alpha \mathbf{E} $ and $ \mathbf{E} = \mathbf{E}_0 e^{-i \omega t} $ (with $ \mathbf{E}^* $ as its complex conjugate), the dot product becomes:
+$ \mathbf{p} \cdot \mathbf{E}^* = \alpha |\mathbf{E}|^2 $
+
+
+The imaginary part of $ \alpha $ ($ \operatorname{Im}(\alpha) $) accounts for energy dissipation (absorption) but not elastic scattering. So:
+$ P_{\text{abs}} = \frac{\omega}{2} \operatorname{Im}(\alpha) |\mathbf{E}|^2 $
+
+
+
+\textbf{Relating to Intensity:}
+
+
+The laser intensity $ I $ is the power per unit area, related to the electric field by $ I = \frac{1}{2} c \epsilon_0 |\mathbf{E}|^2 $, where $ c $ is the speed of light. Thus:
+$ |\mathbf{E}|^2 = \frac{2 I}{c \epsilon_0} $
+
+
+Substitute into the power equation:
+$ P_{\text{abs}} = \frac{\omega}{2} \operatorname{Im}(\alpha) \cdot \frac{2 I}{c \epsilon_0} = \frac{\omega}{c \epsilon_0} \operatorname{Im}(\alpha) I $
+
+
+Since $ \omega = c k $ (where $ k = \frac{2\pi}{\lambda} $ is the wave number):
+$ P_{\text{abs}} = \frac{k}{\epsilon_0} \operatorname{Im}(\alpha) I $
+
+
+
+\textbf{Deriving the Absorption Cross-Section:}
+
+
+The absorption cross-section $ C_x $ is defined as the ratio of absorbed power to intensity:
+$ P_{\text{abs}} = C_x I $
+
+
+Equate the two expressions for $ P_{\text{abs}} $:
+$ C_x I = \frac{k}{\epsilon_0} \operatorname{Im}(\alpha) I $
+
+
+Thus:
+$ C_x = \frac{k}{\epsilon_0} \operatorname{Im}(\alpha) $
+
+
+Substitute $ \alpha = 3 \epsilon_0 V \frac{\epsilon - 1}{\epsilon + 2} $. The imaginary part is:
+$ \operatorname{Im}(\alpha) = \operatorname{Im} \left( 3 \epsilon_0 V \frac{\epsilon - 1}{\epsilon + 2} \right) = 3 \epsilon_0 V \operatorname{Im} \left( \frac{\epsilon - 1}{\epsilon + 2} \right) $
+
+
+So:
+
+\begin{equation}\label{Power absorbed}
+   C_x = \frac{k}{\epsilon_0} \operatorname{Im}(\alpha) = \frac{k}{\epsilon_0} \cdot 3 \epsilon_0 V \operatorname{Im} \left( \frac{\epsilon - 1}{\epsilon + 2} \right) = 3 k V \operatorname{Im} \left( \frac{\epsilon - 1}{\epsilon + 2} \right) 
+\end{equation}
+
+
+
+\section{Heat dissipated in the nanodiamond due to thermal collisions}
+From the equipartition theorem, for a system of particles within a harmonic oscillator potential (Debye model), the average energy in three dimensions is given by (\(N\) is the number of molecules which are colliding): 
+
+\[\langle E\rangle= 3 N k_B T \quad (a)\]
+
+Replacing N with the rate of collisions will give us the rate of energy dissipated.
+
+
+In our case, we have a treatment of air surrounding the nanodiamond similar to the an ideal gas. We denote the internal temperature as T and the gas temperature as \(T_0\)
+Energy transfer occurs during collisions, proportional to the temperature difference $ T-T_0 $.  The mean energy transferred per collision is $ \alpha_g k_B (T - T_0) $, where $ \alpha_g $ is the fraction of energy accommodated.
+
+The rate of collisions the levitated nanoparticle receives is:
+\[N_c = \frac{1}{2} \bar{v} n A, \quad (b)\]
+where:
+\begin{itemize}
+    \item $ \bar{v} = \sqrt{\frac{8 k_B T_0}{\pi m}} $ is the mean speed of the gas molecules,
+    \item $ A = 4 \pi r^2 $ is the surface area of the nanoparticle,
+    \item $ m $ is the mass of a gas molecule,
+    \item$ T_0 $ is the gas temperature.
+\end{itemize}
+
+Using the pressure-number density relation (similar to the ideal gas equation), the number density of gas molecules is:
+
+\[N = N_0 \frac{p}{p_0} \quad (c)\], 
+
+where $ N_0$  is the number density at atmospheric pressure $ p_0$.
+\(p\) is the pressure of the gas surrounding the nanodiamond (in the vacuum chamber).
+
+From substituting the values of \(A\), replacing \(T_0\) with \(T-T_0\), we get the rate of energy dissipated from substituting (c) and (b) in equation (a)  ( which now gives energy dissipation rate by taking \(N_c\) collisions per unit time instead of number of particles), we get:
+
+\begin{equation}
+    \label{Power loss due to collision}
+\frac{dE_{gas}}{dt} = - 6 \alpha_g \pi r^2 \bar{v} N_0 \frac{p}{p_0} k_B (T - T_0),
+\end{equation}
+
+where \(\alpha_g\) is a constant called the accommodation coefficient. $ 0 \leq \alpha_g \leq 1 $ represents the fraction of the maximum possible energy exchange that occurs during a collision.
+
+\section{Heat dissipated by the nanodiamond through black body radiation:}
+
+To derive the equation for the rate of absorption of blackbody radiation by a dielectric nanosphere, as presented in Chang et al.'s paper, we start with the blackbody radiation law and the provided absorption cross-section. The goal is to obtain the expression:
+
+\[
+\frac{dE}{dt} = \frac{72\zeta(5)}{\pi^2} \frac{V}{c^3 \hbar^4} \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) (k_B T)^5
+\]
+
+where \( V \) is the volume of the nanosphere, \( c \) is the speed of light, \( \hbar \) is the reduced Planck constant, \( \epsilon_{bb} \) is the permittivity of the nanosphere across the blackbody radiation spectrum, \( k_B \) is the Boltzmann constant, \( T \) is the background temperature, and \( \zeta(5) \) is the Riemann zeta function evaluated at 5.
+
+\textbf{Blackbody Radiation Energy Density}
+
+
+The blackbody radiation energy density per unit frequency interval at frequency \( \omega \) and temperature \( T \) is given by the Planck distribution \ref{Bb u}:
+
+\[
+u(\omega, T) = \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{e^{\hbar \omega / k_B T} - 1}
+\]
+
+This represents the energy per unit volume per unit frequency for electromagnetic radiation in thermal equilibrium at temperature \( T \). The spectral energy density \( u(\omega, T) \) has units of energy per unit volume per unit frequency (e.g., J/m³·Hz).
+
+\textbf{Absorption Cross-Section}
+
+
+The absorption cross-section for a dielectric nanosphere in the Rayleigh scattering regime (\( r \ll \lambda \)) is provided as:
+
+\[
+C_x = 3 k V \operatorname{Im} \left( \frac{\epsilon - 1}{\epsilon + 2} \right)
+\]
+
+where \( k = \omega / c \) is the wave number, \( V \) is the volume of the nanosphere, and \( \epsilon \) is the relative permittivity of the nanosphere. For blackbody radiation, we assume the permittivity is approximately constant across the relevant frequency spectrum and denote it as \( \epsilon_{bb} \). Thus, the absorption cross-section becomes:
+
+\[
+C_x(\omega) = 3 \frac{\omega}{c} V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right)
+\]
+
+The imaginary part \( \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \) accounts for the absorptive properties of the material, and \( C_x(\omega) \) has units of area (m²).
+
+\textbf{Power Absorbed from Blackbody Radiation}
+
+
+The power absorbed by the nanosphere at a given frequency \( \omega \) is the product of the energy flux of the blackbody radiation and the absorption cross-section. The energy flux (energy per unit area per unit time per unit frequency) is related to the energy density by:
+
+\[
+\text{Flux} = u(\omega, T) \cdot c
+\]
+
+This is because the energy density \( u(\omega, T) \) is isotropic, and the flux through a surface is obtained by multiplying the energy density by the speed of light \( c \). Thus, the power absorbed per unit frequency is:
+
+\[
+\frac{dP}{d\omega} = C_x(\omega) \cdot u(\omega, T) \cdot c
+\]
+
+Substituting the expressions for \( C_x(\omega) \) and \( u(\omega, T) \):
+
+\[
+\frac{dP}{d\omega} = \left[ 3 \frac{\omega}{c} V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \right] \cdot \left[ \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{e^{\hbar \omega / k_B T} - 1} \right] \cdot c
+\]
+
+Simplify the expression:
+
+\[
+\frac{dP}{d\omega} = 3 V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \cdot \frac{\hbar \omega^4}{\pi^2 c^3} \cdot \frac{1}{e^{\hbar \omega / k_B T} - 1}
+\]
+
+\textbf{Integrating over all frequencies for the total power absorbed:}
+
+\[
+\frac{dE}{dt} = \int_0^\infty \frac{dP}{d\omega} \, d\omega = \int_0^\infty 3 V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \cdot \frac{\hbar \omega^4}{\pi^2 c^3} \cdot \frac{1}{e^{\hbar \omega / k_B T} - 1} \, d\omega
+\]
+
+Assuming the permittivity \( \epsilon_{bb} \) is approximately constant across the blackbody spectrum (a common approximation for small particles in the Rayleigh regime), we can factor out the frequency-independent terms:
+
+\[
+\frac{dE}{dt} = 3 V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \cdot \frac{\hbar}{\pi^2 c^3} \int_0^\infty \frac{\omega^4}{e^{\hbar \omega / k_B T} - 1} \, d\omega
+\]
+
+Thus the integral to evaluate is:
+
+\[
+\int_0^\infty \frac{\omega^4}{e^{\hbar \omega / k_B T} - 1} \, d\omega
+\]
+
+Making the substitution \( x = \frac{\hbar \omega}{k_B T} \), so \( \omega = \frac{k_B T}{\hbar} x \), \( d\omega = \frac{k_B T}{\hbar} dx \). The exponent becomes:
+
+\[
+\frac{\hbar \omega}{k_B T} = x
+\]
+
+and the frequency term:
+
+\[
+\omega^4 = \left( \frac{k_B T}{\hbar} x \right)^4 = \left( \frac{k_B T}{\hbar} \right)^4 x^4
+\]
+
+The differential transforms as:
+
+\[
+d\omega = \frac{k_B T}{\hbar} dx
+\]
+
+Thus, the integral becomes:
+
+\[
+\int_0^\infty \frac{\omega^4}{e^{\hbar \omega / k_B T} - 1} \, d\omega = \int_0^\infty \frac{\left( \frac{k_B T}{\hbar} x \right)^4}{e^x - 1} \cdot \frac{k_B T}{\hbar} \, dx
+\]
+
+\[
+= \left( \frac{k_B T}{\hbar} \right)^4 \cdot \frac{k_B T}{\hbar} \int_0^\infty \frac{x^4}{e^x - 1} \, dx
+\]
+
+\[
+= \left( \frac{k_B T}{\hbar} \right)^5 \int_0^\infty \frac{x^4}{e^x - 1} \, dx
+\]
+
+The integral \( \int_0^\infty \frac{x^4}{e^x - 1} \, dx \) is a standard form related to the Riemann zeta function. It is known that:
+
+\[
+\int_0^\infty \frac{x^{n-1}}{e^x - 1} \, dx = \Gamma(n) \zeta(n)
+\]
+
+For \( n = 5 \) (since the exponent of \( x \) is 4, so \( n - 1 = 4 \), \( n = 5 \)):
+
+\[
+\int_0^\infty \frac{x^4}{e^x - 1} \, dx = \Gamma(5) \zeta(5)
+\]
+
+The gamma function for an integer \( n \) is \( \Gamma(n) = (n-1)! \), so:
+
+\[
+\Gamma(5) = 4! = 24
+\]
+
+Thus:
+
+\[
+\int_0^\infty \frac{x^4}{e^x - 1} \, dx = 24 \zeta(5)
+\]
+
+Substitute back into the power expression:
+
+\[
+\frac{dE}{dt} = 3 V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \cdot \frac{\hbar}{\pi^2 c^3} \cdot \left( \frac{k_B T}{\hbar} \right)^5 \cdot 24 \zeta(5)
+\]
+
+\[
+= 3 V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \cdot \frac{\hbar}{\pi^2 c^3} \cdot \frac{(k_B T)^5}{\hbar^5} \cdot 24 \zeta(5)
+\]
+
+\[
+= 3 V \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) \cdot \frac{(k_B T)^5}{\pi^2 c^3 \hbar^4} \cdot 24 \zeta(5)
+\]
+
+\[
+= \frac{72 \zeta(5) V}{\pi^2 c^3 \hbar^4} \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) (k_B T)^5
+\]
+
+The derived expression matches the form given in the \textit{Equations.pdf}:
+
+\begin{equation}\label{Power loss due to bb r}
+  \frac{dE_{bb}}{dt} = -\frac{72 \zeta(5)}{\pi^2} \frac{V}{c^3 \hbar^4} \operatorname{Im} \left( \frac{\epsilon_{bb} - 1}{\epsilon_{bb} + 2} \right) (k_B T)^5  
+\end{equation}
+
+\section{Net heating of the nanodiamond}
+
+From Eqs. \eqref{Power absorbed}, \eqref{Power loss due to collision}, and \eqref{Power loss due to bb r}, we get the net heat absorbed, which is equal to the volumetric heat capacity \(C_V\), multiplied by the temperature difference, i.e.,
+
+
+\begin{equation}\label{Final heating equa}
+    V\frac{d[ C_V ( T- T_0)]}{d t} = 3IkV \operatorname{Im }\frac{\epsilon-1}{\epsilon+2} - 6\alpha_g \pi r^2 \bar{v} N_0 \frac{p}{p_0} k_B (T - To) - \frac{72 \zeta(5) V}{\pi^2 c^3 \hbar^4} (\operatorname{Im }\frac{\epsilon_{bb}-1}{\epsilon_{bb}+2}) k_B^5 T^5
+\end{equation}
+
+where \(r\) is the radius of the nanosphere \( V \) is the volume of the nanosphere, \( c \) is the speed of light, \( \hbar \) is the reduced Planck constant, \( \epsilon_{bb} \) is the permittivity of the nanosphere across the blackbody radiation spectrum, \( k_B \) is the Boltzmann constant, \( T_0 \) is the background temperature, and \( \zeta(5) \) is the Riemann zeta function evaluated at 5. $ k = \frac{2\pi}{\lambda} $ is the wave number of incident light and \( \epsilon \) is the relative dielectric constant of the nanosphere. \(\bar{v}\) is the mean speed of nanoparticle molecules. Finally \(T\) is the temperature of the diamond. $ N_0$  is the number density at atmospheric pressure $ p_0$ and \(p\) is the total pressure on the nanosphere (atmospheric pressure plus radiation pressure). \(\alpha_g\) is a constant called the accommodation coefficient. $ 0 \leq \alpha_g \leq 1 $. 
+
+\section{Dimentional analysis of Eq. \eqref{Final heating equa}}
+Dimensions are denoted as $[\cdot]$.
+
+\subsection{Basic dimensions}
+\begin{itemize}
+    \item $[V] = \si{\meter\cubed}$
+    \item $[C_V] = \si{\joule\per\meter\cubed\per\kelvin}$ (volumetric heat capacity; see note at the end)
+    \item $[T] = \si{\kelvin}$, $[t] = \si{\second}$
+    \item $[I] = \si{\watt\per\meter\squared} = \si{\joule\per\second\per\meter\squared}$
+    \item $[k] = \si{\per\meter}$
+    \item $[\varepsilon]$, $[\varepsilon_{\text{bb}}]$, $\text{Im}(\cdot)$, $\zeta(5)$, $\pi$, numerical factors, $\alpha_g$, $p/p_0$ are dimensionless
+    \item $[r] = \si{\meter}$
+    \item $[\bar{v}] = \si{\meter\per\second}$
+    \item $[N_0] = \si{\per\meter\cubed}$ (number density at $p_0$)
+    \item $[k_B] = \si{\joule\per\kelvin}$
+    \item $[c] = \si{\meter\per\second}$
+    \item $[\hbar] = \si{\joule\second}$
+\end{itemize}
+
+\subsection{Left-hand side}
+The expression is:
+\[
+ V\frac{d[ C_V ( T- T_0)]}{d t} 
+\]
+The dimensions are:
+\[
+[\si{\meter\cubed}] \cdot [\si{\joule\per\meter\cubed\per\kelvin}] \cdot [\si{\kelvin\per\second}] = \si{\joule\per\second} = \si{\watt}
+\]
+
+\section{Laser absorption term}
+The expression is:
+\[
+3 I k V \text{Im}\left[\frac{\varepsilon-1}{\varepsilon+2}\right]
+\]
+The dimensions are:
+\[
+[\si{\watt\per\meter\squared}] \cdot [\si{\per\meter}] \cdot [\si{\meter\cubed}] \cdot [\text{dimensionless}] = \si{\watt}
+\]
+
+\subsection{Gas collisional cooling term}
+The expression is:
+\[
+6 \alpha_g \pi r^2 \bar{v} N_0 (p/p_0) k_B (T - T_0)
+\]
+Units piece by piece:
+First, for the term $r^2 \bar{v} N$:
+\[
+[\si{\meter\squared}] \cdot [\si{\meter\per\second}] \cdot [\si{\per\meter\cubed}] = \si{\meter^{2+1-3}\second^{-1}} = \si{\per\second}
+\]
+So $r^2 \bar{v} N$ has units of $\si{\per\second}$ (a collision rate scale when multiplied by area).
+
+Now multiply by $k_B$ and $(T-T_0)$:
+\[
+[\si{\per\second}] \cdot [\si{\joule\per\kelvin}] \cdot [\si{\kelvin}] = \si{\joule\per\second} = \si{\watt}
+\]
+The dimensionless multipliers ($6, \alpha_g, \pi, p/p_0$) do not change the units. So Term 2 is in Watts.
+
+\subsection{Black-body radiation exchange term}
+The expression is:
+\[
+\frac{72 \zeta(5) V}{\pi^2 c^3 \hbar^4} \text{Im}\left[\frac{\varepsilon_{\text{bb}}-1}{\varepsilon_{\text{bb}}+2}\right] k_B^5 T^5
+\]
+Dimensions of the coefficient:
+\[
+\left[\frac{V}{c^3 \hbar^4}\right] \cdot [k_B^5 T^5]
+\]
+\subsubsection{$\left[\frac{V}{c^3 \hbar^4}\right]$}
+\begin{align}
+    [c^3] &= (\si{\meter\per\second})^3 = \si{\meter\cubed\per\second\cubed} \\
+    [\hbar^4] &= (\si{\joule\second})^4 = \si{\joule\tothe{4}\second\tothe{4}} \\
+    \implies [c^3 \hbar^4] &= (\si{\meter\cubed\per\second\cubed})(\si{\joule\tothe{4}\second\tothe{4}}) = \si{\meter\cubed\joule\tothe{4}\second}
+\end{align}
+Hence:
+\[
+\left[\frac{V}{c^3 \hbar^4}\right] = \frac{\si{\meter\cubed}}{\si{\meter\cubed\joule\tothe{4}\second}} = \si{\per\joule\tothe{4}\per\second}
+\]
+\subsubsection{$[k_B^5 T^5]$}
+\[
+[k_B^5 T^5] = (\si{\joule\per\kelvin})^5 (\si{\kelvin})^5 = \si{\joule\tothe{5}}
+\]
+\subsubsection{Total units for Term 3}
+Multiplying the two parts:
+\[
+(\si{\per\joule\tothe{4}\per\second}) \cdot (\si{\joule\tothe{5}}) = \si{\joule\per\second} = \si{\watt}
+\]
+Again, the remaining factors are dimensionless. So Term 3 is in Watts.
+
+\subsection{Conclusion}
+Every term has units of power ($\si{\watt}$), matching the left-hand side $V\frac{d[ C_V ( T- T_0)]}{d t} $. The equation is dimensionally consistent.

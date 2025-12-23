@@ -1,0 +1,507 @@
+\chapter{Power absorption for beyond Rayleigh size particles: Integral equation form of Mie scattering}
+
+\section{Setup}
+We consider a time-harmonic electromagnetic wave, with time dependence $e^{-i\omega t}$, incident on a scattering particle.
+\begin{itemize}
+    \item The exterior medium is homogeneous and lossless, with real permittivity $\varepsilon_m$ and permeability $\mu_0$.
+    \item The total electric and magnetic fields outside the particle are a superposition of the incident and scattered fields: $\vv{E} = \vv{E}_{\text{inc}} + \vv{E}_{\text{sca}}$ and $\vv{H} = \vv{H}_{\text{inc}} + \vv{H}_{\text{sca}}$.
+    \item The time-averaged Poynting vector is defined as $\vv{S} := \frac{1}{2} \Re(\vv{E} \times \vv{H}^*)$.
+\end{itemize}
+Our goal is to prove the relationship between absorbed, scattered, and extinction powers.
+
+\section{Derivation of the Optical Theorem Power Balance: \\ \large{$P_{\text{abs}} = P_{\text{ext}} - P_{\text{sca}}$}}
+
+\subsection{Time Averaged Poynting Theorem}
+The time-averaged Poynting theorem states that the net power flowing out of a closed surface is equal to the negative of the power dissipated (absorbed) within the volume enclosed by that surface. Let's consider a large sphere $S_R$ of radius $R$ that encloses the scattering particle. The net power flux out of this sphere is (derived in Appendix B Eq. \eqref{B_P_abs}):
+\begin{equation}
+    \oint_{S_R} \avg{\vv{S}} \cdot \hat{\vv{r}} \,dA = -P_{\text{abs}}
+    \label{eq:poynting}
+\end{equation}
+Here, $P_{\text{abs}} = \frac{\omega}{2} \int_{\text{particle}} \varepsilon'' |\vv{E}|^2 \,dV$ is the total power absorbed by the particle. The left-hand side represents the total power leaving the sphere; if the particle absorbs energy, this net flux must be negative (i.e., more power flows in than out).
+
+\subsection{Decomposing into the Power Flux}
+We now express the total Poynting vector $\avg{\vv{S}}$ in terms of the incident and scattered fields.
+\begin{align}
+    \vv{E} \times \vv{H}^* &= (\vv{E}_{\text{inc}} + \vv{E}_{\text{sca}}) \times (\vv{H}_{\text{inc}} + \vv{H}_{\text{sca}})^* \\
+    &= (\vv{E}_{\text{inc}} + \vv{E}_{\text{sca}}) \times (\vv{H}_{\text{inc}}^* + \vv{H}_{\text{sca}}^*) \\
+    &= \underbrace{\vv{E}_{\text{inc}} \times \vv{H}_{\text{inc}}^*}_{\text{Incident}} + \underbrace{\vv{E}_{\text{sca}} \times \vv{H}_{\text{sca}}^*}_{\text{Scattered}} + \underbrace{\vv{E}_{\text{inc}} \times \vv{H}_{\text{sca}}^* + \vv{E}_{\text{sca}} \times \vv{H}_{\text{inc}}^*}_{\text{Interference (Extinction)}}
+\end{align}
+By taking $\frac{1}{2}\Re\{\cdot\}$ of each term, we can split the total Poynting vector $\avg{\vv{S}}$ into three meaningful components:
+\begin{align}
+    \avg{\vv{S}_{\text{inc}}} &:= \frac{1}{2} \Re(\vv{E}_{\text{inc}} \times \vv{H}_{\text{inc}}^*) \\
+    \avg{\vv{S}_{\text{sca}}} &:= \frac{1}{2} \Re(\vv{E}_{\text{sca}} \times \vv{H}_{\text{sca}}^*) \\
+    \avg{\vv{S}_{\text{int}}} &:= \frac{1}{2} \Re(\vv{E}_{\text{inc}} \times \vv{H}_{\text{sca}}^* + \vv{E}_{\text{sca}} \times \vv{H}_{\text{inc}}^*)
+\end{align}
+The total flux is the sum of the fluxes from these three parts:
+\begin{equation}
+    \oint_{S_R} \avg{\vv{S}} \cdot \hat{\vv{r}} \,dA = \oint_{S_R} \avg{\vv{S}_{\text{inc}}} \cdot \hat{\vv{r}} \,dA + \oint_{S_R} \avg{\vv{S}_{\text{sca}}} \cdot \hat{\vv{r}} \,dA + \oint_{S_R} \avg{\vv{S}_{\text{int}}} \cdot \hat{\vv{r}} \,dA
+    \label{2_eq:split}
+\end{equation}
+
+\subsection{Analysing Each Flux Integral}
+We now evaluate each of the three integrals on the right-hand side of Eq.~\eqref{2_eq:split}.
+
+\paragraph{Incident Flux:} The incident fields $(\vv{E}_{\text{inc}}, \vv{H}_{\text{inc}})$ are a source-free solution to Maxwell's equations everywhere inside the sphere $S_R$ (since the sources are at infinity). For such fields in a lossless medium,$\avg{\nabla \cdot \vv{S}_{\text{inc}}} = 0$. By the divergence theorem, the flux through any closed surface must be zero (derived in Appendix B, Eq. \eqref{B_Grad_S_inc 3}).
+\begin{equation}
+    \oint_{S_R}\avg{ \vv{S}_{\text{inc}} \cdot \hat{\vv{r}}} \,dA = \int_{V_R} \avg{(\nabla \cdot \vv{S}_{\text{inc}}) }\,dV = 0
+\end{equation}
+
+\paragraph{Scattered Flux:} The scattered fields originate from the particle. The integral of $\vv{S}_{\text{sca}}$ over the sphere gives the total power radiated by the particle in all directions. This is, by definition, the \textbf{scattered power}, $P_{\text{sca}}$.
+\begin{equation}\label{2_ Power sca}
+    \oint_{S_R} \avg{\vv{S}_{\text{sca}} \cdot \hat{\vv{r}}} \,dA = P_{\text{sca}}
+\end{equation}
+
+\paragraph{Interference Flux:} The third integral, involving the cross-terms, represents the interference between the incident and scattered waves. This term accounts for the total power removed from the incident beam by both absorption and scattering. We define the \textbf{extinction power}, $P_{\text{ext}}$, as the negative of this interference flux.
+\begin{equation}\label{Power abs}
+    \oint_{S_R} \avg{\vv{S}_{\text{int}} \cdot \hat{\vv{r}}} \,dA = -P_{\text{ext}}
+\end{equation}
+This definition is the basis of the optical theorem, which relates the extinction power to the imaginary part of the forward-scattering amplitude.
+
+\subsection{Assemble the Result}
+We now substitute our findings for each of the three flux integrals back into Eq.~\eqref{2_eq:split}:
+\begin{equation}
+    \oint_{S_R} \avg{\vv{S}} \cdot \hat{\vv{r}} \,dA = 0 + P_{\text{sca}} - P_{\text{ext}}
+\end{equation}
+Finally, we equate this result with our starting point from the Poynting theorem, Eq.~\eqref{eq:poynting}:
+\begin{equation}
+    -P_{\text{abs}} = P_{\text{sca}} - P_{\text{ext}}
+\end{equation}
+Rearranging this equation gives the final, celebrated result:
+
+\begin{equation}\label{2_Power abs}
+    \boxed{P_{\text{abs}} = P_{\text{ext}} - P_{\text{sca}}}
+\end{equation}
+This demonstrates the conservation of energy: the total power removed from the incident beam (\textit{extinction}) is precisely the sum of the power that is re-radiated (\textit{scattering}) and the power that is dissipated as heat (\textit{absorption}).
+
+\section{The Electric-Field Integral Equation (EFIE)}
+
+
+
+\subsection{Setup and Conventions}
+
+Time dependence $\sim e^{-i\omega t}$ is assumed. We use Gaussian units and $\mu=1$.
+Define $k_0 = \omega/c$ and $\kappa^2(\vec{r}) = \varepsilon(\vec{r}) k_0^2$.
+The incident field $\vec{E}_{\text{inc}}$ is what we would have in free space ($\varepsilon=1$) without scatterers; the scattered field is what arises because $\varepsilon(\vec{r}) \neq 1$ in a finite region.
+Maxwell's equations are:
+\[
+\nabla \times \vec{E} = \frac{i\omega}{c} \vec{H}, \qquad \nabla \times \vec{H} = -\frac{i\omega}{c} \, \varepsilon(\vec{r}) \vec{E}. \label{2_ Maxwell eqns}
+\]
+
+\subsection{The Vector Wave Equation for $\vec{E}$}
+
+Take the curl of $\nabla \times \vec{E} = (i\omega/c) \vec{H}$:
+\[
+\nabla \times \nabla \times \vec{E} = \frac{i\omega}{c} \, \nabla \times \vec{H} = -\frac{\omega^2}{c^2} \, \varepsilon(\vec{r}) \vec{E} = -k_0^2 \, \varepsilon(\vec{r}) \vec{E}.
+\]
+Bringing the RHS to the left:
+\begin{equation}
+\nabla \times \nabla \times \vec{E} - \varepsilon(\vec{r}) k_0^2 \vec{E} = 0. \label{2_E wave eqn}
+\end{equation}
+
+
+\paragraph{Comment on divergence:} From $\nabla \cdot (\varepsilon \vec{E}) = 0$ (no free charge) we get:
+\begin{equation}
+\nabla \cdot \vec{E} = -\frac{1}{\varepsilon} \, \vec{E} \cdot \nabla \varepsilon. \label{2_Div E}
+\end{equation}
+Using the identity $\nabla \times \nabla \times \vec{E} = \nabla(\nabla \cdot \vec{E}) - \nabla^2 \vec{E}$, you can rewrite Eq. \eqref{2_E wave eqn} as:
+\begin{equation}
+\nabla^2 \vec{E} + \nabla\! \left[ \frac{1}{\varepsilon} \, \vec{E} \cdot \nabla \varepsilon \right] + \varepsilon k_0^2 \vec{E} = 0. \label{2_E wave eqn 2}
+\end{equation}
+. We won’t actually solve Eq. \eqref{2_E wave eqn 2}; it just tells us the divergence is not zero when $\nabla \varepsilon \neq 0$.
+
+\subsection{Green’s Vector Identity (Levine–Schwinger trick)}
+
+For any smooth $\vec{A}, \vec{B}$ on a volume $V$ with boundary $S$, the identity
+\begin{equation}
+\int_S d\vec{s} \cdot \big[ \vec{B} \times (\nabla \times \vec{A}) - \vec{A} \times (\nabla \times \vec{B}) \big] = \int_V dV \big[ \vec{A} \cdot (\nabla \times \nabla \times \vec{B}) - \vec{B} \cdot (\nabla \times \nabla \times \vec{A}) \big] \label{2_Levine Schwinger}
+\end{equation}
+follows from $\nabla \cdot (\vec{C} \times \vec{D}) = \vec{D} \cdot (\nabla \times \vec{C}) - \vec{C} \cdot (\nabla \times \vec{D})$ plus Gauss’ theorem.
+We will apply Eq. \eqref{2_Levine Schwinger} with
+\begin{align*}
+\vec{A}(\vec{r}') &= \boldsymbol{\Gamma}(\vec{r}', \vec{r}) \cdot \vec{e} \quad \text{and} \\
+\vec{B}(\vec{r}') &= \vec{E}_{int}(\vec{r}'),
+\end{align*}
+where $\vec{e}$ is any fixed constant vector and $\boldsymbol{\Gamma}$ is the dyadic (tensor) Green’s function defined next.
+
+\subsection{The Dyadic Green’s Function}
+
+\begin{equation}
+\nabla \times \nabla \times \boldsymbol{\Gamma}(\vec{r}, \vec{r}') - k^2 \, \boldsymbol{\Gamma}(\vec{r}, \vec{r}') = \mathbf{I} \, \delta(\vec{r} - \vec{r}'). \label{2_Dyadic Green's func}
+\end{equation}
+Here $k$ is chosen as the exterior wavenumber (free space), so $k = k_0$. $\mathbf{I}$ is the identity dyad.
+Two key identities we will need:
+
+\paragraph{Divergence of Eq. \eqref{2_Dyadic Green's func}.} Taking $\nabla \cdot$ with respect to $\vec{r}$:
+\begin{equation}
+k^2 \, \nabla \cdot \boldsymbol{\Gamma}(\vec{r}, \vec{r}') = -\nabla \delta(\vec{r} - \vec{r}') = \nabla' \delta(\vec{r} - \vec{r}'). \label{2_Div Dyadic Green's func }
+\end{equation}
+
+
+\paragraph{Link to the scalar Green’s function} $G(\vec{r}, \vec{r}') = \dfrac{e^{ik|\vec{r} - \vec{r}'|}}{4\pi|\vec{r} - \vec{r}'|}$, (from Eq. \eqref{B_Scalar green's function}) which satisfies:
+\begin{equation}
+(\nabla^2 + k^2)G(\vec{r}, \vec{r}') = -\delta(\vec{r} - \vec{r}'). \label{2_Helmholtz Green func.}
+\end{equation}
+Using $\nabla \times \nabla \times = -\nabla^2 + \nabla \nabla \cdot$, we find that (From Eq. \eqref{B_eq:dyadic-def} :
+\begin{equation}
+\boldsymbol{\Gamma}(\vec{r}, \vec{r}') = \left( \mathbf{I} - \frac{1}{k^2} \nabla \nabla' \right) G(\vec{r}, \vec{r}') \quad \text{and} \quad \tilde{\boldsymbol{\Gamma}}(\vec{r}', \vec{r}) = \boldsymbol{\Gamma}(\vec{r}, \vec{r}'). \label{2_Dyadic Green's function def}
+\end{equation}
+where, \(\nabla \nabla'\) represents the Hessian matrix.
+
+\subsection{Applying the Vector Green's Identity}
+
+We apply the vector Green's identity from the previous section (equation Eq. \eqref{2_Levine Schwinger}) over all space $V = \mathbb{R}^3$. We choose our vectors to be $\vec{A}(\vec{r}') = \boldsymbol{\Gamma}(\vec{r}', \vec{r}) \cdot \vec{e}$ and $\vec{B}(\vec{r}') = \vec{E}_{int}(\vec{r}')$. The core idea is that the surface integral at infinity will yield the incident field, while the volume integral will relate the total field $\vec{E}$ to the scattering source.
+
+\paragraph{Right-Hand Side (Volume Integral):} We substitute the wave equations for $\vec{E}$ and $\boldsymbol{\Gamma}$:
+\begin{itemize}
+    \item From Eq. \eqref{2_E wave eqn}: $\nabla' \times \nabla' \times \vec{E}_{int}(\vec{r}') = \varepsilon(\vec{r}') k_0^2 \vec{E}_{int}(\vec{r}')$
+    \item From Eq. \eqref{2_Dyadic Green's func} : $\nabla' \times \nabla' \times \boldsymbol{\Gamma}(\vec{r}', \vec{r}) = k^2 \boldsymbol{\Gamma}(\vec{r}', \vec{r}) + \mathbf{I} \delta(\vec{r}' - \vec{r})$
+\end{itemize}
+The volume integral becomes:
+\begin{align*}
+    &\int_{\mathbb{R}^3} dV' \Big[ (\boldsymbol{\Gamma} \cdot \vec{e}) \cdot (\nabla' \times \nabla' \times \vec{E}) - \vec{E} \cdot (\nabla' \times \nabla' \times (\boldsymbol{\Gamma} \cdot \vec{e})) \Big] \\
+    &= \int_{\mathbb{R}^3} dV' \Big[ (\boldsymbol{\Gamma} \cdot \vec{e}) \cdot (\varepsilon k_0^2 \vec{E}) - \vec{E} \cdot \bigg( k^2(\boldsymbol{\Gamma} \cdot \vec{e}) + \mathbf{I} \delta(\vec{r}'-\vec{r}) \cdot \vec{e} \bigg) \Big] \\
+    &= \int_{V} dV' \, [\varepsilon(\vec{r}') k_0^2 - k^2] \, \vec{E}_{int}(\vec{r}') \cdot \boldsymbol{\Gamma}(\vec{r}', \vec{r}) \cdot \vec{e} - \int_{\mathbb{R}^3} dV' \, \vec{E}_{int}(\vec{r}') \cdot \mathbf{I} \delta(\vec{r}'-\vec{r}) \cdot \vec{e} \\
+    &= \int_{V} dV' \, [\varepsilon(\vec{r}') k_0^2 - k^2] \, \vec{E}_{int}(\vec{r}') \cdot \boldsymbol{\Gamma}(\vec{r}', \vec{r}) \cdot \vec{e} - \vec{E}(\vec{r}) \cdot \vec{e}
+\end{align*}
+Here, the integral domain $V$ can be restricted to the region where $\varepsilon(\vec{r}') \neq 1$.
+
+\paragraph{Left-Hand Side (Surface Integral):} With an outgoing Green's function, the surface integral at infinity gives the incident field: $\int_S \dots = -\vec{E}_{\text{inc}}(\vec{r}) \cdot \vec{e}$.
+
+\paragraph{Combining Both Sides:} Equating the left and right sides and rearranging gives:
+\begin{equation}
+\vec{E}(\vec{r}) \cdot \vec{e} = \vec{E}_{\text{inc}}(\vec{r}) \cdot \vec{e} + \int_V dV' \, \Big[\varepsilon(\vec{r}')k_0^2 - k^2\Big] \, \vec{E}_{int}(\vec{r}') \cdot \boldsymbol{\Gamma}(\vec{r}', \vec{r}) \cdot \vec{e}. \label{2_ Levine E eqn}
+\end{equation}
+We choose the Green's function for free space, so $k=k_0$. The term in brackets simplifies to $[\varepsilon(\vec{r}')-1]k_0^2$. Since the constant vector $\vec{e}$ is arbitrary, we can write the dyadic equation:
+\begin{equation}
+\boxed{\;
+\vec{E}(\vec{r}) = \vec{E}_{\text{inc}}(\vec{r}) + \int_V k_0^2 \, [\varepsilon(\vec{r}') - 1] \, \boldsymbol{\Gamma}(\vec{r}, \vec{r}') \cdot \vec{E}_{int}(\vec{r}') \, dV'.
+\;} \label{2_ Levine E eqn 2}
+\end{equation}
+This famous result is the \textbf{Lippmann-Schwinger equation} for vector fields. It states that the total field is the incident field plus the field radiated by the equivalent polarization currents $\vec{J}_{\text{eq}}(\vec{r}') \equiv k_0^2[\varepsilon(\vec{r}')-1]\vec{E}_{int}(\vec{r}')$.
+
+\subsection{Derivation of the Surface Integral Term}
+Let's walk through the derivation of Eq. \eqref{2_ Levine E eqn}  more slowly to see exactly where the incident field term comes from. 
+
+\subsubsection{Goal}
+Starting from Green’s vector identity, show that:
+\[
+\boxed{\;
+\vec{E}(\vec{r})\!\cdot\!\vec{e} = \vec{E}_{\text{inc}}(\vec{r})\!\cdot\!\vec{e} + \int_V\!\big[\varepsilon(\vec{r}')k_0^2-k^2\big]\, \vec{E}_{int}(\vec{r}')\!\cdot\!\boldsymbol{\Gamma}(\vec{r}', \vec{r})\!\cdot\!\vec{e}\;dV'.
+\;}
+\]
+Here $k_0 = \omega/c$, $k$ is the wavenumber used to build $\boldsymbol{\Gamma}$, and $\boldsymbol{\Gamma}$ solves:
+\begin{equation}
+\nabla'\!\times\nabla'\!\times \boldsymbol{\Gamma}(\vec{r}', \vec{r}) - k^2\boldsymbol{\Gamma}(\vec{r}', \vec{r}) = \mathbf{I}\,\delta(\vec{r}'-\vec{r}). \label{2_Green's func diff eqn}
+\end{equation}
+
+\subsubsection{Start from Green’s Identity}
+The identity (with derivatives w.r.t. $\vec{r}'$) is:
+\begin{equation}
+\int_{S} \!\! d\vec{s}'\!\cdot\!\Big[\vec{B}\times(\nabla'\!\times\vec{A})-\vec{A}\times(\nabla'\!\times\vec{B})\Big] = \int_{V}\!\! dV'\,\Big[\vec{A}\!\cdot\!(\nabla'\!\times\nabla'\!\times\vec{B})-\vec{B}\!\cdot\!(\nabla'\!\times\nabla'\!\times\vec{A})\Big]. \label{2_ Levine identity}
+\end{equation}
+Choose $\vec{A}(\vec{r}') = \boldsymbol{\Gamma}(\vec{r}', \vec{r}) \cdot \vec{e}$ and $\vec{B}(\vec{r}') = \vec{E}_{int}(\vec{r}')$.
+
+\subsubsection{Evaluate the Volume (RHS) Integral}
+We use the wave equations for the fields inside the integral:
+\begin{itemize}
+    \item Maxwell's equations give: $\nabla'\!\times\nabla'\!\times\vec{E}_{int}(\vec{r}')=\varepsilon(\vec{r}')k_0^2\,\vec{E}_{int}(\vec{r}')$.
+    \item The definition of $\boldsymbol{\Gamma}$ gives: $\nabla'\!\times\nabla'\!\times(\boldsymbol{\Gamma}\cdot\vec{e})=k^2(\boldsymbol{\Gamma}\cdot\vec{e})+\vec{e}\,\delta(\vec{r}'-\vec{r})$.
+\end{itemize}
+Plugging these into the RHS of Eq. \eqref{2_ Levine identity}  gives:
+\begin{align}
+    &\int_V\!\! dV'\,\Big[(\boldsymbol{\Gamma}\cdot\vec{e})\!\cdot\!(\varepsilon k_0^2\vec{E}) - \vec{E}\!\cdot\!\big(k^2\boldsymbol{\Gamma}\cdot\vec{e}+\vec{e}\,\delta\big)\Big] \nonumber \\
+    &= \int_V\!\! dV'\,\big(\varepsilon(\vec{r}') k_0^2-k^2\big)\,\vec{E}_{int}(\vec{r}')\!\cdot\!(\boldsymbol{\Gamma}(\vec{r}',\vec{r})\cdot\vec{e}) - \vec{E}(\vec{r})\!\cdot\!\vec{e}. \label{2_Levine E RHS 1}
+\end{align}
+So, Green's identity now reads:
+\begin{equation}
+\underbrace{\int_{S}\!\! d\vec{s}'\!\cdot\!\Big[\vec{E}\times(\nabla'\!\times(\boldsymbol{\Gamma}\cdot\vec{e})) - (\boldsymbol{\Gamma}\cdot\vec{e})\times(\nabla'\!\times\vec{E})\Big]}_{\displaystyle \mathcal{S}} = \int_V\!\!\big(\varepsilon k_0^2-k^2\big)\,\vec{E}\!\cdot\!(\boldsymbol{\Gamma}\cdot\vec{e})\,dV' - \vec{E}(\vec{r})\!\cdot\!\vec{e}. \label{2_Levine E RHS 2}
+\end{equation}
+Rearranging for $\vec{E}(\vec{r})\cdot\vec{e}$ gives:
+\begin{equation}
+\vec{E}(\vec{r})\!\cdot\!\vec{e} = \int_V\!\big(\varepsilon k_0^2-k^2\big)\,\vec{E}\!\cdot\!(\boldsymbol{\Gamma}\cdot\vec{e})\,dV' - \mathcal{S}. \label{2_Levine E RHS 3}
+\end{equation}
+To finish, we must show that the surface term $\mathcal{S}$ is equal to $-\vec{E}_{\text{inc}}(\vec{r}) \cdot \vec{e}$.
+
+\subsubsection{Evaluate the Surface Term $\mathcal{S}$}
+Let the total field be $\vec{E} = \vec{E}_{\text{inc}} + \vec{E}_{\text{sct}}$. The surface integral splits into two parts: $\mathcal{S} = \mathcal{S}_{\text{inc}} + \mathcal{S}_{\text{sct}}$.
+\begin{itemize}
+    \item[(a)] \textbf{The scattered part vanishes.} Both $\vec{E}_{\text{sct}}$ and $\boldsymbol{\Gamma}$ represent outgoing waves. They obey the Sommerfeld radiation condition, meaning they decay as $e^{ikR}/R$ at large distances $R$. This causes the integrand to decay faster than the surface area ($R^2$) grows, so $\mathcal{S}_{\text{sct}} \to 0$ as the surface $S$ is taken to infinity.
+    \item[(b)] \textbf{The incident part gives the result.} Let's evaluate $\mathcal{S}_{\text{inc}}$ by applying Green's identity a second time, but for the incident field $\vec{E}_{\text{inc}}$ and $\boldsymbol{\Gamma}$ in a volume free of scatterers (where $\varepsilon=1$ and $k=k_0$). The volume integral is:
+    \[
+    \int_V\!\! dV'\,\Big[\vec{E}_{\text{inc}}\!\cdot\!(\nabla'\!\times\nabla'\!\times(\boldsymbol{\Gamma}\cdot\vec{e})) - (\boldsymbol{\Gamma}\cdot\vec{e})\!\cdot\!(\nabla'\!\times\nabla'\!\times\vec{E}_{\text{inc}})\Big].
+    \]
+    In free space, $\nabla'\!\times\nabla'\!\times\vec{E}_{\text{inc}} = k^2\vec{E}_{\text{inc}}$, and from Eq. \eqref{2_Green's func diff eqn} , $\nabla'\!\times\nabla'\!\times(\boldsymbol{\Gamma}\cdot\vec{e}) = k^2(\boldsymbol{\Gamma}\cdot\vec{e}) + \vec{e}\delta$. The $k^2$ terms cancel perfectly! The volume integral simplifies to:
+    \[
+    \int_V\!\! dV'\,\vec{E}_{\text{inc}}(\vec{r}') \!\cdot\! \left( \vec{e} \delta(\vec{r}'-\vec{r}) \right) = \vec{E}_{\text{inc}}(\vec{r})\!\cdot\!\vec{e}.
+    \]
+    This volume integral is equal to the surface integral from Green's identity:
+    \[
+    \int_{S}\!\! d\vec{s}'\!\cdot\!\Big[\vec{E}_{\text{inc}}\times(\nabla'\!\times(\boldsymbol{\Gamma}\cdot\vec{e})) - (\boldsymbol{\Gamma}\cdot\vec{e})\times(\nabla'\!\times\vec{E}_{\text{inc}})\Big] = \vec{E}_{\text{inc}}(\vec{r})\!\cdot\!\vec{e}.
+    \]
+    Notice the terms in the bracket are in the opposite order of our original definition of $\mathcal{S}_{\text{inc}}$. Therefore, $\mathcal{S}_{\text{inc}} = -\vec{E}_{\text{inc}}(\vec{r})\!\cdot\!\vec{e}$.
+\end{itemize}
+Combining the terms above, we find the total surface term is $\mathcal{S} = \mathcal{S}_{\text{inc}} + \mathcal{S}_{\text{sct}} = -\vec{E}_{\text{inc}}(\vec{r})\!\cdot\!\vec{e}$.
+
+\subsubsection{Final Assembly}
+Inserting our result for $\mathcal{S}$ back into equation Eq. \eqref{2_Levine E RHS 3} , we get:
+\[
+\vec{E}(\vec{r})\!\cdot\!\vec{e} = \int_V\!\big(\varepsilon k_0^2-k^2\big)\,\vec{E}_{int}(\vec{r}')\!\cdot\!\boldsymbol{\Gamma}(\vec{r}',\vec{r})\!\cdot\!\vec{e}\,dV' - (-\vec{E}_{\text{inc}}(\vec{r})\!\cdot\!\vec{e}),
+\]
+which is exactly the target equation Eq. \eqref{2_ Levine E eqn} .
+
+\subsection{Electric field in terms of Scalar Green’s Function}
+
+We now substitute the expression for $\boldsymbol{\Gamma}$ from Eq. \eqref{2_Dyadic Green's function def}  into our final result Eq. \eqref{2_ Levine E eqn 2} :
+\[
+\boldsymbol{\Gamma}(\vec{r}, \vec{r}') = \left(\mathbf{I} - \frac{1}{k_0^2}\nabla\nabla'\right) G(\vec{r}, \vec{r}').
+\]
+The integral becomes, with \(\vec{E}_{int}(\vec{r}')\) representing the Electric field inside the volume of the sphere:
+\begin{align}
+\vec{E}(\vec{r}) &= \vec{E}_{\text{inc}}(\vec{r}) + \int_V k_0^2 \, [\varepsilon(\vec{r}')-1] \, \left(\mathbf{I} - \frac{1}{k_0^2}\nabla\nabla'\right) G(\vec{r}, \vec{r}') \cdot \vec{E}_{int}(\vec{r}') \, dV' \nonumber \\
+&= \vec{E}_{\text{inc}}(\vec{r}) + k_0^2\int_V [\varepsilon(\vec{r}')-1]\, G(\vec{r}, \vec{r}')\,\vec{E}_{int}(\vec{r}')\,dV' \nonumber \\
+&\quad - \int_V [\varepsilon(\vec{r}')-1] \, (\nabla\nabla' G(\vec{r}, \vec{r}')) \cdot \vec{E}_{int}(\vec{r}') \, dV'.
+\end{align}
+Since $\nabla$ acts on $\vec{r}$ and not $\vec{r}'$, we can pull it outside the integral:
+\begin{equation}
+\begin{aligned}
+\vec{E}(\vec{r}) &= \vec{E}_{\text{inc}}(\vec{r}) + k_0^2\int_V [\varepsilon(\vec{r}')-1]\, G(\vec{r}, \vec{r}')\,\vec{E}_{int}(\vec{r}')\,dV' \\
+&\quad - \nabla \int_V [\varepsilon(\vec{r}')-1]\, \big[\nabla'G(\vec{r}, \vec{r}') \cdot \vec{E}_{int}(\vec{r}')\big]\,dV'.
+\end{aligned} \label{2_E greens func}
+\end{equation}
+This is the electric-field volume integral equation in its scalar-Green form. The outgoing boundary condition is automatically satisfied because it's built into $G$.
+
+
+
+\subsection{Far-Field Asymptotics of $G$ and $\nabla G$}
+
+Let $\hat{s} := \vec{r}/r$ be the unit vector pointing from the origin (assumed to be inside the scatterer) to the observer. The scatterer is contained in a bounded volume $V$, so for any source point $\vec{r}' \in V$, we have $r \gg r' = |\vec{r}'|$. We can then approximate the distance $|\vec{r}-\vec{r}'|$:
+\[
+|\vec{r}-\vec{r}'| = \sqrt{(\vec{r}-\vec{r}') \cdot (\vec{r}-\vec{r}')} = \sqrt{r^2 - 2\vec{r}\cdot\vec{r}' + r'^2} = r \sqrt{1 - \frac{2\hat{s}\cdot\vec{r}'}{r} + \frac{r'^2}{r^2}} \approx r - \hat{s}\cdot\vec{r}'.
+\]
+In the denominator of $G$, we can simply use $|\vec{r}-\vec{r}'| \approx r$. In the exponent (the phase), the second term is crucial. This gives the far-field approximation for $G$:
+\begin{equation}
+G(\vec{r},\vec{r}') = \frac{e^{ik|\vec{r}-\vec{r}'|}}{4\pi|\vec{r}-\vec{r}'|} \;\approx\; \frac{e^{ik(r - \hat{s}\cdot\vec{r}')}}{4\pi r} = \frac{e^{ikr}}{4\pi r}\,e^{-ik\,\hat{s}\cdot \vec{r}'}. \label{2_Scalar green's func approx}
+\end{equation}
+Next, we need the gradients. For $\nabla$ (derivatives w.r.t. $\vec{r}$), the dominant contribution comes from differentiating the rapidly oscillating $e^{ikr}$ term:
+\[
+\nabla \left(\frac{e^{ikr}}{4\pi r}\right) = \hat{s} \frac{d}{dr}\left(\frac{e^{ikr}}{4\pi r}\right) = \hat{s} \left(\frac{ik e^{ikr}}{4\pi r} - \frac{e^{ikr}}{4\pi r^2}\right) = ik\,\hat{s}\,\frac{e^{ikr}}{4\pi r} \left(1 + \frac{i}{kr}\right).
+\]
+In the far field ($kr \gg 1$), we keep only the leading order term in $1/r$:
+\begin{equation}
+\nabla G(\vec{r},\vec{r}') \approx \nabla \left(\frac{e^{ikr}}{4\pi r}\right) e^{-ik\,\hat{s}\cdot \vec{r}'} \approx ik\,\hat{s}\,\frac{e^{ikr}}{4\pi r} e^{-ik\,\hat{s}\cdot \vec{r}'}. \label{2_Grad Scalar green's func approx}
+\end{equation}
+Similarly, for $\nabla'$ (derivatives w.r.t. $\vec{r}'$), the only term that depends on $\vec{r}'$ in the far-field form is the phase $e^{-ik\,\hat{s}\cdot \vec{r}'}$.
+\[
+\nabla' e^{-ik\,\hat{s}\cdot \vec{r}'} = -ik\,\hat{s}e^{-ik\,\hat{s}\cdot \vec{r}'}.
+\]
+So, the gradient with respect to the source coordinates is:
+\begin{equation}
+\nabla' G(\vec{r},\vec{r}') \approx \frac{e^{ikr}}{4\pi r} \nabla' \left( e^{-ik\,\hat{s}\cdot \vec{r}'} \right) \approx -ik\,\hat{s}\, \frac{e^{ikr}}{4\pi r}\,e^{-ik\,\hat{s}\cdot \vec{r}'}. \label{2_Grad Scalar green's func approx 2}
+\end{equation}
+
+\subsection{Evaluating the First Volume Integral in the Far Field}
+Using approximation Eq. \eqref{2_Scalar green's func approx}  for $G$ in the first integral of Eq. \eqref{2_E greens func} :
+\begin{align}
+k^2\!\int_V [\varepsilon(\vec{r}')-1]\,\vec{E}_{int}(\vec{r}')\,G\,dV' &\approx k^2\int_V [\varepsilon(\vec{r}')-1]\,\vec{E}_{int}(\vec{r}') \left(\frac{e^{ikr}}{4\pi r}\,e^{-ik\,\hat{s}\cdot \vec{r}'}\right) dV' \nonumber \\
+&\approx \frac{e^{ikr}}{r}\,\frac{k^2}{4\pi} \int_V e^{-ik\,\hat{s}\cdot \vec{r}'}[\varepsilon(\vec{r}')-1]\,\vec{E}_{int}(\vec{r}')\,dV' \nonumber \\
+&=: \frac{e^{ikr}}{r}\,\vec{P}(\hat{s}). \label{2_Sub approx in EFIE}
+\end{align}
+This defines the vector amplitude $\vec{P}(\hat{s})$, which is essentially the Fourier transform of the equivalent polarisation current. If we assume the internal electric field isn't dependent on the position inside the sphere, it has a fixed direction, then, \(\vec{P}(\hat{s})\) in the direction of the internal electric field \(\vec{E}_{int}(\vec{r}')\):
+\begin{equation}
+\boxed{\;\displaystyle
+\vec{P}(\hat{s}) = \frac{k^2}{4\pi}\int_V e^{-ik\,\hat{s}\cdot \vec{r}'}\,[\varepsilon(\vec{r}')-1]\;\vec{E}_{int}(\vec{r}')\,dV'.
+} \label{2_ E field vector amplitude}
+\end{equation}
+
+\subsection{Evaluating the Second (Gradient) Term in the Far Field}
+Let's call the scalar integral inside the gradient term $I(\vec{r})$:
+\begin{equation}
+I(\vec{r}) := \int_V \big[\nabla' G(\vec{r},\vec{r}')\cdot \vec{E}_{int}(\vec{r}')\big]\,[\varepsilon(\vec{r}')-1]\,dV'. 
+\end{equation}
+Using approximation Eq. \eqref{2_Grad Scalar green's func approx 2}  for $\nabla'G$:
+\begin{align}
+I(\vec{r}) &\approx \int_V \left[\left(-ik\,\hat{s}\, \frac{e^{ikr}}{4\pi r}\,e^{-ik\,\hat{s}\cdot \vec{r}'}\right)\cdot \vec{E}_{int}(\vec{r}')\right]\,[\varepsilon(\vec{r}')-1]\,dV' \nonumber \\
+&= -\frac{ik\,e^{ikr}}{4\pi r}\,\hat{s}\cdot \int_V e^{-ik\,\hat{s}\cdot \vec{r}'}\,[\varepsilon(\vec{r}')-1]\;\vec{E}_{int}(\vec{r}')\,dV' \nonumber \\
+&= -\frac{ik\,e^{ikr}}{r} \left(\frac{1}{k^2}\right) \hat{s} \cdot \vec{P}(\hat{s}) = -\frac{e^{ikr}}{r}\,\frac{i}{k}\;\hat{s}\cdot \vec{P}(\hat{s}). 
+\end{align}
+Now we apply $-\nabla$ to this result. Using approximation Eq. \eqref{2_Grad Scalar green's func approx}  for the gradient of the outgoing spherical wave:
+\begin{align}
+-\nabla I(\vec{r}) &\approx -\nabla\!\left[\frac{e^{ikr}}{r}\right]\;\left(-\frac{i}{k}\,\hat{s}\cdot \vec{P}(\hat{s})\right) \nonumber \\
+&\approx -\left(ik\,\hat{s}\,\frac{e^{ikr}}{r}\right)\;\left(-\frac{i}{k}\,\hat{s}\cdot \vec{P}(\hat{s})\right) \nonumber \\
+&= -\frac{e^{ikr}}{r}\;\hat{s}\,\big(\hat{s}\cdot \vec{P}(\hat{s})\big).  \label{2_Sub approx in EFIE 2}
+\end{align}
+
+\subsection{Combining the Pieces to Find the Scattering Electric Field}
+The total scattered field $\vec{E}_{\text{sctd}}$ is the sum of the results from (Eq. \eqref{2_Sub approx in EFIE}) and (Eq. \eqref{2_Sub approx in EFIE 2}):
+\begin{align*}
+\vec{E}_{\text{sctd}}(\vec{r}) &\approx \frac{e^{ikr}}{r}\,\vec{P}(\hat{s}) - \frac{e^{ikr}}{r}\;\hat{s}\,\big(\hat{s}\cdot \vec{P}(\hat{s})\big) \\
+&= \frac{e^{ikr}}{r}\,\Big[\,\vec{P}(\hat{s})\;-\;\hat{s}\,\big(\hat{s}\cdot \vec{P}(\hat{s})\big)\,\Big].
+\end{align*}
+This gives the final form for the scattered field:
+\begin{equation}
+\boxed{\;\displaystyle
+\vec{E}_{\text{sctd}}(\vec{r})\;\approx\; \frac{e^{ikr}}{r}\,\Big[\,\vec{P}(\hat{s})\;-\;\hat{s}\,\big(\hat{s}\cdot \vec{P}(\hat{s})\big)\,\Big].
+\;} 
+\end{equation}
+The term in the brackets is the component of the vector $\vec{D}$ that is transverse to the direction of propagation $\hat{s}$, which is exactly what we expect for an electromagnetic wave. We can express this using the transverse projector dyadic $\mathbf{P}_\perp(\hat{s}) = \mathbf{I} - \hat{s}\hat{s}^{\top}$:
+\begin{equation}
+\vec{E}_{\text{sctd}}(\vec{r}) \approx \frac{e^{ikr}}{r}\;\mathbf{P}_\perp(\hat{s})\,\vec{P}(\hat{s}). 
+\end{equation}
+A more common way to write this transverse projection is using the vector triple product identity $\vec{A} - \hat{s}(\hat{s}\cdot\vec{A}) = \hat{s} \times (\vec{A} \times \hat{s})$. Applying this, we arrive at the standard form for the scattered field in terms of the scattering amplitude $\vec{F}_1$:
+\begin{equation}
+\boxed{\;\displaystyle
+\vec{E}_{\text{sctd}}(\vec{r})\;\approx\;\frac{e^{ikr}}{r}\;\vec{F}_1(\hat{s})\quad \text{with}\quad
+\vec{F}_1(\hat{s})=\hat{s}\times\big(\vec{P}(\hat{s}) \times \hat{s}\big),
+\;} 
+\end{equation}
+where \(
+\vec{P}(\hat{s}) = \frac{k^2}{4\pi}\int_V e^{-ik\,\hat{s}\cdot \vec{r}'}\,[\varepsilon(\vec{r}')-1]\;\vec{E}_{int}(\vec{r}')\,dV'
+ \) and $\hat{s}:= \vec{r}/r$ is the unit vector pointing from the origin (assumed to be inside the scatterer) to the observer. 
+\paragraph{Remarks:}
+\begin{itemize}
+    \item The direction of \(\vec{F}_1(\hat{s})\) is dependent on the direction of \(\vec{P}(\hat{s})\) which is in the direction of the internal electric field \(\vec{E}_{int}(\vec{r}')\). This is if we assume that the internal electric field isn't dependent on the position of the point inside the sphere and is constant.
+    \item The final result is manifestly transverse, as $\hat{s} \cdot \vec{F}_1 = \hat{s} \cdot (\hat{s} \times (\dots)) = 0$.
+
+\end{itemize}
+
+
+\section{The Magnetic-Field Integral Equation (MFIE)}
+\subsection{Setup and Conventions}
+We use Gaussian units with $\mu=1$. The time-dependence is $e^{-i\omega t}$. The free-space wavenumber is $k_0 = \omega/c$, and the position-dependent wavenumber is $\kappa^2(\vec{r}) = \varepsilon(\vec{r}) k_0^2$. The dyadic Green's function for free space, $\boldsymbol{\Gamma}$, satisfies:
+\[
+\nabla\times\nabla\times\boldsymbol{\Gamma}(\vec{r},\vec{r}') - k_0^2\,\boldsymbol{\Gamma}(\vec{r},\vec{r}') = \mathbf{I}\,\delta(\vec{r}-\vec{r}'),
+\]
+and can be expressed in terms of the scalar Green's function $G(\vec{r},\vec{r}')=\dfrac{e^{ik_0|\vec{r}-\vec{r}'|}}{4\pi|\vec{r}-\vec{r}'|}$ as:
+\[
+\boldsymbol{\Gamma}(\vec{r},\vec{r}') = \left(\mathbf{I} - \frac{1}{k_0^2}\nabla\nabla'\right)G(\vec{r},\vec{r}').
+\]
+
+
+\subsection{Rewrite the Magnetic Wave Equation into "Source" Form}
+
+
+We start from the second-order wave equation for the magnetic field $\vec{H}$ in an inhomogeneous medium (Eq. \eqref{2_ Maxwell eqns}):
+\[
+\nabla\times\!\left[\frac{1}{\varepsilon(\vec{r})}\,\nabla\times\vec{H}(\vec{r})\right]-k_0^2\,\vec{H}(\vec{r})=0.
+\]
+Our first goal is to rearrange this into a form that looks like a standard Helmholtz equation with an explicit source term. We begin by applying the vector product rule $\nabla \times (f\vec{A}) = f(\nabla \times \vec{A}) + (\nabla f) \times \vec{A}$:
+\[
+\nabla\times\!\left(\frac{1}{\varepsilon}\,\nabla\times\vec{H}\right) = \frac{1}{\varepsilon}\,\nabla\times\nabla\times\vec{H} + \nabla\!\left(\frac{1}{\varepsilon}\right)\times(\nabla\times\vec{H}).
+\]
+Next, we simplify the two terms on the right. For the second term, we use Maxwell's equation for the curl of $\vec{H}$ and the chain rule for $\nabla(1/\varepsilon)$:
+\begin{itemize}
+    \item $\nabla\times\vec{H} = -\dfrac{i\omega}{c}\,\varepsilon\,\vec{E} = -ik_0\,\varepsilon\,\vec{E}$
+    \item $\nabla(1/\varepsilon) = -\dfrac{\nabla\varepsilon}{\varepsilon^2}$
+\end{itemize}
+Substituting these in gives:
+\[
+\nabla\!\left(\frac{1}{\varepsilon}\right)\times(\nabla\times\vec{H}) = -\frac{\nabla\varepsilon}{\varepsilon^2}\times\big(-ik_0\,\varepsilon\,\vec{E}\big) = \frac{ik_0}{\varepsilon}\,\nabla\varepsilon\times\vec{E}.
+\]
+Plugging this result back into the wave equation and multiplying the entire equation by $\varepsilon(\vec{r})$ yields:
+\[
+\nabla\times\nabla\times\vec{H} + ik_0\,\nabla\varepsilon(\vec{r})\times\vec{E}(\vec{r}) - \varepsilon(\vec{r})k_0^2\,\vec{H}(\vec{r}) = 0.
+\]
+Rearranging this to isolate the Helmholtz operator acting on $\vec{H}$ (and recalling $\kappa^2 = \varepsilon k_0^2$), we get our desired "source" form:
+\begin{equation}
+\boxed{\;
+\nabla\times\nabla\times\vec{H}(\vec{r}) - \kappa^2(\vec{r})\vec{H}(\vec{r}) = -ik_0\,\nabla\varepsilon(\vec{r})\times\vec{E}(\vec{r}).
+\;}
+\end{equation}
+This powerful result shows that for the magnetic field, the "source" driving the scattering is not just the presence of the dielectric ($\varepsilon \neq 1$), but specifically the \textit{gradient} of the permittivity, $\nabla\varepsilon$.
+
+\subsection{Obtain the Volume Integral Equation via Green's Identity}
+
+
+We now use the Levine-Schwinger vector Green's identity to convert our differential equation into an integral equation. The identity is:
+\[
+\int_S d\vec{s}'\cdot\big[\vec{B}\times(\nabla'\times\vec{A})-\vec{A}\times(\nabla'\times\vec{B})\big] = \int_V dV'\,\big[\vec{A}\cdot(\nabla'\times\nabla'\times\vec{B})-\vec{B}\cdot(\nabla'\times\nabla'\times\vec{A})\big].
+\]
+We make the following choices for our vector fields:
+\[
+\vec{A}(\vec{r}') = \boldsymbol{\Gamma}(\vec{r}',\vec{r})\cdot\vec{e}, \qquad \vec{B}(\vec{r}') = \vec{H}(\vec{r}'),
+\]
+where $\vec{e}$ is an arbitrary constant vector.
+
+\paragraph{Right-Hand Side (Volume Term).} We substitute our "source" equation for $\nabla'\times\nabla'\times\vec{H}$ and the defining equation for $\boldsymbol{\Gamma}$:
+\begin{align*}
+\nabla'\times\nabla'\times\vec{H}(\vec{r}') &= \kappa^2(\vec{r}')\vec{H}(\vec{r}') - ik_0\,\nabla'\varepsilon(\vec{r}')\times\vec{E}_{int}(\vec{r}'), \\
+\nabla'\times\nabla'\times(\boldsymbol{\Gamma}\cdot\vec{e}) &= k_0^2(\boldsymbol{\Gamma}\cdot\vec{e}) + \vec{e}\,\delta(\vec{r}'-\vec{r}).
+\end{align*}
+The volume integral becomes:
+\begin{align*}
+\text{RHS} &= \int_V\!\Big[(\boldsymbol{\Gamma}\cdot\vec{e})\cdot(\kappa^2\vec{H}-ik_0\,\nabla'\varepsilon\times\vec{E}) - \vec{H}\cdot\big(k_0^2(\boldsymbol{\Gamma}\cdot\vec{e})+\vec{e}\,\delta\big)\Big]\,dV' \\
+&= \int_V\!(\kappa^2-k_0^2)\,\vec{H}\cdot(\boldsymbol{\Gamma}\cdot\vec{e})\,dV' - ik_0\!\int_V\!(\boldsymbol{\Gamma}\cdot\vec{e})\cdot(\nabla'\varepsilon\times\vec{E})\,dV' - \vec{H}(\vec{r})\cdot\vec{e}.
+\end{align*}
+
+\paragraph{Left-Hand Side (Surface Term).} Just as in the electric-field case, the surface integral at infinity, $\mathcal{S}_H$, evaluates to the incident field. The scattered field $\vec{H}_{\text{sct}}$ satisfies the Sommerfeld radiation condition, causing its contribution to vanish. A second application of Green's identity shows that the incident field part gives $\mathcal{S}_H^{(\text{inc})} = -\vec{H}_{\text{inc}}(\vec{r})\cdot\vec{e}$.
+
+\paragraph{Combining and Solving.} Equating the LHS and RHS and rearranging to solve for $\vec{H}(\vec{r})\cdot\vec{e}$, we find:
+\[
+\vec{H}(\vec{r})\cdot\vec{e} = \vec{H}_{\text{inc}}(\vec{r})\cdot\vec{e} + \int_V(\kappa^2-k_0^2)\,\vec{H}\cdot(\boldsymbol{\Gamma}\cdot\vec{e})\,dV' - ik_0\int_V(\boldsymbol{\Gamma}\cdot\vec{e})\cdot(\nabla'\varepsilon\times\vec{E})\,dV'.
+\]
+Since $\vec{e}$ is arbitrary, we can promote this to a vector equation. Using $\kappa^2-k_0^2 = k_0^2(\varepsilon-1)$, we arrive at the final Magnetic-Field Integral Equation:
+\begin{equation}
+\boxed{\;
+\begin{aligned}
+\vec{H}(\vec{r}) = \vec{H}_{\text{inc}}(\vec{r}) &+ \int_V k_0^2\,(\varepsilon(\vec{r}')-1)\,\boldsymbol{\Gamma}(\vec{r},\vec{r}')\cdot\vec{H}(\vec{r}')\,dV' \\
+&-ik_0\int_V \boldsymbol{\Gamma}(\vec{r},\vec{r}')\cdot\big[\nabla'\varepsilon(\vec{r}')\times\vec{E}_{int}(\vec{r}')\big]\,dV'.
+\end{aligned}
+\;}
+\end{equation}
+
+
+\subsection{The Far-Field Limit and Scattering Amplitude $\vec{A}_2$}
+
+
+To find the scattered field at a large distance ($r=|\vec{r}|\to\infty$), we use the asymptotic form of the Green's function. Let $\hat{s}=\vec{r}/r$.
+\[
+G(\vec{r},\vec{r}') \approx \frac{e^{ik_0 r}}{4\pi r}\,e^{-ik_0\,\hat{s}\cdot\vec{r}'} \qquad \text{and} \qquad \nabla\nabla'G \approx (-ik_0)^2 \hat{s}\hat{s}^{\top} G.
+\]
+This leads to the far-field approximation for the dyadic Green's function:
+\[
+\boldsymbol{\Gamma}(\vec{r},\vec{r}') = \Big(\mathbf{I}-\frac{1}{k_0^2}\nabla\nabla'\Big)G \xrightarrow{\text{far field}} \Big(\mathbf{I}-\hat{s}\hat{s}^{\top}\Big)\,\frac{e^{ik_0 r}}{4\pi r}\,e^{-ik_0\,\hat{s}\cdot\vec{r}'} = \mathbf{P}_\perp(\hat{s}) G(\vec{r},\vec{r}').
+\]
+Applying this to the two integrals in the MFIE:
+\begin{itemize}
+    \item \textbf{First Term:}
+    \[
+    \int_V k_0^2(\varepsilon-1)\,\boldsymbol{\Gamma}\cdot\vec{H}\,dV' \approx \frac{e^{ik_0 r}}{r}\;\mathbf{P}_\perp(\hat{s})\, \underbrace{\left[\frac{k_0^2}{4\pi}\int_V e^{-ik_0\,\hat{s}\cdot\vec{r}'}\,(\varepsilon-1)\,\vec{H}(\vec{r}')\,dV'\right]}_{:=\ \vec{P}'(\hat{s})}.
+    \]
+    \item \textbf{Second Term:}
+    \[
+    -ik_0\int_V \boldsymbol{\Gamma}\cdot\big(\nabla'\varepsilon\times\vec{E}\big)\,dV' \approx \frac{e^{ik_0 r}}{r}\;\mathbf{P}_\perp(\hat{s})\, \underbrace{\left[-\frac{ik_0}{4\pi}\int_V e^{-ik_0\,\hat{s}\cdot\vec{r}'}\,\nabla'\varepsilon(\vec{r}')\times\vec{E}_{int}(\vec{r}')\,dV'\right]}_{:=\ \vec{P}''(\hat{s})}.
+    \]
+\end{itemize}
+The total scattered field $\vec{H}_{\text{sctd}} = \vec{H} - \vec{H}_{\text{inc}}$ is the sum of these two contributions:
+\begin{equation}
+\boxed{\;
+\vec{H}_{\text{sctd}}(\vec{r})\ \approx\ \frac{e^{ik_0 r}}{r}\;\mathbf{P}_\perp(\hat{s})\,[\,\vec{P}'(\hat{s})+\vec{P}''(\hat{s})\,].
+\;}
+\end{equation}
+Using the identity $\mathbf{P}_\perp(\hat{s})\vec{A} = -\hat{s}\times(\hat{s}\times\vec{A})$, we can define the magnetic scattering amplitude $\vec{A}_2$:
+\begin{equation}
+\boxed{\;
+\vec{H}_{\text{sctd}}(\vec{r})=\frac{e^{ik_0 r}}{r}\ \vec{F}_2(\hat{s}), \qquad \text{where} \quad \vec{F}_2(\hat{s})=-\hat{s}\times\Big[\hat{s}\times\Big(\vec{P}'(\hat{s})+\vec{P}''(\hat{s})\Big)\Big].
+\;}
+\end{equation}
+The vector amplitudes are given by:
+\begin{equation}
+\boxed{\;
+\begin{aligned}
+\vec{P}'(\hat{s}) &= \frac{k_0^2}{4\pi}\int_V e^{-ik_0\,\hat{s}\cdot\vec{r}'}\,[\varepsilon(\vec{r}')-1]\ \vec{H}(\vec{r}')\,dV',\\[4pt]
+\vec{P}''(\hat{s}) &= -\frac{ik_0}{4\pi}\int_V e^{-ik_0\,\hat{s}\cdot\vec{r}'}\ \nabla'\varepsilon(\vec{r}')\times\vec{E}_{int}(\vec{r}')\,dV'.
+\end{aligned}
+\;}
+\end{equation}
+
+\subsection{Physical Interpretation of the Contributions}
+
+
+The two terms in the scattering amplitude, $\vec{P}'$ and $\vec{P}''$, have distinct physical origins.
+\begin{itemize}
+    \item $\mathbf{\vec{P}'(\hat{s})}$ represents the radiation from the bulk of the material, driven by the contrast current proportional to $(\varepsilon-1)\vec{H}$. This is analogous to the source term in the E-field equation.
+    \item $\mathbf{\vec{P}''(\hat{s})}$ is a unique feature of the MFIE. It represents radiation generated only where the material properties change, i.e., where $\nabla\varepsilon \neq 0$. This term is sourced by the term $\nabla\varepsilon \times \vec{E}$, which can be thought of as an effective magnetic surface current at interfaces.
+\end{itemize}
+This second term is crucial because it accounts for polarisation effects that are not present in the simpler E-field formulation. The cross product with $\nabla\varepsilon$ can rotate the polarisation of the internal E-field, leading to a more complex polarisation pattern in the scattered magnetic field. For a homogeneous object, this term becomes a surface integral over the object's boundary.
+
+

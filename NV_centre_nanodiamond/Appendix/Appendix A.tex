@@ -1,0 +1,86 @@
+\chapter{Appendix A}
+\section{Derivation of black body radiation energy density per unit frequency formula in a system with harmonic interaction}\label{Bb u}
+
+To derive the blackbody radiation energy density per unit frequency, \( u(\omega, T) = \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{e^{\hbar \omega / k_B T} - 1} \), we use fundamental principles of quantum statistical mechanics and electromagnetic theory. This expression represents the energy per unit volume per unit frequency for blackbody radiation at temperature \( T \), where \( \hbar \) is the reduced Planck constant, \( \omega \) is the angular frequency, \( c \) is the speed of light, \( k_B \) is the Boltzmann constant, and \( T \) is the temperature. 
+
+\subsection{Density of States for Photons}
+Blackbody radiation consists of electromagnetic waves in thermal equilibrium within a cavity. To find the energy density \( u(\omega, T) \), we need the number of photon modes per unit volume per unit frequency, known as the density of states.
+
+Consider a cubic cavity with volume \( V = L^3 \), where \( L \) is the side length. Electromagnetic waves in the cavity form standing waves with wave vectors \( \mathbf{k} = (k_x, k_y, k_z) \), where each component is quantized due to boundary conditions. For periodic boundary conditions, the allowed wave vectors are:
+
+\[
+k_x = \frac{2\pi n_x}{L}, \quad k_y = \frac{2\pi n_y}{L}, \quad k_z = \frac{2\pi n_z}{L}
+\]
+
+where \( n_x, n_y, n_z \) are integers. The magnitude of the wave vector is \( k = |\mathbf{k}| = \sqrt{k_x^2 + k_y^2 + k_z^2} \), and the angular frequency is related to \( k \) by the dispersion relation for photons, \( \omega = c k \), where \( c \) is the speed of light.
+
+To count the number of modes, we work in k-space. The number of states within a spherical shell in k-space between \( k \) and \( k + dk \) corresponds to the number of modes with frequencies between \( \omega \) and \( \omega + d\omega \). The volume element in k-space for a single mode is:
+
+\[
+\Delta k_x \Delta k_y \Delta k_z = \frac{(2\pi)^3}{L^3} = \frac{(2\pi)^3}{V}
+\]
+
+In spherical coordinates, the number of states in a shell between \( k \) and \( k + dk \) is found by integrating over the positive octant (since \( k_x, k_y, k_z \geq 0 \)):
+
+\[
+dN' = \frac{V}{(2\pi)^3} \cdot 4\pi k^2 dk \cdot \frac{1}{8}
+\]
+
+Adding a factor of 2 for the two polarisation states of photons gives:
+
+\[
+dN = 2 \cdot \frac{V}{(2\pi)^3} \cdot 4\pi k^2 dk = \frac{V k^2 dk}{\pi^2}
+\]
+
+Since \( \omega = c k \), we have \( k = \frac{\omega}{c} \), and \( dk = \frac{d\omega}{c} \). Substituting:
+
+\[
+k^2 = \left( \frac{\omega}{c} \right)^2, \quad dk = \frac{d\omega}{c}
+\]
+
+\[
+dN = \frac{V}{2\pi^2} \cdot \left( \frac{\omega}{c} \right)^2 \cdot \frac{d\omega}{c} = \frac{V \omega^2 d\omega}{\pi^2 c^3}
+\]
+
+The density of states per unit volume, \( g(\omega) \), is the number of modes per unit frequency per unit volume:
+
+\[
+g(\omega) d\omega = \frac{dN}{V} = \frac{\omega^2 d\omega}{\pi^2 c^3}
+\]
+
+
+
+This \( g(\omega) \) gives the number of photon modes per unit volume per unit frequency.
+
+\subsection{Energy per Photon Mode}
+Photons are bosons, and in thermal equilibrium at temperature \( T \), the average number of photons in a mode with frequency \( \omega \) follows the Bose-Einstein distribution:
+
+\[
+\langle n(\omega) \rangle = \frac{1}{e^{\hbar \omega / k_B T} - 1}
+\]
+
+Each photon in a mode with frequency \( \omega \) has energy \( \hbar \omega \). The average energy per mode is:
+
+\[
+E(\omega) = \langle n(\omega) \rangle \cdot \hbar \omega = \frac{\hbar \omega}{e^{\hbar \omega / k_B T} - 1}
+\]
+
+\subsection{Energy Density}
+The energy density per unit frequency, \( u(\omega, T) \), is the energy per mode multiplied by the number of modes per unit volume per unit frequency:
+
+\[
+u(\omega, T) = g(\omega) \cdot E(\omega) = \left( \frac{\omega^2}{\pi^2 c^3} \right) \cdot \left( \frac{\hbar \omega}{e^{\hbar \omega / k_B T} - 1} \right)
+\]
+
+\[
+u(\omega, T) = \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{e^{\hbar \omega / k_B T} - 1}
+\]
+
+\subsection{Notes}
+\begin{enumerate}
+    \item The factor \( \frac{1}{\pi^2 c^3} \) arises from the density of states in three dimensions, accounting for the two polarization states of photons.
+\item The Bose-Einstein distribution \( \frac{1}{e^{\hbar \omega / k_B T} - 1} \) reflects the quantum statistical nature of photons, excluding the zero-point energy (which does not contribute to thermal radiation).
+\item This derivation assumes an isotropic, equilibrium distribution of radiation, as is standard for blackbody radiation in a cavity.
+
+The derived expression matches the one provided, confirming its correctness as used in Chang et al.'s paper for calculating the absorption of blackbody radiation by a nanosphere.
+\end{enumerate}
