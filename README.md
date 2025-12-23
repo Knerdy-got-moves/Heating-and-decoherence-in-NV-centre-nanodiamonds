@@ -19,7 +19,7 @@ This research investigates the thermal dynamics of NV centre nanodiamonds under 
 - **`NV_centre_nanodiamond/`** - LaTeX source files for comprehensive theoretical treatment
   - `Chapters/` - Individual chapter files covering:
     - Chapter 1: Laser light heating in the Rayleigh regime
-    - Chapter 2-4: Additional theoretical developments
+    - Chapter 2-4: Mie theory to extend beyond the Rayleigh scattering regime
   - `Appendix/` - Supplementary derivations and calculations
   - `Reference papers (not a bib file)/` - Organized literature on:
     - Cooling pathways
